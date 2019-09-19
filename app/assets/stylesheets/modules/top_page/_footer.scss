@@ -1,0 +1,37 @@
+aside {
+  height: 260px;
+  width: 100%;
+  background-image: image-url("top_page/bottom-background.jpg");
+}
+.container-bottom {
+  height: 260px;
+  width: 750px;
+  margin: 0 auto;
+  display: flex;
+  &--left {
+    width: 420px;
+    margin-right: 40px;
+    h3 {
+      font-size: 24px;
+      color: $white;
+      font-weight: 600;
+      margin: 50px 0 15px 0;
+    }
+    h2{
+      font-size: 35px;
+      color: $white;
+      margin-bottom: 20px;
+    }
+    &--icon{
+      .icon-mercari{
+        margin-right: 20px;
+      }
+      .icon-app_store{
+        margin-right: 8px;
+      }
+    }
+  }
+  &--right {
+    width: 300px;
+  }
+}

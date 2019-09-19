@@ -1,0 +1,140 @@
+#slide {
+  margin-bottom: 30px;
+  width: 100%;
+  height: 390px;
+  .slide-banner-camp {
+    background-image: image-url("top_page/banner-camp.png");
+    background-size: cover;
+    width: 780px;
+    height: 100%;
+    margin: 0 auto;
+  }
+  .slide-banner-phone {
+    width: 860px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 20px 40px;
+    align-content: center;
+    &__image {
+      float: right;
+      background-image: image-url("top_page/banner-phone.png");
+      background-size: cover;
+      width: 430px;
+      height: 100%;
+    }
+    &__top {
+      font-size: 50px;
+      font-weight: bold;
+      width: 100%;
+      white-space: nowrap;
+      margin: 0 0 16px;
+      h2 {
+        font-size: 60px;
+      }
+    }
+    &__bottom {
+      width: 100%;
+      white-space: nowrap;
+      margin: 0 0 24px;
+      h3 {
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+.container-toppage {
+  background-color: $main-background;
+  height: 100%;
+  width: 100%;
+  // headerは切り取ってありますheader.scssにあります
+  // footerは切り取ってありますfooter.scssにあります
+  // ここからmain
+  .popular {
+    background-color: $white;
+    height: 170px;
+    width: 100%;
+    padding: 56px 0 30px;
+    &__title {
+      font-size: 28px;
+      font-weight: bold;
+      text-align: center;
+      margin: 0 0 16px;
+    }
+    ul {
+      text-align: center;
+      li {
+        display: inline;
+        margin: 10px 0 0 10px;
+        @include toppage-parts();
+        font-weight: bold;
+        background-color: #EFEFEF;
+        padding: 8px 16px;
+        border-radius: 14px;
+      }
+    }
+  }
+  .new-products {
+    width: 700px;
+    height: 100%;
+    padding: 43px 0 100px;
+    margin: 0 auto;
+    &__category {
+      margin-top: 60px;
+      &__header {
+        @include clearfix();
+        margin-bottom: 16px;
+        &--title {
+          width: 609px;
+          height: 33px;
+          font-size: 24px;
+          font-weight: bold;
+          float: left;
+        }
+        &--detail {
+          width: 91px;
+          height: 24px;
+          font-size: 14px;
+          font-weight: bold;
+          color: $liteblue;
+          float: right;
+          padding: 5px 16px 5px 5px;
+          margin-right: 1px;
+          cursor: pointer;
+          
+        }
+        .arrow::before {
+          float: right;
+          width: 14px;
+          height: 14px;
+          border-top: 1px solid $liteblue;
+          border-right: 1px solid $liteblue;
+          -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+        }
+      }
+      &__content{}
+    }
+  }
+}
+
+.camera-button{
+  width: 160px;
+  height: 160px;
+  background-color: $red;
+  border-radius: 50%;
+  padding-top: 32px;
+  position: fixed;
+  right: 32px;
+  bottom: 32px;
+  &__text{
+    font-size: 22px;
+    text-align: center;
+    color: $white;
+  }
+  &__icon{
+    font-size: 55px;
+    padding-left: 50px;
+    color: $white;
+  }
+}
