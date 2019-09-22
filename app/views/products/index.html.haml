@@ -1,0 +1,129 @@
+-# headerは切り取ってあります_header.html.hamlにあります
+
+#slide
+  .slide-banner-camp
+    = image_tag "top_page/banner-camp.png", size: '800x390';
+  .slide-banner-phone
+    -# = image_tag "top_page/banner-background.jpeg",size: '1000x390';
+    .slide-banner-phone__image
+      = image_tag "top_page/banner-phone.png", size: '430x390';
+    .slide-banner-phone__top
+      %h2 スマホでかんたん
+      %h2 フリマアプリ
+    .slide-banner-phone__bottom
+      %h3 メルカリはスマホアプリからすぐに出品できる
+      %h3 購入時も安心な独自システムのアプリです
+    .slide-banner-phone__icon
+      = image_tag "top_page/icon-app_store.svg", size: '170x50', alt: "App Store"
+      = image_tag "top_page/icon-google_play.svg", size: '170x50',alt: "Google Play"
+
+    
+.container-toppage
+  .popular
+    .popular__title
+      人気のカテゴリー
+    %ul
+      %li レディース
+      %li メンズ
+      %li 家電・スマホ・カメラ
+      %li おもちゃ・ホビー・グッズ
+
+  .new-products
+    .new-products__category
+      .new-products__category__header
+        .new-products__category__header--title
+          レディース新着アイテム
+        .new-products__category__header--detail
+          もっと見る
+        .arrow
+      .new-products__category__content
+        画像データ取り込み
+
+    .new-products__category
+      .new-products__category__header
+        .new-products__category__header--title
+          メンズ新着アイテム
+        .new-products__category__header--detail
+          もっと見る
+        .arrow
+      .new-products__category__content
+        画像データ取り込み
+
+    .new-products__category
+      .new-products__category__header
+        .new-products__category__header--title
+          家電・スマホ・カメラ新着アイテム
+        .new-products__category__header--detail
+          もっと見る
+        .arrow
+      .new-products__category__content
+        画像データ取り込み
+
+    .new-products__category
+      .new-products__category__header
+        .new-products__category__header--title
+          おもちゃ・ホビー・グッズ新着アイテム
+        .new-products__category__header--detail
+          もっと見る
+        .arrow
+      .new-products__category__content
+        画像データ取り込み
+        
+  .popular
+    .popular__title
+      人気のブランド
+    %ul
+      %li シャネル
+      %li ルイヴィトン
+      %li シュプリーム
+      %li ナイキ
+
+  .new-products
+    .new-products__category
+      .new-products__category__header
+        .new-products__category__header--title
+          シャネル新着アイテム
+        .new-products__category__header--detail
+          もっと見る
+        .arrow
+      .new-products__category__content
+        画像データ取り込み
+
+    .new-products__category
+      .new-products__category__header
+        .new-products__category__header--title
+          ルイヴィトン新着アイテム
+        .new-products__category__header--detail
+          もっと見る
+        .arrow
+      .new-products__category__content
+        画像データ取り込み
+
+    .new-products__category
+      .new-products__category__header
+        .new-products__category__header--title
+          シュプリーム新着アイテム
+        .new-products__category__header--detail
+          もっと見る
+        .arrow
+      .new-products__category__content
+        画像データ取り込み
+
+    .new-products__category
+      .new-products__category__header
+        .new-products__category__header--title
+          ナイキ新着アイテム
+        .new-products__category__header--detail
+          もっと見る
+        .arrow
+      .new-products__category__content
+        画像データ取り込み
+
+.camera-button
+  .camera-button__text
+    出品
+  -#↓↓あとで出品ページのリンクに変える
+  = link_to root_path do  
+    = fa_icon "camera",class: "camera-button__icon"
+
+-# footer(aside入り)は切り取ってあります_footer.html.hamlにあります

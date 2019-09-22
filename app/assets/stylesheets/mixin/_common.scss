@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+  font-weight: 500;
+}
+
+@mixin clearfix() {
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+@mixin toppage-parts($height: 44px, $width: 150px) {
+  height: $height;
+  width: $width;
+  line-height: $height;
+  font-size: 14px;
+  padding: 0 10px;
+  cursor: pointer;
+}

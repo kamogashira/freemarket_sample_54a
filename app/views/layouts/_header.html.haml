@@ -1,0 +1,63 @@
+%header
+  .wrapper
+    .wrapper__content__top
+      = link_to root_path do
+        =image_tag "top_page/header-mercari.svg",size: '134x36',alt:"mercari"
+      = form_tag('/search', method: :get, class: 'search-form') do
+        %input.search-form__input{name: "keyword", placeholder: "何かお探しですか？", type: "text", value: ""}
+        %button.search-form__btn{type: "submit", class: "fas"}
+          = fa_icon "search",class: "search-form__icon"
+    .wrapper__content__bottom
+      .wrapper__content__bottom--left
+        #pulldown
+          %ul.menu
+            %li
+              = fa_icon "bars",class: "menu_icon"  
+              %a{href: "#"} カテゴリーから探す
+              %ul.sub
+                %li
+                  %a{href: "#"} レディース
+                  %ul.sub
+                    %li
+                      %a{href: "#"} トップス
+                    %li
+                      %a{href: "#"} パンツ
+                    %li
+                      %a{href: "#"} スカート
+
+                %li
+                  %a{href: "#"} メンズ
+                  %ul.sub
+                    %li
+                      %a{href: "#"} トップス
+                    %li
+                      %a{href: "#"} パンツ
+                    %li
+                      %a{href: "#"} 靴
+
+                %li
+                  %a{href: "#"} 家電・スマホ・カメラ
+                  %ul.sub
+                    %li
+                      %a{href: "#"} スマートフォン
+                    %li
+                      %a{href: "#"} PC
+                    %li
+                      %a{href: "#"} カメラ
+
+            %li
+              = fa_icon "tags",class: "menu_icon"  
+              %a{href: "#"} ブランドから探す
+              %ul.sub
+                %li
+                  %a{:href => "#"} シャネル
+                %li
+                  %a{:href => "#"} ルイヴィトン
+                %li
+                  %a{:href => "#"} シュプリーム
+
+      .wrapper__content__bottom--right
+        .sign-up
+          新規会員登録
+        .log-in
+          ログイン

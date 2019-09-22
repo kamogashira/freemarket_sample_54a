@@ -1,0 +1,57 @@
+%aside
+  .container-bottom
+    .container-bottom--left
+      %h3 スマホでかんたんフリマアプリ
+      %h2 今すぐ無料ダウンロード!
+      .container-bottom--left--icon
+        = image_tag "top_page/icon-mercari.png", size: '68x68',class: "icon-mercari",  alt: "Mercari"
+        = image_tag "top_page/icon-app_store.svg", size: '144x40',class: "icon-app_store", alt: "App Store"
+        = image_tag "top_page/icon-google_play.svg", size: '144x40',class: "icon-google_play", alt: "Google Play"
+    .container-bottom--right
+      = image_tag "top_page/bottom-phone.png", size: '300x260',  alt: "Phone"
+
+%footer
+  .contents__main
+    .contents__main--top
+      .contents__main--top--half
+        %h2  メルカリについて
+        %ul
+          %li 会社概要（運営会社）
+          %li 採用情報
+          %li プレスリリース
+          %li 公式ブログ
+          %li メルカリロゴ利用ガイドライン
+          = fa_icon "twitter",class: "icon"
+          = fa_icon "facebook-square",class: "icon"
+      .contents__main--top--half
+        %h2  ヘルプ＆ガイド
+        %ul
+          %li メルカリガイド
+          %li らくらくメルカリ便
+          %li ゆうゆうメルカリ便
+          %li 大型メルカリ便
+          %li 車体取引ガイド
+          %li めるかりあんしん・あんぜん宣言！
+          %li 偽ブランド品撲滅への取り組み
+          %li メルカリボックス
+    .contents__main--middle
+      %h2  プライバシーと利用規約
+      .contents__main--middle--half
+        %ul
+          %li プライバシーポリシー
+          %li メルカリ利用規約
+          %li あんしんスマホサポート制度に関する利用特約
+          %li コンプライアンスポリシー
+      .contents__main--middle--half
+        %ul
+          %li 個人データの安全管理に係る基本方針
+          %li 特定商取引に関する表記
+          %li 資金決済法に基づく表示
+          %li.clearfix 法令順守と犯罪抑止のために
+    .contents__main--bottom
+      %h2  国
+      %ul
+        %li 日本
+        %li United States
+  .contents__bottom
+    = image_tag "top_page/icon-mercari-monotorn.svg", size: '124x33',  alt: "Mercari"
