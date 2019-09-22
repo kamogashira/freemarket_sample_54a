@@ -9,10 +9,53 @@
           = fa_icon "search",class: "search-form__icon"
     .wrapper__content__bottom
       .wrapper__content__bottom--left
-        .category-search
-          カテゴリーから探す
-        .brand-search
-          ブランドから探す
+        #pulldown
+          %ul.menu
+            %li
+              = fa_icon "bars",class: "menu_icon"  
+              %a{href: "#"} カテゴリーから探す
+              %ul.sub
+                %li
+                  %a{href: "#"} レディース
+                  %ul.sub
+                    %li
+                      %a{href: "#"} トップス
+                    %li
+                      %a{href: "#"} パンツ
+                    %li
+                      %a{href: "#"} スカート
+
+                %li
+                  %a{href: "#"} メンズ
+                  %ul.sub
+                    %li
+                      %a{href: "#"} トップス
+                    %li
+                      %a{href: "#"} パンツ
+                    %li
+                      %a{href: "#"} 靴
+
+                %li
+                  %a{href: "#"} 家電・スマホ・カメラ
+                  %ul.sub
+                    %li
+                      %a{href: "#"} スマートフォン
+                    %li
+                      %a{href: "#"} PC
+                    %li
+                      %a{href: "#"} カメラ
+
+            %li
+              = fa_icon "tags",class: "menu_icon"  
+              %a{href: "#"} ブランドから探す
+              %ul.sub
+                %li
+                  %a{:href => "#"} シャネル
+                %li
+                  %a{:href => "#"} ルイヴィトン
+                %li
+                  %a{:href => "#"} シュプリーム
+
       .wrapper__content__bottom--right
         .sign-up
           新規会員登録
