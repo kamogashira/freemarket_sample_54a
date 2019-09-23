@@ -55,15 +55,15 @@ header {
 
           ul.menu li {
             float: left;
-            width: 154px;
-            height: 48px;
+            width: 180px;
+            height: 44px;
             position: relative;
             margin-right: 10px;
 
             .menu_icon {
               font-size: 15px;
               color: $black;
-              line-height: 48px;
+              line-height: 44px;
               margin-left: 5px;
               float: left;
             }
@@ -78,6 +78,7 @@ header {
               color: $black;
               text-decoration: none;
               position: relative;
+              line-height: 44px;
               
               &:hover {
                 color: $liteblue;
@@ -86,41 +87,20 @@ header {
 
             ul.sub li {
               position: relative;
-              // left: 179px;
               top: 0;
               background-color: $white;
               z-index: 100;
+              ul.sub{
+                position: absolute;
+                left: 180px;
+                top: 0;
+                background-color: $white;
+                z-index: 100;
+              }
             }
 
-            // ul.sub li ul.sub{
-            //   position: absolute;
-            //   left: 179px;
-            //   top: 0;
-            //   background-color: $white;
-            //   z-index: 100;
-            // }
-
-            ul.menu{
-              // zoom: 1;
-            }
-            &:after{
-              height: 0;
-              visibility: hidden;
-              content: ".";
-              display: block;
-              clear: both;
-            }
             ul.sub {
               display: none;
-            }
-            * html ul.menu li{
-              display: inline;
-            }
-            *+html ul.menu li{
-              display: inline;
-            }
-            *+html ul.sub{
-              position: relative;
             }
           }
         }

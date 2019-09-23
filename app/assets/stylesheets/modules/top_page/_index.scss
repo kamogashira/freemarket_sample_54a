@@ -4,6 +4,7 @@
   height: 390px;
   background-color: $main-background;
   padding: 0;
+  position: relative;
   .slide-banner-camp {
     width: 100%;
     height: 100%;
@@ -13,27 +14,32 @@
     }
   }
   .slide-banner-phone {
-    width: 860px;
-    height: 100%;
-    align-content: center;
+    width: 100%;
+    height: 390px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 0;
 
     &__image {
-      float: right;
       width: 430px;
       height: 100%;
       margin-right: 300px;
+      position: absolute;
+      right: 0;
+      z-index: 100;
     }
     &__top {
       padding: 20px 0 0 40px;
-      font-size: 50px;
-      font-weight: bold;
       white-space: nowrap;
       margin: 0 0 16px;
       margin-left: 300px;
+      position: absolute;
+
       h2 {
         font-size: 60px;
         font-weight: 800;
         color: $black;
+        top: 20px;
       }
     }
     &__bottom {
@@ -41,10 +47,13 @@
       width: 100%;
       white-space: nowrap;
       margin: 0 0 24px;
+      position: absolute;
+      top: 200px;
       h3 {
         font-size: 18px;
         color: $black;
         margin-left: 300px;
+        margin-bottom: 10px;
       }
     }
     &__icon {
@@ -52,6 +61,8 @@
       cursor: pointer;
       display: flex;
       margin-left: 300px;
+      position: absolute;
+      top: 300px;
     }
   }
 }
