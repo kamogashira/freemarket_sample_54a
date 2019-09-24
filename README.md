@@ -4,9 +4,9 @@
 Copy of an exsiting flea market application, Mercari
 
 ## System version
-Ruby 2.5.1,
-Rails  5.0.7.2
-MySQL 5.6 
+- Ruby 2.5.1,
+- Rails  5.0.7.2
+- MySQL 5.6 
 
 ## Database
 
