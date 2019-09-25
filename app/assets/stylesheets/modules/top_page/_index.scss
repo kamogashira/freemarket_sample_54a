@@ -127,6 +127,7 @@
     height: 170px;
     width: 100%;
     padding: 56px 0 30px;
+    margin: 0 auto;
     &__title {
       font-size: 28px;
       font-weight: bold;
@@ -147,24 +148,27 @@
     }
   }
   .new-products {
-    width: 700px;
+    min-width: 400px;
     height: 100%;
     padding: 43px 0 100px;
     margin: 0 auto;
+    @include responsive-width(80%);
     &__category {
       margin-top: 60px;
       &__header {
         @include clearfix();
         margin-bottom: 16px;
         &--title {
-          width: 609px;
+          width: 80%;
+          min-width: 440px;
           height: 33px;
           font-size: 24px;
           font-weight: bold;
           float: left;
         }
         &--detail {
-          width: 91px;
+          width: 15%;
+          min-width: 95px;
           height: 24px;
           font-size: 14px;
           font-weight: bold;
