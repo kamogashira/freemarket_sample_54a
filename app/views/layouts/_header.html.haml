@@ -2,7 +2,7 @@
   .wrapper
     .wrapper__content__top
       = link_to root_path do
-        =image_tag "top_page/header-mercari.svg",size: '134x36',alt:"mercari"
+        =image_tag "top_page/header-mercari.svg",size: '134x36',class: "mercari", alt:"mercari"
       = form_tag('/search', method: :get, class: 'search-form') do
         %input.search-form__input{name: "keyword", placeholder: "何かお探しですか？", type: "text", value: ""}
         %button.search-form__btn{type: "submit", class: "fas"}
