@@ -91,6 +91,7 @@ Copy of an exsiting flea market application, Mercari
 |Column|Type|Options|
 |------|----|-------|
 |user|references|null: false, foreign_key: true|
+|product|references|null: false, foreign_key: true|
 |good|integer||
 |normal|integer||
 |bad|integer||
