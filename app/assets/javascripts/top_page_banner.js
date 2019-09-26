@@ -3,6 +3,5 @@ $(document).on('turbolinks:load', function(){
     autoplay:true,
     dots:true,
     arrows: true,
-    // prevArrow: '<div class="slide-arrow prev-arrow"><img src="top_page/arrow-left.png"></div>'
   });
 });
