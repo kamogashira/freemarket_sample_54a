@@ -3,7 +3,6 @@ header {
   background: $white;
   width: 100%;
   height: 100px;
-
   .wrapper {
     font-size: 15px;
     padding: 8px 0 0;
@@ -12,9 +11,9 @@ header {
     margin: 0 auto;
     .wrapper__content__top {
       height: 40px;
-      width: 80%;
       max-width: 1020px;
       min-width: 480px;
+      @include responsive-width (100%);
       margin: 0 auto;
       img.mercari {
         float: left;
@@ -54,11 +53,11 @@ header {
       min-width: 700px;
       margin: 0 auto;
       padding: 8px 0 0;
-      width: 80%;
+      @include responsive-width (100%);
       .wrapper__content__bottom--left {
         float: left;
         height: 44px;
-        @include responsive-width (60%);
+        @include responsive-width (30%);
         min-width: 360px;
         #pulldown {
           min-width: 300px;
@@ -122,9 +121,10 @@ header {
       .wrapper__content__bottom--right {
         float: right;
         height: 100%;
-        width: 20%;
         min-width: 200px;
-
+        @include responsive-width (60%);
+        display: flex;
+        position: relative;
         .sign-up {
           float: left;
           @include toppage-parts(90%, 53%);
@@ -138,6 +138,51 @@ header {
           color: $liteblue;
           border: 1px solid $liteblue;
           border-radius: 4px;
+        }
+
+        .liked_items {
+          width: 110px;
+          height: 44px;
+          line-height: 44px;
+          position: absolute;
+          right: 400px;
+          @media only screen and (max-width:1068px){
+            display: none;
+          }
+            
+        }
+
+        .news {
+          width: 83px;
+          height: 44px;
+          line-height: 44px;
+          position: absolute;
+          right: 270px;
+        }
+
+        .todo {
+          width: 130px;
+          height: 44px;
+          line-height: 44px;
+          position: absolute;
+          right: 120px;
+        }
+
+        .mypage {
+          width: 120px;
+          height: 44px;
+          line-height: 44px;
+          position: absolute;
+          right: 0;
+          .avater {
+            position: absolute;
+            top: 5px;
+            left: 0;
+          }
+          p {
+            position: absolute;
+            right: 0;
+          }
         }
       }
     }
