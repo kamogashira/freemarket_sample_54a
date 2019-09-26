@@ -25,18 +25,14 @@ Copy of an exsiting flea market application, Mercari
 |self_introduction|text||
 |provider|string||
 |uid|string||
-|postal_code|integer|null: false|
-|prefecture|string|null: false|
-|address_city|string|null: false|
-|address_street|string||
-|address_building|string||
-|phone_number|integer||
+
 
 #### Association
 - has_many :products
 - has_many :comments
 - has_many :evaluations
-- has_one :address
+- has_one :user_address
+- has_one :delivery_address
 - has_one :credit_card
 
 
@@ -66,9 +62,25 @@ Copy of an exsiting flea market application, Mercari
 #### Association
 - has_many :product_images
 - has_many :comments
+- has_one  :evaluation
 - belongs_to :category
 - belongs_to :size
 
+
+### UserAddresses
+
+|Column|Type|Options|
+|------|----|-------|
+|user|references|null: false, foreign_key: true|
+|postal_code|integer|null: false|
+|prefecture|string|null: false|
+|address_city|string|null: false|
+|address_street|string||
+|address_building|string||
+|phone_number|integer|limit: 11|
+
+#### Association
+- belongs_to :user
 
 ### DeliveryAddresses
 
@@ -100,6 +112,7 @@ Copy of an exsiting flea market application, Mercari
 
 #### Association
 - belongs_to :user
+- belongs_to :product
 
 
 ### Comment
