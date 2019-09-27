@@ -175,4 +175,4 @@ Copy of an exsiting flea market application, Mercari
 
 
 ## ERD
-![image](https://user-images.githubusercontent.com/52478242/65475198-96b0dc80-deb9-11e9-9ff0-3f838ead5fa7.png)
+![image](https://i.gyazo.com/2d5e3ad7bf041c4efbcb1dfa40ff620a.png)
