@@ -1,0 +1,144 @@
+-# headerは切り取ってあります_header.html.hamlにあります
+
+.wrapper-profile
+  .container
+    .container__right
+      .container__right--title
+        %h2 プロフィール
+      = form_for @user, class: "container__right__form" do |f|
+        .container__right__form--name
+          = image_tag "top_page/icon-avater.png", size: "60x60"
+          = f.text_field :nickname, class: "nickname", placeholder: "例）AYA☆セール中"
+        .container__right__form--content
+          = f.text_area :self_introduction, class: "text", placeholder: "例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪"
+          %button.container__right__form--btn{type: "submit"} 変更する
+      
+    .container__left
+      = render partial: "side_bar"
+      -# .side
+      -#   .side--list
+      -#     .side--list--item
+      -#       = link_to root_path do
+      -#         マイページ
+      -#         = fa_icon "angle-right" , class: "side--list--icon"
+
+      -#     .side--list--item
+      -#       = link_to root_path do
+      -#         お知らせ
+      -#         = fa_icon "angle-right" , class: "side--list--icon"
+
+      -#     .side--list--item
+      -#       = link_to root_path do
+      -#         やることリスト
+      -#         = fa_icon "angle-right" , class: "side--list--icon"
+
+      -#     .side--list--item
+      -#       = link_to root_path do
+      -#         いいね！一覧
+      -#         = fa_icon "angle-right" , class: "side--list--icon"
+
+      -#     .side--list--item
+      -#       = link_to root_path do
+      -#         出品する
+      -#         = fa_icon "angle-right" , class: "side--list--icon"
+
+      -#     .side--list--item
+      -#       = link_to root_path do
+      -#         出品した商品 - 出品中
+      -#         = fa_icon "angle-right" , class: "side--list--icon"
+
+      -#     .side--list--item
+      -#       = link_to root_path do
+      -#         出品した商品 - 取引中
+      -#         = fa_icon "angle-right" , class: "side--list--icon"
+
+      -#     .side--list--item
+      -#       = link_to root_path do
+      -#         出品した商品 - 売却済み
+      -#         = fa_icon "angle-right" , class: "side--list--icon"
+
+      -#     .side--list--item
+      -#       = link_to root_path do
+      -#         購入した商品 - 取引中
+      -#         = fa_icon "angle-right" , class: "side--list--icon"
+
+      -#     .side--list--item
+      -#       = link_to root_path do
+      -#         出品した商品 - 過去の取引
+      -#         = fa_icon "angle-right" , class: "side--list--icon"
+
+      -#     .side--list--item
+      -#       = link_to root_path do
+      -#         ニュース一覧
+      -#         = fa_icon "angle-right" , class: "side--list--icon"
+
+      -#     .side--list--item
+      -#       = link_to root_path do
+      -#         評価一覧
+      -#         = fa_icon "angle-right" , class: "side--list--icon"
+
+      -#     .side--list--item
+      -#       = link_to root_path do
+      -#         ガイド
+      -#         = fa_icon "angle-right" , class: "side--list--icon"
+
+      -#     .side--list--item
+      -#       = link_to root_path do
+      -#         お問い合わせ
+      -#         = fa_icon "angle-right" , class: "side--list--icon"
+
+      -#     .side--list--head
+      -#       メルペイ
+
+      -#     .side--list--item
+      -#       = link_to root_path do
+      -#         売上・振込申請
+      -#         = fa_icon "angle-right" , class: "side--list--icon"
+
+      -#     .side--list--item
+      -#       = link_to root_path do
+      -#         ポイント
+      -#         = fa_icon "angle-right" , class: "side--list--icon"
+
+      -#     .side--list--head
+      -#       設定
+
+      -#     .side--list--item
+      -#       = link_to root_path do
+      -#         プロフィール
+      -#         = fa_icon "angle-right" , class: "side--list--icon"
+
+      -#     .side--list--item
+      -#       = link_to root_path do
+      -#         発送元・お届け先住所変更
+      -#         = fa_icon "angle-right" , class: "side--list--icon"
+
+      -#     .side--list--item
+      -#       = link_to root_path do
+      -#         支払い方法
+      -#         = fa_icon "angle-right" , class: "side--list--icon"
+
+      -#     .side--list--item
+      -#       = link_to root_path do
+      -#         メール/パスワード
+      -#         = fa_icon "angle-right" , class: "side--list--icon"
+
+      -#     .side--list--item
+      -#       = link_to root_path do
+      -#         本人情報
+      -#         = fa_icon "angle-right" , class: "side--list--icon"
+
+      -#     .side--list--item
+      -#       = link_to root_path do
+      -#         電話番号の確認
+      -#         = fa_icon "angle-right" , class: "side--list--icon"
+
+      -#     .side--list--item
+      -#       = link_to root_path do
+      -#         ログアウト
+      -#         = fa_icon "angle-right" , class: "side--list--icon"
+
+
+
+
+-# footer(aside入り)は切り取ってあります_footer.html.hamlにあります

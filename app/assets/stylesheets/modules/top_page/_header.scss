@@ -30,7 +30,7 @@ header {
           padding: 0 50px 0 10px;
           background-color: $main-background;
           border-style: solid;
-          border-color: rgb(204,204,204);
+          border-color: $border-color;
           border-width: 1px;
           border-radius: 4px;
         }
@@ -42,7 +42,7 @@ header {
           margin: 2px 2px 2px -44px;
         }
         &__icon{
-          font-size: 20px;
+          font-size: 15px;
           cursor: pointer;
         }
       }
@@ -78,6 +78,7 @@ header {
               line-height: 44px;
               margin-left: 5px;
               float: left;
+              color: $red;
             }
             a {
               display: block;
@@ -149,7 +150,13 @@ header {
           @media only screen and (max-width:1068px){
             display: none;
           }
-            
+          a {
+            text-decoration: none;
+            color: $black;
+            &:hover {
+              color: $liteblue;
+            }
+          }           
         }
 
         .news {
@@ -158,6 +165,9 @@ header {
           line-height: 44px;
           position: absolute;
           right: 270px;
+          &:hover {
+            color: $liteblue;
+          }
         }
 
         .todo {
@@ -166,6 +176,9 @@ header {
           line-height: 44px;
           position: absolute;
           right: 120px;
+          &:hover {
+            color: $liteblue;
+          }
         }
 
         .mypage {
@@ -178,10 +191,15 @@ header {
             position: absolute;
             top: 5px;
             left: 0;
+            border-radius: 50%;
           }
           p {
             position: absolute;
             right: 0;
+            color: $black;
+            &:hover {
+              color: $liteblue;
+            }
           }
         }
       }

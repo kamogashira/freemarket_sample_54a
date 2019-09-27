@@ -1,0 +1,87 @@
+// headerは切り取ってありますheader.scssにあります
+// footerは切り取ってありますfooter.scssにあります
+// ここからmain
+.wrapper-profile {
+  background-color: $main-background;
+  width: 100vw;
+  height: 100%;
+  margin: 0 auto;
+  padding-top: 40px;
+  .container {
+    width: 1020px;
+    height: 100%;
+    margin: 0 auto; 
+    padding-bottom: 40px;
+    &__right {
+      width: 700px;
+      height: 568px;
+      float: right;
+      background-color: $white;
+      @include clearfix();
+      &--title {
+        width: 100%;
+        height: 50px;
+        text-align: center;
+        h2 {
+          color: $black;
+          padding: 8px 24px;
+          font-size: 24px;
+          font-weight: 800;
+        }
+      }
+      &__form{
+        width: 100%;
+        height: 518px;
+        &--name{
+          width: 100%;
+          height: 156px;
+          background-image: url("user-background.jpg");
+          padding: 72px 16px 24px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          img {
+            border-radius: 50%;
+          }
+          .nickname{
+            width: 220px;
+            height: 48px;
+            margin-left: 8px;
+            padding: 10px 16px 8px;
+            border-style: solid;
+            border-color: $border-color;
+            border-width: 1px;
+            border-radius: 4px;
+          }
+        }
+        &--content{
+          width: 100%;
+          height: 362px;
+          padding: 40px 16px;
+          .text {
+            min-height: 216px;
+            width: 100%;
+            padding: 10px;
+          }
+          button {
+            width: 100%;
+            height: 50px;
+            color: $white;
+            background-color: $red;
+            margin-top: 16px;
+            font-size: 16px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+      
+    .container__left {
+      width: 280px;
+      margin-right: 40px;
+      background-color: $main-background;
+    }
+  }
+
+}
