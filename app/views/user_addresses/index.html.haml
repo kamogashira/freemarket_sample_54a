@@ -5,7 +5,7 @@
     .container__right
       .container__right--title
         %h2 本人情報の登録
-      = form_for "", html: {class: "container__right__form"} do |f|
+      = form_for @user_address, html: {class: "container__right__form"} do |f|
         .container__right__form--text
           %p お客さまの本人情報をご登録ください。
           %p 登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
@@ -41,17 +41,17 @@
         .container__right__form--group
           %label 市区町村
           %span.arbitrary  任意
-          = f.text_field :postal_code, class: "input", placeholder: "例）横浜市緑区"
+          = f.text_field :address_city, class: "input", placeholder: "例）横浜市緑区"
 
         .container__right__form--group
           %label 番地
           %span.arbitrary  任意
-          = f.text_field :postal_code, class: "input", placeholder: "例）青山1-1-1"
+          = f.text_field :address_street, class: "input", placeholder: "例）青山1-1-1"
 
         .container__right__form--group
           %label 建物名
           %span.arbitrary  任意
-          = f.text_field :postal_code, class: "input", placeholder: "例）柳ビル101"
+          = f.text_field :address_building, class: "input", placeholder: "例）柳ビル101"
 
         %button.container__right__form--btn{type: "submit"} 変更する
 
