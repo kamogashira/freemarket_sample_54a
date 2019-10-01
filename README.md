@@ -67,22 +67,22 @@ Copy of an exsiting flea market application, Mercari
 - belongs_to :size
 
 
-### UserAddresses
+### UserAddress
 
 |Column|Type|Options|
 |------|----|-------|
 |user|references|null: false, foreign_key: true|
 |postal_code|integer|null: false|
-|prefecture|string|null: false|
+|prefecture_id|integer|null: false|
 |address_city|string|null: false|
 |address_street|string||
 |address_building|string||
-|phone_number|integer|limit: 11|
+|phone_number|string|limit: 11|
 
 #### Association
 - belongs_to :user
 
-### DeliveryAddresses
+### DeliveryAddress
 
 |Column|Type|Options|
 |------|----|-------|

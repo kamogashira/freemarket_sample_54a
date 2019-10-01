@@ -10,6 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20190930070524) do
+
+  create_table "user_addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "postal_code",                 null: false
+    t.integer "prefecture_id",               null: false
+    t.string  "address_city",                null: false
+    t.string  "address_street"
+    t.string  "address_building"
+    t.string  "phone_number",     limit: 11
+  end
 
 end

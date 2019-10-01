@@ -1,0 +1,68 @@
+-# headerは切り取ってあります_header.html.hamlにあります
+
+.wrapper-identification
+  .container
+    .container__right
+      .container__right--title
+        %h2 本人情報の登録
+      = form_for @user_address, html: {class: "container__right__form"} do |f|
+        .container__right__form--text
+          %p お客さまの本人情報をご登録ください。
+          %p 登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+        .container__right__form--text--right
+          = link_to "" do
+            = fa_icon "angle-right" , class: "icon"
+            %p 本人確認書類のアップロードについて
+        
+        -# ↓実際のデータはUserモデルより取得
+        .container__right__form--group
+          %label お名前
+          %p メルカリ太郎
+
+        .container__right__form--group
+          %label お名前カナ
+          %p メルカリタロウ
+
+        .container__right__form--group
+          %label 生年月日
+          %p 2019/01/01
+
+        .container__right__form--group
+          %label 郵便番号
+          %span.arbitrary  任意
+          = f.text_field :postal_code, class: "input", placeholder: "例）1234567"
+       
+        .container__right__form--group
+          %label 都道府県
+          %span.arbitrary  任意
+          = fa_icon "chevron-down" , class: "icon"
+          = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "--"}, {class: "input"}
+
+        .container__right__form--group
+          %label 市区町村
+          %span.arbitrary  任意
+          = f.text_field :address_city, class: "input", placeholder: "例）横浜市緑区"
+
+        .container__right__form--group
+          %label 番地
+          %span.arbitrary  任意
+          = f.text_field :address_street, class: "input", placeholder: "例）青山1-1-1"
+
+        .container__right__form--group
+          %label 建物名
+          %span.arbitrary  任意
+          = f.text_field :address_building, class: "input", placeholder: "例）柳ビル101"
+
+        %button.container__right__form--btn{type: "submit"} 変更する
+
+        .container__right__form--text--right2
+          = link_to "" do
+            = fa_icon "angle-right" , class: "icon"
+            %p 本人情報の登録について
+
+
+      
+    .container__left
+      = render partial: "users/side_bar"
+
+-# footer(aside入り)は切り取ってあります_footer.html.hamlにあります
