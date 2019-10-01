@@ -6,7 +6,6 @@ class UserAddressesController < ApplicationController
   def create
     @user_address = UserAddress.new(user_address_params)
     if @user_address.save
-    # binding.pry
       redirect_to action: :index
     else
       render "index", notice: "変更できませんでした"
