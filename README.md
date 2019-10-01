@@ -67,7 +67,7 @@ Copy of an exsiting flea market application, Mercari
 - belongs_to :size
 
 
-### UserAddresses
+### UserAddress
 
 |Column|Type|Options|
 |------|----|-------|
@@ -82,7 +82,7 @@ Copy of an exsiting flea market application, Mercari
 #### Association
 - belongs_to :user
 
-### DeliveryAddresses
+### DeliveryAddress
 
 |Column|Type|Options|
 |------|----|-------|
