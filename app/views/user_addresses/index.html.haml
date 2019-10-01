@@ -5,7 +5,7 @@
     .container__right
       .container__right--title
         %h2 本人情報の登録
-      = form_for @user, html: {class: "container__right__form"} do |f|
+      = form_for "", html: {class: "container__right__form"} do |f|
         .container__right__form--text
           %p お客さまの本人情報をご登録ください。
           %p 登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
@@ -32,11 +32,11 @@
           %span.arbitrary  任意
           = f.text_field :postal_code, class: "input", placeholder: "例）1234567"
        
-        -# ↓f.collection_selectを使用する予定
         .container__right__form--group
           %label 都道府県
           %span.arbitrary  任意
-          = f.text_field :prefecture, class: "input", placeholder: "東京都"
+          = fa_icon "chevron-down" , class: "icon"
+          = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "--"}, {class: "input"}
 
         .container__right__form--group
           %label 市区町村
@@ -55,9 +55,14 @@
 
         %button.container__right__form--btn{type: "submit"} 変更する
 
+        .container__right__form--text--right2
+          = link_to "" do
+            = fa_icon "angle-right" , class: "icon"
+            %p 本人情報の登録について
+
 
       
     .container__left
-      = render partial: "side_bar"
+      = render partial: "users/side_bar"
 
 -# footer(aside入り)は切り取ってあります_footer.html.hamlにあります

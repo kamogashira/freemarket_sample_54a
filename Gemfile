@@ -61,6 +61,7 @@ gem 'haml-rails'
 gem "font-awesome-rails"
 gem 'carrierwave'
 gem 'fog-aws'
+gem 'active_hash'
 
 group :production do
   gem 'unicorn', '5.4.1'
