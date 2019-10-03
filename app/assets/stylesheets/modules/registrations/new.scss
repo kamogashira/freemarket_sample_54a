@@ -1,0 +1,229 @@
+// new.html.hamlと関連
+.register{
+    background-color:#f5f5f5;
+    &_container{
+    width:700px;
+    margin: 0 auto;
+    background: #fff;
+    &_view{
+    font-size: 22px;
+    padding: 32px;
+    text-align: center;
+    line-height: 1.0;
+    border-bottom: 1px solid #ccc;
+    background: #fff;
+    h2{
+       font-weight: bold;
+       background: #fff;
+       }
+    }
+   form{
+    width: 700px;
+    padding: 40px 40px 64px;
+    background: #fff;
+        .form-group{
+           width: 350px;
+           margin: 0 auto;
+           text-align:left;
+           .form{
+           padding-top:32px;
+           margin: 0 auto;
+           background: #fff;
+           a{
+            color:#0095EE;
+            float:right;
+            font-size:15px;
+            text-decoration:none;
+            background: #fff;
+           }
+           &_flex-name{
+               display: inline-flex;
+               .first,.second{
+                  background: #fff;
+                  margin: 0 auto;
+                  padding: 10px 16px 8px;
+                  width: 170px;
+                  height: 45px;
+                  border-radius: 3px;
+                  border: solid 1px #ccc;
+                  margin-top: 3px;
+                  font-size:18px;
+                  margin-right:8px;
+                }
+            }
+            label{
+               font-weight: bold;
+               font-size: 15px;
+               background: #fff;
+            }
+            span{
+                background: #ea352d;
+                margin: 0 0 0 8px;
+                padding: 2px 4px;
+                border-radius: 2px;
+                color: #fff;
+                font-size: 12px;
+                vertical-align: top;
+            }
+            input{
+               background: #fff;
+               margin: 0 auto;
+               padding: 10px 16px 8px;
+               width: 340px;
+               height: 45px;
+               border-radius: 3px;
+               border: solid 1px #ccc;
+               margin-top: 3px;
+               font-size:18px;
+            }
+            select{
+                padding: 0 10px;
+                width: 76px;
+                height: 45px;
+                border-radius: 4px;
+                border: 1px solid #ccc;
+                background: #fff;
+            }
+            p{
+                font-size:15px;
+            }
+            
+            .next_btn{
+                background: #ea352d;
+                width: 340px;
+                height: 45px;
+                border-radius: 3px;
+                border: solid 1px #ea352d;
+                color:#fff;
+                font-size: 15px;
+              }
+            }
+          }
+        }
+     
+    }
+}
+
+.form_next{
+    font-size:15px;
+    color:black;
+    a{
+        color:#0095EE;
+        font-size:15px;
+        text-decoration:none;
+        background: #fff;
+       }
+}
+.form_text{
+    margin-top:8px;
+    p{
+        font-size: 14px;
+        color:#888;
+    }
+}
+
+// address.html.hamlと関連
+select.pref{
+   background: #fff;
+   margin: 0 auto;
+   padding: 10px 16px 8px;
+   width: 340px;
+   height: 45px;
+   border-radius: 3px;
+   border: solid 1px #ccc;
+   margin-top: 3px;
+   font-size:18px;
+}
+p{
+    font-size: 14px;
+    background: #fff;
+    color: black;
+}
+button.next_btn{
+    background: #ea352d;
+    width: 340px;
+    height: 45px;
+    border-radius: 3px;
+    border: solid 1px #ea352d;
+    color:#fff;
+    font-size: 15px;
+}
+a.register{
+color:#0095EE;
+float:right;
+font-size:15px;
+text-decoration:none;
+background: #fff;
+}
+
+// complete.html.hamlと関連
+.register_create{
+    width: 700px;
+    padding: 40px 40px 64px;
+    background: #fff;
+    margin: 0 auto;
+     .form{
+       width: 350px;
+       margin: 0 auto;
+       padding-top:32px;
+       background: #fff;
+       p{
+         text-align: center;
+         font-size: 18px;
+         background: #fff;
+       }
+       button.next_btn{
+         background: #ea352d;
+         width: 340px;
+         height: 45px;
+         border: solid 1px #ea352d;
+         color:#fff;
+         font-size: 15px;
+         margin-top:20px;
+        }
+      }
+    }
+    
+ // フッター
+ .form-banner-phone{
+    padding-top:30px;
+    width: 1200px;
+    height: 480px;
+    align-content: center;
+    &__image {
+      float:right;
+      width: 430px;
+      height: 100%;
+      margin-right: 300px;
+    }
+    &__top {
+      padding: 20px 0 0 40px;
+      font-size: 50px;
+      font-weight: bold;
+      white-space: nowrap;
+      margin: 0 0 16px;
+      margin-left: 300px;
+      h2 {
+        font-size: 60px;
+        font-weight: 800;
+        color: $black;
+      }
+    }
+    &__bottom {
+      padding: 0 0 0 40px;
+      width: 100%;
+      white-space: nowrap;
+      margin: 0 0 24px;
+      h3 {
+        font-size: 18px;
+        color: $black;
+        margin-left: 300px;
+      }
+    }
+    &__icon {
+      padding: 0 0 0 40px;
+      cursor: pointer;
+      display: flex;
+      margin-left: 300px;
+    }
+  }

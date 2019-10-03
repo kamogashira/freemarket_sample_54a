@@ -11,17 +11,22 @@
     %link{rel: "stylesheet", href: "https://use.fontawesome.com/releases/v5.11.2/css/all.css"}
     %script{ src: "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"}
     %script{ type: "text/javascript", src: "//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"}
+    %script{src: "https://js.pay.jp/", type: "text/javascript"}
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'    
     %script{ type: "text/javascript", src: "slick.min.js"}
 
-
+- if user_signed_in? do
   %body
-    = render "layouts/header"
+  = render "layouts/header"
     -# - unless current_page?(root_path)
-    .bread-crumbs
-      .bread-crumbs__content
-        パンくずリスト
-    = yield
-    = render "layouts/footer"
-   
+  .bread-crumbs
+   .bread-crumbs__content
+    パンくずリスト
+  = yield
+  = render "layouts/footer"
+  
+- else
+  %body
+  = yield
+  = render "devise/registrations/footer"
