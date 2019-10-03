@@ -16,17 +16,11 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'    
     %script{ type: "text/javascript", src: "slick.min.js"}
 
-- if user_signed_in? do
   %body
   = render "layouts/header"
-    -# - unless current_page?(root_path)
+  -# - unless current_page?(root_path)
   .bread-crumbs
-   .bread-crumbs__content
+  .bread-crumbs__content
     パンくずリスト
   = yield
-  = render "layouts/footer"
-  
-- else
-  %body
-  = yield
-  = render "devise/registrations/footer"
+= render "layouts/footer"
