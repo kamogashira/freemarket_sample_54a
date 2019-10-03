@@ -1,83 +1,97 @@
 header {
   position: relative;
   background: $white;
-  max-width: 100%;
+  width: 100%;
   height: 100px;
-
   .wrapper {
     font-size: 15px;
     padding: 8px 0 0;
+    max-width: 1020px;
+    min-width: 700px;
+    margin: 0 auto;
     .wrapper__content__top {
       height: 40px;
-      width: 1020px;
+      max-width: 1020px;
+      min-width: 480px;
+      @include responsive-width (100%);
       margin: 0 auto;
-
+      img.mercari {
+        float: left;
+      }
       .search-form {
-        float: right;
+        margin-left: 20px;
+        float: left;
+        width: calc(100% - 155px);
+
         &__input{
           float: left;
           height: 40px;
-          width: 840px;
+          width: 100%;
           padding: 0 50px 0 10px;
-          margin-left: 30px;
           background-color: $main-background;
           border-style: solid;
-          border-color: rgb(204,204,204);
+          border-color: $border-color;
           border-width: 1px;
           border-radius: 4px;
         }
         &__btn{
           border-style: none;
-          height: 38px;
+          height: 36px;
           width: 40px;
           background-color: $main-background;
-          margin: 1px 1px 1px -44px;
+          margin: 2px 2px 2px -44px;
         }
         &__icon{
-          font-size: 20px;
+          font-size: 15px;
           cursor: pointer;
         }
       }
     }
     .wrapper__content__bottom {
       height: 44px;
-      width: 1020px;
+      max-width: 1020px;
+      min-width: 700px;
       margin: 0 auto;
       padding: 8px 0 0;
+      @include responsive-width (100%);
       .wrapper__content__bottom--left {
         float: left;
         height: 44px;
-        width: 309px;
-
+        @include responsive-width (30%);
+        min-width: 360px;
         #pulldown {
-          width:900px;
+          min-width: 300px;
+          height: 44px;
           position: relative;
 
           ul.menu li {
             float: left;
-            width: 154px;
-            height: 48px;
+            width: 35%;
+            height: 44px;
+            min-width: 170px;
             position: relative;
             margin-right: 10px;
 
             .menu_icon {
               font-size: 15px;
               color: $black;
-              line-height: 48px;
+              line-height: 44px;
               margin-left: 5px;
               float: left;
+              color: $red;
             }
             a {
               display: block;
               width: 100%;
               height: 100%;
-              line-height: 48px;
+              line-height: 100%;
               text-indent: 10px;
               font-weight: bold;
               font-size: 14px;
               color: $black;
               text-decoration: none;
               position: relative;
+              line-height: 44px;
               
               &:hover {
                 color: $liteblue;
@@ -86,41 +100,20 @@ header {
 
             ul.sub li {
               position: relative;
-              // left: 179px;
               top: 0;
               background-color: $white;
               z-index: 100;
+              ul.sub{
+                position: absolute;
+                left: 100%;
+                top: 0;
+                background-color: $white;
+                z-index: 100;
+              }
             }
 
-            // ul.sub li ul.sub{
-            //   position: absolute;
-            //   left: 179px;
-            //   top: 0;
-            //   background-color: $white;
-            //   z-index: 100;
-            // }
-
-            ul.menu{
-              // zoom: 1;
-            }
-            &:after{
-              height: 0;
-              visibility: hidden;
-              content: ".";
-              display: block;
-              clear: both;
-            }
             ul.sub {
               display: none;
-            }
-            * html ul.menu li{
-              display: inline;
-            }
-            *+html ul.menu li{
-              display: inline;
-            }
-            *+html ul.sub{
-              position: relative;
             }
           }
         }
@@ -128,22 +121,86 @@ header {
   
       .wrapper__content__bottom--right {
         float: right;
-        height: 44px;
-        width: 195px;
-
+        height: 100%;
+        min-width: 200px;
+        @include responsive-width (60%);
+        display: flex;
+        position: relative;
         .sign-up {
           float: left;
-          @include toppage-parts(32px,106px);
+          @include toppage-parts(90%, 53%);
           color: $white;
           background-color: $red;
           border-radius: 4px;
         }
         .log-in {
           float: right;
-          @include toppage-parts(32px,78px);
+          @include toppage-parts(90%,45%);
           color: $liteblue;
           border: 1px solid $liteblue;
           border-radius: 4px;
+        }
+
+        .liked_items {
+          width: 110px;
+          height: 44px;
+          line-height: 44px;
+          position: absolute;
+          right: 400px;
+          @media only screen and (max-width:1068px){
+            display: none;
+          }
+          a {
+            text-decoration: none;
+            color: $black;
+            &:hover {
+              color: $liteblue;
+            }
+          }           
+        }
+
+        .news {
+          width: 83px;
+          height: 44px;
+          line-height: 44px;
+          position: absolute;
+          right: 270px;
+          &:hover {
+            color: $liteblue;
+          }
+        }
+
+        .todo {
+          width: 130px;
+          height: 44px;
+          line-height: 44px;
+          position: absolute;
+          right: 120px;
+          &:hover {
+            color: $liteblue;
+          }
+        }
+
+        .mypage {
+          width: 120px;
+          height: 44px;
+          line-height: 44px;
+          position: absolute;
+          right: 0;
+          .avater {
+            position: absolute;
+            top: 5px;
+            left: 0;
+            border-radius: 50%;
+          }
+          p {
+            position: absolute;
+            right: 0;
+            color: $black;
+            &:hover {
+              color: $liteblue;
+            }
+          }
         }
       }
     }
@@ -158,7 +215,9 @@ header {
   line-height: 50px;
   &__content{
     margin: 0 auto;
-    width: 950px;
+    max-width: 950px;
+    min-width: 700px;
+    width: 70%;
   }
 }
   

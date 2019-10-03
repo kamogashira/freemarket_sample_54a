@@ -4,20 +4,24 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title FreemarketSample54a
     = csrf_meta_tags
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    %link{ rel: "stylesheet", type: "text/css", href: "//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"}
-    %link{ rel: "stylesheet", type: "text/css", href: "//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"}
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+    %link{rel: "stylesheet", type: "text/css", href: "//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"}
+    %link{rel: "stylesheet", type: "text/css", href: "//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"}
+    %link{ rel: "stylesheet", type: "text/css", href: "/modules/slick/slick-theme.scss"}
+    %link{rel: "stylesheet", href: "https://use.fontawesome.com/releases/v5.11.2/css/all.css"}
     %script{ src: "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"}
     %script{ type: "text/javascript", src: "//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"}
     %script{src: "https://js.pay.jp/", type: "text/javascript"}
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'    
+    %script{ type: "text/javascript", src: "slick.min.js"}
 
 - if user_signed_in? do
   %body
   = render "layouts/header"
     -# - unless current_page?(root_path)
   .bread-crumbs
-  .bread-crumbs__content
+   .bread-crumbs__content
     パンくずリスト
   = yield
   = render "layouts/footer"

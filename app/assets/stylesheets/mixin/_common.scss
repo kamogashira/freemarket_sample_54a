@@ -11,11 +11,48 @@
     clear: both;
   }
 }
-@mixin toppage-parts($height: 44px, $width: 150px) {
+@mixin toppage-parts($height, $width) {
   height: $height;
   width: $width;
   line-height: $height;
   font-size: 14px;
-  padding: 0 10px;
+  padding: 10px 10px;
+  text-align: center;
   cursor: pointer;
+}
+
+$break-point: (
+  small: 500px,
+  middle: 768px,
+  large: 1068px
+);
+
+@mixin media-queries( $key ) {
+  @media only screen and ( min-width: map-get( $break-point, $key )) {
+    @content;
+  }
+}
+
+@mixin responsive-height {
+  @include media-queries( small ) {
+    height: 170px;
+  }
+  @include media-queries( middle ) {
+    height: 290px;
+  }
+  @include media-queries( large )  {
+    height: 390px;
+  }
+}
+
+@mixin responsive-width ($width) {
+  @include media-queries( small ) {
+    width: calc( #{$width} - 30% );
+  }
+  @include media-queries( middle ) {
+    width: calc( #{$width} - 20% );
+  }
+  @include media-queries( large )  {
+    width: $width;
+  }
 }

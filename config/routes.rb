@@ -8,6 +8,11 @@ Rails.application.routes.draw do
     get 'users/sign_up/index' => 'devise/registrations#index'
     get 'users/sign_up/phone' => 'devise/registrations#phone'
   end
+
+  root 'products#index'
+  resources :users
+  resources :user_addresses, only:[:index, :create]
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # get 'users' => 'users#index'
 end

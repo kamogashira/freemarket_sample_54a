@@ -2,8 +2,8 @@
 @import "font-awesome";
 @import "config/variable";
 @import "mixin/common";
-@import "slick-theme"; 
-@import "slick";
+@import "modules/slick/slick";
+@import "modules/slick/slick-theme"; 
 @import "modules/top_page/header";
 @import "modules/top_page/index";
 @import "modules/top_page/footer";
@@ -11,3 +11,6 @@
 @import "modules/registrations/signup/";
 @import "modules/registrations/new/";
 @import "cards";
+@import "side_bar";
+@import "modules/user/edit";
+@import "modules/user_address/index";

@@ -2,20 +2,20 @@
 
 #slide
   .slide-banner-camp
-    = image_tag "top_page/banner-camp.png", size: '800x390';
+    = image_tag "top_page/banner-camp.png", class: "camp";
   .slide-banner-phone
-    -# = image_tag "top_page/banner-background.jpeg",size: '1000x390';
     .slide-banner-phone__image
-      = image_tag "top_page/banner-phone.png", size: '430x390';
+      = image_tag "top_page/banner-phone.png", class: "phone";
     .slide-banner-phone__top
-      %h2 スマホでかんたん
+      %h2 スマホでかんたん 
       %h2 フリマアプリ
+    = image_tag "top_page/banner-background.jpg",size: '1430x390', class: "back-ground";
     .slide-banner-phone__bottom
       %h3 メルカリはスマホアプリからすぐに出品できる
       %h3 購入時も安心な独自システムのアプリです
     .slide-banner-phone__icon
-      = image_tag "top_page/icon-app_store.svg", size: '170x50', alt: "App Store"
-      = image_tag "top_page/icon-google_play.svg", size: '170x50',alt: "Google Play"
+      = image_tag "top_page/icon-app_store.svg", alt: "App Store", class: "icon";
+      = image_tag "top_page/icon-google_play.svg", alt: "Google Play", class: "icon";
 
     
 .container-toppage

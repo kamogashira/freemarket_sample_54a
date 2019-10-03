@@ -24,4 +24,16 @@ ActiveRecord::Schema.define(version: 20190930092435) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+ActiveRecord::Schema.define(version: 20190930070524) do
+
+  create_table "user_addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "postal_code",                 null: false
+    t.integer "prefecture_id",               null: false
+    t.string  "address_city",                null: false
+    t.string  "address_street"
+    t.string  "address_building"
+    t.string  "phone_number",     limit: 11
+
+  end
+
 end
