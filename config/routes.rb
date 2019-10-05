@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
-  # get :cards, to: 'cards#new'
   resources :cards, only:[:index, :new, :create]
   
   devise_scope :user do 

@@ -9,7 +9,7 @@
             .form
               %label カード番号
               %span.form--require 必須
-              = text_field_tag "number", "", class: "card-input", placeholder: "半角数字のみ", maxlength: "16"
+              = text_field_tag "number", "", class: "card-input", placeholder: "半角数字のみ", maxlength: "16", id: "card_number"
 
             .cardlist
               = image_tag "card/visa.svg", size: "49x20", class: "card-icon"
@@ -25,7 +25,7 @@
               %span.form--require 必須
               %br
               .form__half
-                %select{name: "exp_month", type: "text"}
+                %select#exp_month{name: "exp_month", type: "text"}
                   %option{value: ""} --
                   %option{value: "1"} 01
                   %option{value: "2"} 02
@@ -42,7 +42,7 @@
                 %span 月
             
               .form__half
-                %select{name: "exp_year", type: "text"}
+                %select#exp_year{name: "exp_year", type: "text"}
                   %option{value: ""} --
                   %option{value: "2019"}19
                   %option{value: "2020"}20
@@ -66,7 +66,7 @@
               .form--text
                 = fa_icon "question-circle" , class: "seq-icon"
                 カード裏面の番号とは？
-            
+            #card_token
             %button.margin-top.red{type: "submit", id: "token_submit"} 追加する
 
     .container__left
