@@ -1,4 +1,21 @@
 // new.html.hamlと関連
+@mixin input{
+  padding: 10px 16px 8px;
+  width: 340px;
+  height: 45px;
+  border-radius: 3px; 
+  margin-top: 3px;
+  font-size:18px;
+}
+@mixin span{
+  margin: 0 0 0 8px;
+ padding: 2px 4px;
+ border-radius: 2px;
+ color: #fff;
+ font-size: 12px;
+  vertical-align: top;
+}
+
 .register{
     background-color:#f5f5f5;
     &_container{
@@ -29,6 +46,7 @@
            padding-top:32px;
            margin: 0 auto;
            background: #fff;
+           position: relative;
            a{
             color:#0095EE;
             float:right;
@@ -36,9 +54,9 @@
             text-decoration:none;
             background: #fff;
            }
-           &_flex-name{
+            &_flex-name{
                display: inline-flex;
-               .first,.second{
+               .first,.last{
                   background: #fff;
                   margin: 0 auto;
                   padding: 10px 16px 8px;
@@ -51,38 +69,60 @@
                   margin-right:8px;
                 }
             }
+            &_text{
+              margin-top:8px;
+              p{
+                  font-size: 14px;
+                  color:#888;
+              }
+            }
+            &_next{
+              font-size:15px;
+              color:black;
+              a{
+                  color:#0095EE;
+                  font-size:15px;
+                  text-decoration:none;
+                  background: #fff;
+                 }
+            }
             label{
                font-weight: bold;
                font-size: 15px;
                background: #fff;
             }
             span{
-                background: #ea352d;
-                margin: 0 0 0 8px;
-                padding: 2px 4px;
-                border-radius: 2px;
-                color: #fff;
-                font-size: 12px;
-                vertical-align: top;
+               @include span;
+               background: #ea352d;
             }
-            input{
+            span.form-option{
+               @include span;
+               background: #ccc;
+            }
+            input.usernew{
+               @include input;
                background: #fff;
-               margin: 0 auto;
-               padding: 10px 16px 8px;
-               width: 340px;
-               height: 45px;
-               border-radius: 3px;
                border: solid 1px #ccc;
-               margin-top: 3px;
-               font-size:18px;
+               margin: 0 auto;
             }
-            select{
+            input.last{
+                @include input;
+                background: #fff;
+                border: solid 1px #ccc;
+                margin-top: 10px;
+            
+            }
+            &-select{
+              margin: 0 0 0 8px;
+              select{
                 padding: 0 10px;
-                width: 76px;
+                width: 80px;
                 height: 45px;
                 border-radius: 4px;
                 border: 1px solid #ccc;
                 background: #fff;
+                z-index: 1;
+              }
             }
             p{
                 font-size:15px;
@@ -104,41 +144,43 @@
     }
 }
 
-.form_next{
-    font-size:15px;
-    color:black;
-    a{
-        color:#0095EE;
-        font-size:15px;
-        text-decoration:none;
-        background: #fff;
-       }
+
+//phone.html.hamlと関連
+
+p.phone{
+  font-size: 14px;
+  background: #fff;
+  color: black;
 }
-.form_text{
-    margin-top:8px;
-    p{
-        font-size: 14px;
-        color:#888;
-    }
-}
+a.phone{
+  color:#0095EE;
+  float:right;
+  font-size:15px;
+  text-decoration:none;
+  background: #fff;
+  }
 
 // address.html.hamlと関連
-select.pref{
-   background: #fff;
-   margin: 0 auto;
-   padding: 10px 16px 8px;
-   width: 340px;
-   height: 45px;
-   border-radius: 3px;
-   border: solid 1px #ccc;
-   margin-top: 3px;
-   font-size:18px;
+select.usernew{
+  padding: 0 10px;
+  width: 340px;
+  height: 45px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  background: #fff;
+  z-index: 1;
+  -webkit-appearance: none;
 }
-p{
-    font-size: 14px;
-    background: #fff;
-    color: black;
+.form_icon{
+  position: absolute;
+  left: 300px;
+  top: 66px;
+  z-index: 3;
+  color: #888;
+  font-size: 20px;
+  display:inline-block;
 }
+
 button.next_btn{
     background: #ea352d;
     width: 340px;
@@ -147,13 +189,6 @@ button.next_btn{
     border: solid 1px #ea352d;
     color:#fff;
     font-size: 15px;
-}
-a.register{
-color:#0095EE;
-float:right;
-font-size:15px;
-text-decoration:none;
-background: #fff;
 }
 
 // complete.html.hamlと関連
@@ -217,13 +252,16 @@ background: #fff;
       h3 {
         font-size: 18px;
         color: $black;
-        margin-left: 300px;
+        margin-left: 310px;
       }
     }
     &__icon {
       padding: 0 0 0 40px;
       cursor: pointer;
       display: flex;
-      margin-left: 300px;
+      margin-left: 310px;
+    }
+    img.appuser{
+      margin-right:10px;
     }
   }

@@ -7,11 +7,17 @@
     border-top: 1px solid #eee;
     cursor: pointer;
     text-align:center;
+    position: relative;
 }
 
 // registrations/index.html.hamlと関連
 .login{
     background-color:#f5f5f5;
+    &-sign{
+      width: 456px;
+      margin: 0 auto;
+      background: #fff;
+    }
     &_container{
     width: 700px;
     margin: 0 auto;
@@ -23,7 +29,11 @@
         background: #fff;
         border-bottom: 1px solid #ccc;
         font-size:15px;
-            .new_btn{
+            p{
+              font-size:15px;
+              margin-bottom: 5px;
+            }
+            a.new_btn{
             height: 50px;
             display: block;
             margin: 0 auto;
@@ -57,10 +67,11 @@
            background-color: #ea352d;
            color: #fff;
            text-align:center;
-            i.fa.fa{
-            float: left;
-            margin-left:5px;
-            line-height: 50px;
+             i.fa.fa{
+               position: absolute;
+               left:12px;
+               top:14px;
+               font-size:20px;
             }
            }
            button#facebook{
@@ -70,9 +81,9 @@
            color: #fff;
            margin: 0 auto;
              i.fa.fa{
-               float: left;
-               margin-left:5px;
-               line-height: 50px;
+               position: absolute;
+               left:10px;
+               top:9px;
                }
             }
             button#Google{
@@ -82,12 +93,10 @@
             border-top: 1px solid #eee;
             border: #979797 solid 1px;
             margin: 16px 0 0;
-            .icon_img{
-                float: left;
                img{
-                margin-left:5px;
-                line-height: 50px;
-               }
+                position: absolute;
+                left:12px;
+                top:13px;
               }
             }
         }
@@ -96,11 +105,6 @@
 
 
 // sessions/new.html.hamlと関連
-.login-sign{
-    width: 456px;
-    margin: 0 auto;
-    background: #fff;
-}
 .login-field{
     margin: 0 auto;
     width: 456px;
@@ -117,9 +121,9 @@
             color: #fff;
             margin: 0 auto;
               i.fa.fa{
-                float: left;
-                margin-left:5px;
-                line-height: 50px;
+                position: absolute;
+                left:10px;
+                top:10px;
                 }
             }
             button#Google{
@@ -128,14 +132,13 @@
              border-top: 1px solid #eee;
              border: #979797 solid 1px;
              margin: 16px 0 0;
-              .icon_img{
-                float: left;
-               img{
-                margin-left:5px;
-               }
+              img{
+                position: absolute;
+                left:12px;
+                top:13px;
               }
             }
-    }
+        }
     form{
         margin: 0 auto;
     .form{
