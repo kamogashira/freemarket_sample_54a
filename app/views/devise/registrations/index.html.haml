@@ -1,8 +1,8 @@
-.wrapper
- .wrapper_content
+.register-header
+ .register-header_content
   %h1
    %a
-    = image_tag "top_page/header-mercari.svg", size: '180x50', alt:"mercari"  
+    = image_tag "top_page/header-mercari.svg", size: '193x49', alt:"mercari"  
 
 .login
  .login_container
@@ -12,14 +12,14 @@
  .login_content
   .login_content_form
    %button#email
-    %i.fa.fa-envelope.fa-2x
+    %i.fa.fa-envelope
     メールで登録する
+   
    %button#facebook
     %i.fa.fa-facebook-square.fa-2x
     Facebookでログインする
 
    %button#Google
+    = image_tag "registrations_page/g-icon.png", size: '20x20', alt:"g-icon"
     Googleでログインする
-    .icon_img
-     = image_tag "registrations_page/g-icon.png", size: '20x20', alt:"google"
     

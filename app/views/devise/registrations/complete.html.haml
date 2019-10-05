@@ -1,5 +1,5 @@
-.wrapper
- .wrapper_content
+.register-header
+ .register-header_content
   %h1
    %a
     = image_tag "top_page/header-mercari.svg", size: '180x50', alt:"mercari"
@@ -24,12 +24,12 @@
     %li.info  
      支払い方法
      .border-radius_red
-     .header-border-after
+     .header-border_red
 
     %li.info  
      完了
      .border-radius_red
-     .header-border_end
+
 .register 
  .register_container
   .register_container_view
@@ -52,5 +52,5 @@
   .form-banner-phone__bottom
    
   .form-banner-phone__icon
-   = image_tag "top_page/icon-app_store.svg", size: '170x50', alt: "App Store"
-   = image_tag "top_page/icon-google_play.svg", size: '170x50',alt: "Google-Play"
+   = image_tag "top_page/icon-app_store.svg", size: '170x50', alt: "App Store", class: "appuser"
+   = image_tag "top_page/icon-google_play.svg", size: '170x50',alt: "Google-Play", class: "goouser"

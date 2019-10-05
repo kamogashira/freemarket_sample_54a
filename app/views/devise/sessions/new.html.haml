@@ -1,14 +1,14 @@
-.wrapper
- .wrapper_content
+.register-header
+ .register-header_content
   %h1
    %a
-    = image_tag "top_page/header-mercari.svg", size: '180x50', alt:"mercari"
+    = image_tag "top_page/header-mercari.svg", size: '193x49', alt:"mercari"
 
 .login
  .login-sign
   .login_container_new
    %p アカウントをお持ちでない方はこちら
-   = link_to "新規会員登録", "/users/sign_up/", class: "new_btn"
+   = link_to "新規会員登録", "/users/sign_up/index", class: "new_btn"
 
  .login-field
   .login-field_form
@@ -18,10 +18,8 @@
     
    %button#Google
     Googleでログイン
-    .icon_img
-     = image_tag "registrations_page/g-icon.png", size: '20x20', alt:"google"
-    
-
+    = image_tag "registrations_page/g-icon.png", size: '20x20', alt:"google"
+  
   = form_for user_session_path, class: "session-form" do |f|
    .form
     = f.email_field :email, class: "form_input", autocomplete: "email", placeholder: "メールアドレス"
