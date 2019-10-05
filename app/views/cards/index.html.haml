@@ -1,0 +1,25 @@
+-# headerは切り取ってあります_header.html.hamlにあります
+
+.wrapper-card
+  .container
+    .container__right
+      .container__right--title
+        %h2 支払い方法
+      .container__right--content
+        .container__right--content--top
+          %h3 クレジットカード一覧
+        .container__right--content--bottom
+          .container__right--content--bottom--add-card
+            = link_to cards_path, method: :POST do
+              = fa_icon "angle-right" , class: "icon"
+              クレジットカードを追加する
+
+        .container__right--content--text--right
+          = link_to "" do
+            = fa_icon "angle-right" , class: "icon"
+            %p 支払い方法について
+      
+    .container__left
+      = render partial: "users/side_bar"
+
+-# footer(aside入り)は切り取ってあります_footer.html.hamlにあります

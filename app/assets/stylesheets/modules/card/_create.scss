@@ -1,0 +1,129 @@
+// headerは切り取ってありますheader.scssにあります
+// footerは切り取ってありますfooter.scssにあります
+// ここからmain
+.wrapper-card {
+  background-color: $main-background;
+  width: 100vw;
+  height: 100%;
+  margin: 0 auto;
+  padding-top: 40px;
+  .container {
+    width: 1020px;
+    height: 100%;
+    margin: 0 auto; 
+    padding-bottom: 40px;
+
+    &__right {
+      width: 700px;
+      height: 562px;
+      float: right;
+      background-color: $white;
+      @include clearfix();
+
+      &--title {
+        width: 100%;
+        height: 50px;
+        text-align: center;
+        border-bottom: 1px solid $border-color;
+
+        h2 {
+          color: $black;
+          padding: 8px 24px;
+          font-size: 24px;
+          font-weight: 800;
+        }
+      }
+
+      &--content {
+        width: 100%;
+        height: 512px;
+        padding: 40px 40px 64px;
+
+        &--main {
+          width: 343px;
+          margin: 0 auto;
+
+          .form {
+            width: 100%;
+            &--require {
+              @include require;
+            }
+
+            label {
+              font-weight: 600;
+              font-size: 14px;
+            }
+
+            .card-input {
+              width: 343px;
+              height: 48px;
+              margin-top: 8px;
+              padding: 10px 16px 8px;
+              border-radius: 4px;
+              border: 1px solid $litegray;
+              font-size: 16px;
+            }
+
+            &__half{
+              width: calc(50% - 10px);
+              height: 48px;
+              float: left;
+              margin-right: 10px;
+
+              select {
+                width: 130px;
+                height: 48px;
+                padding: 0 16px;
+                background-color: $white;
+                border: 1px solid $litegray;
+              }
+
+              span {
+                line-height: 48px;
+                margin-left: 10px;
+                font-size: 16px;
+              }
+            }
+
+            &--require {
+              @include require;
+            }
+
+            &--text {
+              width: 100%;
+              height: 15px;
+              margin-top: 8px;
+              text-align: right;
+              color: $liteblue;
+              font-size: 12px;
+            }
+          }
+
+          .cardlist {
+            width: 100%;
+            height: 20px;
+            margin-top: 8px;
+          }
+        }
+      }
+    }
+  }
+}
+.margin-top {
+  margin-top: 32px;
+}
+.height-middle{
+  height: 70px;
+}
+.red {
+  background-color: $red;
+  color: $white;
+}
+button {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+}
