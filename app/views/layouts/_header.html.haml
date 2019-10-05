@@ -69,9 +69,8 @@
           = fa_icon "check",class: "menu__icon"
           やることリスト
         .mypage
-          = link_to '/users' do
-            =image_tag "top_page/icon-avater.png", size: '32x32', class: "avater", alt:"avater"
-            %p マイページ
+          = link_to "マイページ", users_path, class: "menu__mypage"
+          =image_tag "top_page/icon-avater.png", size: '32x32', class: "avater", alt:"avater"
         -# -#非ログイン時
         -# .sign-up
         -#   新規会員登録
