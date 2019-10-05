@@ -6,4 +6,7 @@ class UsersController < ApplicationController
     @user = ""
   end
 
+  def show
+  end
+
 end
