@@ -15,13 +15,13 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'    
     %script{ type: "text/javascript", src: "slick.min.js"}
 
-
   %body
-    = render "layouts/header"
-    -# - unless current_page?(root_path)
-    .bread-crumbs
-      .bread-crumbs__content
-        パンくずリスト
-    = yield
-    = render "layouts/footer"
-   
+  = render "layouts/header"
+  -# - unless current_page?(root_path)
+  .bread-crumbs
+    .bread-crumbs__content
+      パンくずリスト
+  = yield
+= render "layouts/footer"
+-# = yield
+-# = render "devise/registrations/footer"

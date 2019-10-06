@@ -59,8 +59,14 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'haml-rails'
 gem "font-awesome-rails"
+gem 'recaptcha', require: "recaptcha/rails"
+gem 'dotenv-rails'
+gem 'devise'
+gem 'payjp'
 gem 'carrierwave'
 gem 'fog-aws'
+gem 'active_hash'
+gem 'pry-rails'
 
 group :production do
   gem 'unicorn', '5.4.1'

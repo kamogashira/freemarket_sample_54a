@@ -1,0 +1,111 @@
+
+// ヘッダー
+@mixin border{
+    position: absolute;
+    display: block;
+    border: 1px solid #ccc; 
+    height: 1px;
+    width: 170%;
+    top: 80%;
+    left: 50%;
+    z-index: 1;
+}
+@mixin radius{
+        position: relative;
+        width: 12px;
+        height: 12px;
+        margin: 8px auto 0;
+        background: #ccc;
+        border-radius: 50%;
+        z-index:100;
+}
+
+.register-header{
+    height: 128px;
+    text-align: center;
+    background-color:#f5f5f5;
+    &_content{
+        display: inline-flex;
+        h1{
+            padding: 40px 43px 0px;
+            a{
+                width: 185px;
+                height: 50px;
+                line-height: 50px;
+              img{
+                margin: 0 8px 0 0;
+               }
+            }
+        }
+
+        .header-bar{
+            border:0;
+            padding: 40px 0 0 17px;
+          ol{
+            margin: 0;
+            display: inline-flex;
+            li{
+                margin: 0 40px 0 0;
+                position: relative;
+                min-width: 60px;
+                display: inline-block;
+                font-size: 12px;
+                color: #888;
+                &.info{
+                    font-weight:bold; 
+                    color:#ea352d;
+                }
+                .border-radius{
+                @include radius;
+                   &_red{
+                    @include radius;
+                    background-color: #ea352d;
+                   }
+                }
+               .header-border{
+                 @include border;
+                 &_red{
+                    @include border;
+                   border: 1px solid   #ea352d;
+                    }
+                  }
+                }
+            }
+        }
+    }
+}
+
+
+// フッター
+.register-footer{
+    background-color:#f5f5f5;
+    bottom: 0;
+    &_view{
+    margin: 0 auto;
+    text-align: center;
+    width:450px;
+    padding: 40px 0;
+    nav{
+        display: inline-flex;
+    li{
+        font-size: 12px;
+        padding-left: 10px;
+        list-style: none;
+        a{
+            color:black; 
+            text-decoration:none;
+        }
+    }
+    }
+    &_logo{
+        margin: 40px auto 0;
+        width: 80px;
+        height: 65px;
+        p{
+        text-align: center;
+        font-size: 8px;
+        margin: 8px 0 0;
+       }
+    }
+   }
+}

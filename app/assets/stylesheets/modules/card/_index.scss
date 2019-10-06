@@ -1,0 +1,82 @@
+// headerは切り取ってありますheader.scssにあります
+// footerは切り取ってありますfooter.scssにあります
+// ここからmain
+.wrapper-card {
+  background-color: $main-background;
+  width: 100vw;
+  height: 100%;
+  margin: 0 auto;
+  padding-top: 40px;
+  .container {
+    width: 1020px;
+    height: 100%;
+    margin: 0 auto; 
+    padding-bottom: 40px;
+    &__right {
+      width: 700px;
+      height: 360px;
+      float: right;
+      background-color: $white;
+      @include clearfix();
+      &--title {
+        width: 100%;
+        height: 50px;
+        text-align: center;
+        border-bottom: 1px solid $border-color;
+        h2 {
+          color: $black;
+          padding: 8px 24px;
+          font-size: 24px;
+          font-weight: 800;
+        }
+      }
+      &--content {
+        width: 100%;
+        height: 310px;
+        padding: 64px;
+        &--top {
+          width: 320px;
+          margin: 0 auto;
+          h3 {
+            font-size: 16px;
+            font-weight: bold;
+          }
+        }
+        &--bottom {
+          width: 100%;
+          height: 107px;
+          margin: 0 auto;
+          padding: 24px 0;
+          border-bottom: 1px solid $border-color;
+          &--add-card {
+            width: 320px;
+            height: 50px;
+            background-color: $red;
+            text-align: center;
+            line-height: 50px;
+            margin: 0 auto;
+            cursor: pointer;
+            a {
+              color: $white;
+              text-decoration: none;
+            }
+          }
+        }
+        &--text--right {
+          @include clearfix();
+          padding-top: 40px;
+          p {
+            float: right;
+            margin-right: 5px;
+            font-size: 14px;
+            color: $liteblue;
+          }
+          .icon {
+            float: right;
+            color: $liteblue;
+          }
+        }
+      }
+    }
+  }
+}
