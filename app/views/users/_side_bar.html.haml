@@ -117,6 +117,5 @@
         = fa_icon "angle-right" , class: "side--list--icon"
 
     .side--list--item
-      = link_to root_path do
-        ログアウト
-        = fa_icon "angle-right" , class: "side--list--icon"
+      = link_to "ログアウト", logout_users_path , class: "logout"
+      = fa_icon "angle-right" , class: "side--list--icon"
