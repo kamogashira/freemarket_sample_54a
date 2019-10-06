@@ -29,12 +29,12 @@ ActiveRecord::Schema.define(version: 20191006031043) do
     t.datetime "remember_created_at"
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
-    t.string   "nickname"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "first_name_kana"
-    t.string   "last_name_kana"
-    t.date     "birthday"
+    t.string   "nickname",                                          null: false
+    t.string   "first_name",                                        null: false
+    t.string   "last_name",                                         null: false
+    t.string   "first_name_kana",                                   null: false
+    t.string   "last_name_kana",                                    null: false
+    t.date     "birthday",                                          null: false
     t.text     "self_introduction",      limit: 65535
     t.string   "provider"
     t.string   "uid"
