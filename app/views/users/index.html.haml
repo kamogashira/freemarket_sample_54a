@@ -1,1 +1,103 @@
-test
+.container-mypage.clearfix
+  .container-mypage__content
+    .container-mypage__usericon
+      = link_to "" do
+        %figure
+          =image_tag "top_page/icon-avater.png", size: '50x50', class: "avater", alt:"avater"
+        .user ユーザー名
+        .user--number
+          .user--number__evaluation
+            評価 0
+          .user--number__exhibits
+            出品数 0
+
+    .container-mypage__news
+      %ul.mypage-tabs
+        %li.mypage-tabs__left
+          .mypage-tabs__news
+            お知らせ
+
+        %li.mypage-tabs__right
+          .mypage-tabs__notice
+            やることリスト
+
+      .tab-content__left
+        %ul.mypage-item__list
+          %li
+            .mypage-item__link
+              %figure
+                =image_tag "mypage/mypage-icon-mercari.png", size: '50x50', class: "mypage-item__icon-mercari", alt:"mypage-item__icon-mercari"
+              .mypage-item__body
+                .mypage-item__text 
+                  メッセージ「         」
+                %time
+                  %i.fa.fa-clock
+                  %span 0 分前
+              %i.fa.fa-chevron-right
+          %li
+            .mypage-item__link
+              %figure
+                =image_tag "mypage/mypage-icon-mercari.png", size: '50x50', class: "mypage-item__icon-mercari", alt:"mypage-item__icon-mercari"
+              .mypage-item__body
+                .mypage-item__text 
+                  メッセージ「         」
+                %time
+                  %i.fa.fa-clock
+                  %span 0 分前
+              %i.fa.fa-chevron-right
+          %li
+            .mypage-item__link
+              %figure
+                =image_tag "mypage/mypage-icon-mercari.png", size: '50x50', class: "mypage-item__icon-mercari", alt:"mypage-item__icon-mercari"
+              .mypage-item__body
+                .mypage-item__text 
+                  メッセージ「         」
+                %time
+                  %i.fa.fa-clock
+                  %span 0 分前
+              %i.fa.fa-chevron-right
+          %li
+            .mypage-item__link
+              %figure
+                =image_tag "mypage/mypage-icon-mercari.png", size: '50x50', class: "mypage-item__icon-mercari", alt:"mypage-item__icon-mercari"
+              .mypage-item__body
+                .mypage-item__text 
+                  メッセージ「         」
+                %time
+                  %i.fa.fa-clock
+                  %span 0 分前
+              %i.fa.fa-chevron-right
+
+          %li.mypage-item--all
+            .mypage-item--all__text
+              一覧を見る
+      .tab-content__right.hide
+        %li.mypage-tabs__right-text 現在、やることリストはありません
+
+    .container-mypage-buy
+      .mypage-buy--head 
+        購入した商品
+      %ul.mypage-buy--tabs
+        %li.mypage-buy--tabs__trading-now
+          取引中
+        %li.mypage-buy--tabs__trading-old
+          過去の取引
+      .mypage-buy--content
+        %ul.mypage-buy--content__now--list
+          %li.mypage-buy--content__now--text 
+            取引中の商品がありません
+        %ul.mypage-buy--content__old--list.hide
+          %li.mypage-buy--content__old--text
+            過去に取引した商品がありません
+
+
+  .side
+    -# = render partial: "side_bar"
+
+.camera-button
+  .camera-button__text
+    出品
+  -#↓↓あとで出品ページのリンクに変える
+  = link_to root_path do  
+    = fa_icon "camera",class: "camera-button__icon"
+

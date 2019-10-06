@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   end
 
   root 'products#index'
-  resources :users
+
+  resources :users, action: :index
   resources :user_addresses, only:[:index, :create]
 
   resources "users",only: :logout, path: '' do
