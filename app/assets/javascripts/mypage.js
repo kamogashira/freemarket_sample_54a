@@ -1,4 +1,5 @@
 // マイページ内の「お知らせ」と「やることリスト」のタブ切り替え
+$(document).on('turbolinks:load',function(){
 $(function(){
   var ltab = $('.mypage-tabs__left'),
       rtab = $('.mypage-tabs__right')
@@ -67,3 +68,4 @@ $(function(){
         });
       });
     });
+});
