@@ -1,0 +1,11 @@
+.wrapper-logout
+  .container
+    .container__right
+      .container__right--logout
+        .container__right--logout-button
+          = button_to destroy_user_session_path, method: :delete ,class: "logout__button" do
+            ログアウト  
+
+      
+    .container__left
+      = render partial: "side_bar"
