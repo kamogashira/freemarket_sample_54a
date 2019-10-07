@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191006031043) do
+ActiveRecord::Schema.define(version: 20191007044623) do
+
+  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.string   "ancestry"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ancestry"], name: "index_categories_on_ancestry", using: :btree
+  end
 
   create_table "user_addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "postal_code",                 null: false
@@ -29,12 +37,12 @@ ActiveRecord::Schema.define(version: 20191006031043) do
     t.datetime "remember_created_at"
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
-    t.string   "nickname"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "first_name_kana"
-    t.string   "last_name_kana"
-    t.date     "birthday"
+    t.string   "nickname",                                          null: false
+    t.string   "first_name",                                        null: false
+    t.string   "last_name",                                         null: false
+    t.string   "first_name_kana",                                   null: false
+    t.string   "last_name_kana",                                    null: false
+    t.date     "birthday",                                          null: false
     t.text     "self_introduction",      limit: 65535
     t.string   "provider"
     t.string   "uid"

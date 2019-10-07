@@ -35,7 +35,6 @@
         .container__right__form--group
           %label 都道府県
           %span.arbitrary  任意
-          = fa_icon "chevron-down" , class: "icon"
           = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "--"}, {class: "input"}
 
         .container__right__form--group
