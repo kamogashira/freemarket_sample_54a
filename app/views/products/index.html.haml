@@ -34,40 +34,73 @@
         .new-products__category__header--title
           レディース新着アイテム
         .new-products__category__header--detail
-          もっと見る
-        .arrow
+          = link_to " " do
+            もっと見る 
+            = fa_icon "angle-right",class: "icon"
       .new-products__category__content
-        画像データ取り込み
+        - @category1.each do |product|
+          = link_to " " do
+            .new-products__category__content__box
+              = image_tag product.product_images.first.image.url, alt: '画像', class: 'new-products__category__content__box--image'
+              %span.new-products__category__content__box--price
+                =product.price
+              .new-products__category__content__box--information
+                =product.name
 
     .new-products__category
       .new-products__category__header
         .new-products__category__header--title
           メンズ新着アイテム
         .new-products__category__header--detail
-          もっと見る
-        .arrow
+          = link_to " " do
+            もっと見る
+            = fa_icon "angle-right",class: "icon"
       .new-products__category__content
-        画像データ取り込み
+        - @category2.each do |product|
+          = link_to " " do
+            .new-products__category__content__box
+              = image_tag product.product_images.first.image.url, alt: '画像', class: 'new-products__category__content__box--image'
+              %span.new-products__category__content__box--price
+                =product.price
+              .new-products__category__content__box--information
+                =product.name
 
     .new-products__category
       .new-products__category__header
         .new-products__category__header--title
           家電・スマホ・カメラ新着アイテム
         .new-products__category__header--detail
-          もっと見る
-        .arrow
+          = link_to " " do
+            もっと見る
+            = fa_icon "angle-right",class: "icon"
       .new-products__category__content
-        画像データ取り込み
+        - @category8.each do |product|
+          = link_to " " do
+            .new-products__category__content__box
+              = image_tag product.product_images.first.image.url, alt: '画像', class: 'new-products__category__content__box--image'
+              %span.new-products__category__content__box--price
+                =product.price
+              .new-products__category__content__box--information
+                =product.name
 
     .new-products__category
       .new-products__category__header
         .new-products__category__header--title
           おもちゃ・ホビー・グッズ新着アイテム
         .new-products__category__header--detail
-          もっと見る
-        .arrow
+        .new-products__category__header--detail
+          = link_to " " do
+            もっと見る
+            = fa_icon "angle-right",class: "icon"
       .new-products__category__content
-        画像データ取り込み
+        - @category6.each do |product|
+          = link_to " " do
+            .new-products__category__content__box
+              = image_tag product.product_images.first.image.url, alt: '画像', class: 'new-products__category__content__box--image'
+              %span.new-products__category__content__box--price
+                =product.price
+              .new-products__category__content__box--information
+                =product.name
         
   .popular
     .popular__title
@@ -84,40 +117,72 @@
         .new-products__category__header--title
           シャネル新着アイテム
         .new-products__category__header--detail
-          もっと見る
-        .arrow
+          = link_to " " do
+            もっと見る
+            = fa_icon "angle-right",class: "icon"
       .new-products__category__content
-        画像データ取り込み
+        - @brand1.each do |product|
+          = link_to " " do
+            .new-products__category__content__box
+              = image_tag product.product_images.first.image.url, alt: '画像', class: 'new-products__category__content__box--image'
+              %span.new-products__category__content__box--price
+                =product.price
+              .new-products__category__content__box--information
+                =product.name
 
     .new-products__category
       .new-products__category__header
         .new-products__category__header--title
           ルイヴィトン新着アイテム
         .new-products__category__header--detail
-          もっと見る
-        .arrow
+          = link_to " " do
+            もっと見る
+            = fa_icon "angle-right",class: "icon"
       .new-products__category__content
-        画像データ取り込み
+        - @brand3.each do |product|
+          = link_to " " do
+            .new-products__category__content__box
+              = image_tag product.product_images.first.image.url, alt: '画像', class: 'new-products__category__content__box--image'
+              %span.new-products__category__content__box--price
+                =product.price
+              .new-products__category__content__box--information
+                =product.name
 
     .new-products__category
       .new-products__category__header
         .new-products__category__header--title
           シュプリーム新着アイテム
         .new-products__category__header--detail
-          もっと見る
-        .arrow
+          = link_to " " do
+            もっと見る
+            = fa_icon "angle-right",class: "icon"
       .new-products__category__content
-        画像データ取り込み
+        - @brand4.each do |product|
+          = link_to " " do
+            .new-products__category__content__box
+              = image_tag product.product_images.first.image.url, alt: '画像', class: 'new-products__category__content__box--image'
+              %span.new-products__category__content__box--price
+                =product.price
+              .new-products__category__content__box--information
+                =product.name
 
     .new-products__category
       .new-products__category__header
         .new-products__category__header--title
           ナイキ新着アイテム
         .new-products__category__header--detail
-          もっと見る
-        .arrow
+          = link_to " " do
+            もっと見る
+            = fa_icon "angle-right",class: "icon"
       .new-products__category__content
-        画像データ取り込み
+        - @brand2.each do |product|
+          = link_to " " do
+            .new-products__category__content__box
+              = image_tag product.product_images.first.image.url, alt: '画像', class: 'new-products__category__content__box--image'
+              %span.new-products__category__content__box--price
+                =product.price
+              .new-products__category__content__box--information
+                =product.name
 
 .camera-button
   .camera-button__text

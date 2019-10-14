@@ -68,6 +68,7 @@ gem 'fog-aws'
 gem 'active_hash'
 gem 'pry-rails'
 gem 'ancestry'
+gem 'mini_magick'
 
 group :production do
   gem 'unicorn', '5.4.1'
