@@ -31,8 +31,10 @@ set :default_env, {
   BASIC_AUTH_USER: ENV["BASIC_AUTH_USER"],
   BASIC_AUTH_PASSWORD: ENV["BASIC_AUTH_PASSWORD"]
 }
+# secrets.yml用のシンボリックリンクを追加
+set :linked_files, %w{ config/secrets.yml }
 
-# デプロイ処理が終わった後、Unicornを再起動するための記述
+# 元々記述されていた after 「'deploy:publishing', 'deploy:restart'」以下を削除して、次のように書き換え
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
   task :restart do
