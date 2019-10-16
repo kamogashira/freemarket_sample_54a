@@ -13,37 +13,37 @@
           %ul.menu
             %li
               = fa_icon "bars",class: "menu_icon"  
-              %a{href: ""} カテゴリーから探す
+              = link_to "カテゴリーから探す", "" 
               %ul.sub
                 - parents_category.each do |parent|
                   %li
-                    %a{href: ""}
+                    = link_to "" do
                       =parent.name
                     %ul.sub
                       - parent.children.each do |child|
                         %li
-                          %a{href: ""}
+                          = link_to "" do
                             =child.name
                           %ul.sub
                             - child.children.each do |grandchild|
                               %li
-                                %a{href: ""}
+                                = link_to "" do
                                   =grandchild.name
                 %li
-                  %a{href: ""} 
-                    カテゴリー一覧
+                  = link_to "カテゴリー一覧", ""
+                    
 
             %li
               = fa_icon "tags",class: "menu_icon"  
-              %a{href: ""} ブランドから探す
+              = link_to "ブランドから探す",  ""
               %ul
                 - parents_brand.each do |parent|
                   %li
-                    %a{href: ""}
+                    = link_to "" do
                       =parent.name
                 %li
-                  %a{href: ""} 
-                    ブランド一覧
+                  = link_to "ブランド一覧", ""
+                    
 
       .wrapper__content__bottom--right
         .liked_items
