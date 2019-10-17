@@ -34,40 +34,45 @@
         .new-products__category__header--title
           レディース新着アイテム
         .new-products__category__header--detail
-          もっと見る
-        .arrow
+          = link_to " " do
+            もっと見る 
+            = fa_icon "angle-right",class: "icon"
       .new-products__category__content
-        画像データ取り込み
+        = render 'items', products: @category1
 
     .new-products__category
       .new-products__category__header
         .new-products__category__header--title
           メンズ新着アイテム
         .new-products__category__header--detail
-          もっと見る
-        .arrow
+          = link_to " " do
+            もっと見る
+            = fa_icon "angle-right",class: "icon"
       .new-products__category__content
-        画像データ取り込み
+        = render 'items', products: @category2
 
     .new-products__category
       .new-products__category__header
         .new-products__category__header--title
           家電・スマホ・カメラ新着アイテム
         .new-products__category__header--detail
-          もっと見る
-        .arrow
+          = link_to " " do
+            もっと見る
+            = fa_icon "angle-right",class: "icon"
       .new-products__category__content
-        画像データ取り込み
+        = render 'items', products: @category8
 
     .new-products__category
       .new-products__category__header
         .new-products__category__header--title
           おもちゃ・ホビー・グッズ新着アイテム
         .new-products__category__header--detail
-          もっと見る
-        .arrow
+        .new-products__category__header--detail
+          = link_to " " do
+            もっと見る
+            = fa_icon "angle-right",class: "icon"
       .new-products__category__content
-        画像データ取り込み
+        = render 'items', products: @category6
         
   .popular
     .popular__title
@@ -84,40 +89,44 @@
         .new-products__category__header--title
           シャネル新着アイテム
         .new-products__category__header--detail
-          もっと見る
-        .arrow
+          = link_to " " do
+            もっと見る
+            = fa_icon "angle-right",class: "icon"
       .new-products__category__content
-        画像データ取り込み
+        = render 'items', products: @brand1
 
     .new-products__category
       .new-products__category__header
         .new-products__category__header--title
           ルイヴィトン新着アイテム
         .new-products__category__header--detail
-          もっと見る
-        .arrow
+          = link_to " " do
+            もっと見る
+            = fa_icon "angle-right",class: "icon"
       .new-products__category__content
-        画像データ取り込み
+        = render 'items', products: @brand3
 
     .new-products__category
       .new-products__category__header
         .new-products__category__header--title
           シュプリーム新着アイテム
         .new-products__category__header--detail
-          もっと見る
-        .arrow
+          = link_to " " do
+            もっと見る
+            = fa_icon "angle-right",class: "icon"
       .new-products__category__content
-        画像データ取り込み
+        = render 'items', products: @brand4
 
     .new-products__category
       .new-products__category__header
         .new-products__category__header--title
           ナイキ新着アイテム
         .new-products__category__header--detail
-          もっと見る
-        .arrow
+          = link_to " " do
+            もっと見る
+            = fa_icon "angle-right",class: "icon"
       .new-products__category__content
-        画像データ取り込み
+        = render 'items', products: @brand2
 
 .camera-button
   .camera-button__text
