@@ -1,138 +1,138 @@
 -# headerは切り取ってあります_header.html.hamlにあります
+.body
+  #slide
+    .slide-banner-camp
+      = image_tag "top_page/banner-camp.png", class: "camp";
+    .slide-banner-phone
+      .slide-banner-phone__image
+        = image_tag "top_page/banner-phone.png", class: "phone";
+      .slide-banner-phone__top
+        %h2 スマホでかんたん 
+        %h2 フリマアプリ
+      = image_tag "top_page/banner-background.jpg",size: '1430x390', class: "back-ground";
+      .slide-banner-phone__bottom
+        %h3 メルカリはスマホアプリからすぐに出品できる
+        %h3 購入時も安心な独自システムのアプリです
+      .slide-banner-phone__icon
+        = image_tag "top_page/icon-app_store.svg", alt: "App Store", class: "icon";
+        = image_tag "top_page/icon-google_play.svg", alt: "Google Play", class: "icon";
 
-#slide
-  .slide-banner-camp
-    = image_tag "top_page/banner-camp.png", class: "camp";
-  .slide-banner-phone
-    .slide-banner-phone__image
-      = image_tag "top_page/banner-phone.png", class: "phone";
-    .slide-banner-phone__top
-      %h2 スマホでかんたん 
-      %h2 フリマアプリ
-    = image_tag "top_page/banner-background.jpg",size: '1430x390', class: "back-ground";
-    .slide-banner-phone__bottom
-      %h3 メルカリはスマホアプリからすぐに出品できる
-      %h3 購入時も安心な独自システムのアプリです
-    .slide-banner-phone__icon
-      = image_tag "top_page/icon-app_store.svg", alt: "App Store", class: "icon";
-      = image_tag "top_page/icon-google_play.svg", alt: "Google Play", class: "icon";
+      
+  .container-toppage
+    .popular
+      .popular__title
+        人気のカテゴリー
+      %ul
+        %li レディース
+        %li メンズ
+        %li 家電・スマホ・カメラ
+        %li おもちゃ・ホビー・グッズ
 
-    
-.container-toppage
-  .popular
-    .popular__title
-      人気のカテゴリー
-    %ul
-      %li レディース
-      %li メンズ
-      %li 家電・スマホ・カメラ
-      %li おもちゃ・ホビー・グッズ
+    .new-products
+      .new-products__category
+        .new-products__category__header
+          .new-products__category__header--title
+            レディース新着アイテム
+          .new-products__category__header--detail
+            = link_to " " do
+              もっと見る 
+              = fa_icon "angle-right",class: "icon"
+        .new-products__category__content
+          = render 'items', products: @category1
 
-  .new-products
-    .new-products__category
-      .new-products__category__header
-        .new-products__category__header--title
-          レディース新着アイテム
-        .new-products__category__header--detail
-          = link_to " " do
-            もっと見る 
-            = fa_icon "angle-right",class: "icon"
-      .new-products__category__content
-        = render 'items', products: @category1
+      .new-products__category
+        .new-products__category__header
+          .new-products__category__header--title
+            メンズ新着アイテム
+          .new-products__category__header--detail
+            = link_to " " do
+              もっと見る
+              = fa_icon "angle-right",class: "icon"
+        .new-products__category__content
+          = render 'items', products: @category2
 
-    .new-products__category
-      .new-products__category__header
-        .new-products__category__header--title
-          メンズ新着アイテム
-        .new-products__category__header--detail
-          = link_to " " do
-            もっと見る
-            = fa_icon "angle-right",class: "icon"
-      .new-products__category__content
-        = render 'items', products: @category2
+      .new-products__category
+        .new-products__category__header
+          .new-products__category__header--title
+            家電・スマホ・カメラ新着アイテム
+          .new-products__category__header--detail
+            = link_to " " do
+              もっと見る
+              = fa_icon "angle-right",class: "icon"
+        .new-products__category__content
+          = render 'items', products: @category8
 
-    .new-products__category
-      .new-products__category__header
-        .new-products__category__header--title
-          家電・スマホ・カメラ新着アイテム
-        .new-products__category__header--detail
-          = link_to " " do
-            もっと見る
-            = fa_icon "angle-right",class: "icon"
-      .new-products__category__content
-        = render 'items', products: @category8
+      .new-products__category
+        .new-products__category__header
+          .new-products__category__header--title
+            おもちゃ・ホビー・グッズ新着アイテム
+          .new-products__category__header--detail
+          .new-products__category__header--detail
+            = link_to " " do
+              もっと見る
+              = fa_icon "angle-right",class: "icon"
+        .new-products__category__content
+          = render 'items', products: @category6
+          
+    .popular
+      .popular__title
+        人気のブランド
+      %ul
+        %li シャネル
+        %li ルイヴィトン
+        %li シュプリーム
+        %li ナイキ
 
-    .new-products__category
-      .new-products__category__header
-        .new-products__category__header--title
-          おもちゃ・ホビー・グッズ新着アイテム
-        .new-products__category__header--detail
-        .new-products__category__header--detail
-          = link_to " " do
-            もっと見る
-            = fa_icon "angle-right",class: "icon"
-      .new-products__category__content
-        = render 'items', products: @category6
-        
-  .popular
-    .popular__title
-      人気のブランド
-    %ul
-      %li シャネル
-      %li ルイヴィトン
-      %li シュプリーム
-      %li ナイキ
+    .new-products
+      .new-products__category
+        .new-products__category__header
+          .new-products__category__header--title
+            シャネル新着アイテム
+          .new-products__category__header--detail
+            = link_to " " do
+              もっと見る
+              = fa_icon "angle-right",class: "icon"
+        .new-products__category__content
+          = render 'items', products: @brand1
 
-  .new-products
-    .new-products__category
-      .new-products__category__header
-        .new-products__category__header--title
-          シャネル新着アイテム
-        .new-products__category__header--detail
-          = link_to " " do
-            もっと見る
-            = fa_icon "angle-right",class: "icon"
-      .new-products__category__content
-        = render 'items', products: @brand1
+      .new-products__category
+        .new-products__category__header
+          .new-products__category__header--title
+            ルイヴィトン新着アイテム
+          .new-products__category__header--detail
+            = link_to " " do
+              もっと見る
+              = fa_icon "angle-right",class: "icon"
+        .new-products__category__content
+          = render 'items', products: @brand3
 
-    .new-products__category
-      .new-products__category__header
-        .new-products__category__header--title
-          ルイヴィトン新着アイテム
-        .new-products__category__header--detail
-          = link_to " " do
-            もっと見る
-            = fa_icon "angle-right",class: "icon"
-      .new-products__category__content
-        = render 'items', products: @brand3
+      .new-products__category
+        .new-products__category__header
+          .new-products__category__header--title
+            シュプリーム新着アイテム
+          .new-products__category__header--detail
+            = link_to " " do
+              もっと見る
+              = fa_icon "angle-right",class: "icon"
+        .new-products__category__content
+          = render 'items', products: @brand4
 
-    .new-products__category
-      .new-products__category__header
-        .new-products__category__header--title
-          シュプリーム新着アイテム
-        .new-products__category__header--detail
-          = link_to " " do
-            もっと見る
-            = fa_icon "angle-right",class: "icon"
-      .new-products__category__content
-        = render 'items', products: @brand4
+      .new-products__category
+        .new-products__category__header
+          .new-products__category__header--title
+            ナイキ新着アイテム
+          .new-products__category__header--detail
+            = link_to " " do
+              もっと見る
+              = fa_icon "angle-right",class: "icon"
+        .new-products__category__content
+          = render 'items', products: @brand2
 
-    .new-products__category
-      .new-products__category__header
-        .new-products__category__header--title
-          ナイキ新着アイテム
-        .new-products__category__header--detail
-          = link_to " " do
-            もっと見る
-            = fa_icon "angle-right",class: "icon"
-      .new-products__category__content
-        = render 'items', products: @brand2
+  .camera-button
+    .camera-button__text
+      出品
+    -#↓↓あとで出品ページのリンクに変える
+    = link_to root_path do  
+      = fa_icon "camera",class: "camera-button__icon"
 
-.camera-button
-  .camera-button__text
-    出品
-  -#↓↓あとで出品ページのリンクに変える
-  = link_to root_path do  
-    = fa_icon "camera",class: "camera-button__icon"
-
--# footer(aside入り)は切り取ってあります_footer.html.hamlにあります
+  -# footer(aside入り)は切り取ってあります_footer.html.hamlにあります
