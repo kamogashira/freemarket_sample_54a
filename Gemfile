@@ -67,6 +67,9 @@ gem 'carrierwave'
 gem 'fog-aws'
 gem 'active_hash'
 gem 'pry-rails'
+gem 'rspec-rails'
+gem 'factory_bot_rails'
+gem 'faker'
 
 group :production do
   gem 'unicorn', '5.4.1'
