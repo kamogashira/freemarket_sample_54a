@@ -4,6 +4,11 @@ class ProductsController < ApplicationController
 
   def index
   end
+  
+  def new
+    @product = Product.new
+    render layout: 'products_application'
+  end
 
   def set_category
     parents = (1..13).to_a
@@ -31,3 +36,4 @@ class ProductsController < ApplicationController
     end
   end
 end
+
