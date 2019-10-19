@@ -31,7 +31,7 @@
 }
 
 $break-point: (
-  small: 500px,
+  small: 650px,
   middle: 768px,
   large: 1068px
 );
@@ -56,10 +56,10 @@ $break-point: (
 
 @mixin responsive-width ($width) {
   @include media-queries( small ) {
-    width: calc( #{$width} - 30% );
+    width: calc( #{$width} - 20% );
   }
   @include media-queries( middle ) {
-    width: calc( #{$width} - 20% );
+    width: calc( #{$width} - 5% );
   }
   @include media-queries( large )  {
     width: $width;

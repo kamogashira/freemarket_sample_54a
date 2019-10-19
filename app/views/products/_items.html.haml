@@ -1,0 +1,8 @@
+- products.each do |product|
+  = link_to " " do
+    .new-products__category__content__box
+      = image_tag product.product_images.first.image.url, alt: '画像', class: 'new-products__category__content__box--image'
+      %span.new-products__category__content__box--price
+        =number_to_currency(product.price.to_s(:delimited), :unit => "￥")
+      .new-products__category__content__box--information
+        =product.name

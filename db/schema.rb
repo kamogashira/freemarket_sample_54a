@@ -10,7 +10,64 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191006031043) do
+ActiveRecord::Schema.define(version: 20191015041654) do
+
+  create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.string   "ancestry"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ancestry"], name: "index_brands_on_ancestry", using: :btree
+  end
+
+  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.string   "ancestry"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ancestry"], name: "index_categories_on_ancestry", using: :btree
+  end
+
+  create_table "product_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "product_id"
+    t.string   "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_product_images_on_product_id", using: :btree
+  end
+
+  create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",                           null: false
+    t.integer  "price",                          null: false
+    t.text     "description",      limit: 65535, null: false
+    t.integer  "category_id",                    null: false
+    t.string   "brand_id"
+    t.integer  "size_id"
+    t.string   "condition",                      null: false
+    t.string   "shipping_charge",                null: false
+    t.string   "shipping_from",                  null: false
+    t.string   "shipping_days",                  null: false
+    t.integer  "current_status",                 null: false
+    t.integer  "buyer_id"
+    t.integer  "seller_id"
+    t.integer  "payment_method",                 null: false
+    t.integer  "payment_status",                 null: false
+    t.integer  "sending_status",                 null: false
+    t.integer  "receiving_status",               null: false
+    t.integer  "like"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.index ["buyer_id"], name: "index_products_on_buyer_id", using: :btree
+    t.index ["category_id"], name: "index_products_on_category_id", using: :btree
+    t.index ["seller_id"], name: "index_products_on_seller_id", using: :btree
+    t.index ["size_id"], name: "index_products_on_size_id", using: :btree
+  end
+
+  create_table "sizes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "user_addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "postal_code",                 null: false
@@ -29,12 +86,12 @@ ActiveRecord::Schema.define(version: 20191006031043) do
     t.datetime "remember_created_at"
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
-    t.string   "nickname"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "first_name_kana"
-    t.string   "last_name_kana"
-    t.date     "birthday"
+    t.string   "nickname",                                          null: false
+    t.string   "first_name",                                        null: false
+    t.string   "last_name",                                         null: false
+    t.string   "first_name_kana",                                   null: false
+    t.string   "last_name_kana",                                    null: false
+    t.date     "birthday",                                          null: false
     t.text     "self_introduction",      limit: 65535
     t.string   "provider"
     t.string   "uid"
@@ -42,4 +99,9 @@ ActiveRecord::Schema.define(version: 20191006031043) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "product_images", "products"
+  add_foreign_key "products", "categories"
+  add_foreign_key "products", "sizes"
+  add_foreign_key "products", "users", column: "buyer_id"
+  add_foreign_key "products", "users", column: "seller_id"
 end

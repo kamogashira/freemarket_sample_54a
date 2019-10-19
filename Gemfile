@@ -43,6 +43,9 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -69,6 +72,8 @@ gem 'active_hash'
 gem 'pry-rails'
 gem 'rspec-rails'
 gem 'factory_bot_rails'
+gem 'ancestry'
+gem 'mini_magick'
 gem 'faker'
 
 group :production do

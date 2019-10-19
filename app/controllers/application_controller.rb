@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :basic_auth, if: :production?
   protect_from_forgery with: :exception
   before_action :configure_permitted_paramaters, if: :devise_controller?
+  before_action :set_category_brand
 
   # before_action :basic_auth
 
@@ -20,4 +21,10 @@ class ApplicationController < ActionController::Base
       username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
     end
   end
+
+  def set_category_brand
+    @parents_category = Category.all.order("id ASC").limit(13)
+    @parents_brand = Brand.all.order("id ASC").limit(4)
+  end
+
 end
