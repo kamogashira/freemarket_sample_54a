@@ -80,7 +80,7 @@
                 .select-wrap
                   .select-default
                     -# = f.select :name, ["---"]
-                    = f.collection_select :ship_from, Prefecture.all, :id, :name, {prompt: "--"}
+                    = f.collection_select :shipping_from, Prefecture.all, :id, :name, {prompt: "--"}
                     %i.fas.fa-chevron-down
               .content-form__status
                 %label 
