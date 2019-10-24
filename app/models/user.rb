@@ -5,11 +5,16 @@ class User < ApplicationRecord
   has_one :user_address
   accepts_nested_attributes_for :user_address
   has_many :credit_cards
+  has_many :products
+  has_many :comments
+  has_many :evaluations
+  has_one :delivery_address
+  has_one :credit_card
 
   validates :nickname,                presence: true, length: {maximum: 20}
   validates :email,                   presence: true, uniqueness: true
   validates :password,                presence: true, length: {minimum: 6, maximum: 128}
-  
+  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,128}+\z/i }
   validates :last_name,               presence: true
   validates :first_name,              presence: true
   validates :last_name_kana,          presence: true

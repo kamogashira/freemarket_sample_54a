@@ -1,0 +1,153 @@
+.product-container
+  .product--header
+    %h1
+      =link_to ""
+      = image_tag "top_page/header-mercari.svg", size: '193x49', alt:"mercari"  
+  .product--main
+    .product--main__body
+      .product--main__body-head
+        %h2
+          商品の情報を入力
+      .product--main__body__form
+        = form_for @product do |f|
+          .product--main__body__form--upload
+            %h3.upload--header
+              出品画像
+              %span.form-require
+                必須
+            %p 最大10枚までアップロードできます
+            .upload--container
+              .upload--container--drop-box
+                %p
+                  ドラッグアンドドロップ
+                  またはクリックしてファイルをアップロード
+          .product--main__body-content
+            .content-form
+              %label
+                %h3.sell--header
+                  商品名
+                  %span.form-require
+                    必須
+              = f.text_field :name, required: true, class: "name-form", placeholder: "商品名（40字まで）"
+            .content-form
+              %h3.sell--header
+                商品の説明
+                %span.form-require
+                  必須
+              = f.text_area :description, class: "textarea-form", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+
+          .product--main__body-content
+            %h3.content-form-title-gray
+              商品の詳細
+            .content-form-box
+              .content-form__status
+                %label 
+                  カテゴリー
+                  %span.form-require
+                    必須
+                .select-wrap
+                  .select-default
+                    = f.select :category, ["---","レディース","メンズ","ベビー・キッズ"]
+                    %i.fas.fa-chevron-down
+              .content-form__status
+                %label 
+                  商品の状態
+                  %span.form-require
+                    必須
+                .select-wrap
+                  .select-default
+                    = f.select :condition, ["---","新品、未使用","未使用に近い","目立った傷や汚れなし","やや傷や汚れあり","傷や汚れあり","全体的に状態が悪い"]
+                    %i.fas.fa-chevron-down
+
+          .product--main__body-content
+            %h3.content-form-title-gray
+              配送について
+            .content-form-box
+              .content-form__status
+                %label 
+                  配送料の負担
+                  %span.form-require
+                    必須
+                .select-wrap
+                  .select-default
+                    = f.select :shipping_charge, ["---","送料込み(出品者負担)","着払い(購入者負担)"]
+                    %i.fas.fa-chevron-down
+              .content-form__status
+                %label 
+                  発送元の地域
+                  %span.form-require
+                    必須
+                .select-wrap
+                  .select-default
+                    -# = f.select :name, ["---"]
+                    = f.collection_select :shipping_from, Prefecture.all, :id, :name, {prompt: "--"}
+                    %i.fas.fa-chevron-down
+              .content-form__status
+                %label 
+                  発送までの日数
+                  %span.form-require
+                    必須
+                .select-wrap
+                  .select-default
+                    = f.select :shipping_days, ["---","1~2日で発送","2~3日で発送","4~7日で発送"]
+                    %i.fas.fa-chevron-down
+          .product--main__body-content
+            %h3.content-form-title-gray
+              販売価格(300〜9,999,999)
+            .sell-form
+              %ul.sell-form__status
+                %li.content-form__status
+                  %label
+                    価格
+                    %span.form-require
+                      必須
+                  .content-form__status__price-right
+                    .select-wrap-right-price
+                      %p
+                        ¥
+                    .select-default
+                      = f.text_field :price, placeholder: "例）300", class: "price-form"
+                %li.content-form__status
+                  .content-form__status__fee-left
+                    販売手数料(10%)
+                  .content-form__status__fee-right
+                    %p#output
+                      ¥
+                %li.content-form__status
+                  .content-form__status__profit-left
+                    販売利益
+                  .content-form__status__profit-right
+                    %p#output
+                      ¥
+                  
+
+          .product--main__body-content--button
+            .product--main__body-content--button-text
+              %p 
+                %a{ :href => "https://www.mercari.com/jp/help_center/getting_started/prohibited_items/" }禁止されている出品
+                、
+                %a{ :href => "https://www.mercari.com/jp/help_center/getting_started/prohibited_conduct/" }行為
+                を必ずご確認ください。
+              %p 
+                またブランド品でシリアルナンバー等がある場合はご記載ください。
+                %a{ :href => "https://www.mercari.com/jp/help_center/getting_started/counterfeit_goods/" }偽ブランドの販売
+                は犯罪であり処罰される可能性があります。
+              %p 
+                また、出品をもちまして
+                %a{ :href => "https://www.mercari.com/jp/seller_terms/" }加盟店規約
+                に同意したことになります。
+            = f.submit "出品する", class: 'product--main__body-content--button-next'
+            = link_to "もどる", products_path, class: 'product--main__body-content--button-back'
+  .product--footer
+    .product--footer__view
+      %nav
+      %li
+        %a{ :href => "https://www.mercari.com/jp/privacy/" }プライバシーポリシー
+      %li
+        %a{ :href => "https://www.mercari.com/jp/privacy/" }メルカリ利用規約
+      %li
+        %a{ :href => "https://www.mercari.com/jp/tokutei/" }特定商取引に関する表記
+    .product--footer__view__logo
+      =link_to ""
+      = image_tag "registrations_page/logo-gray.svg", size: '80x65', alt:"mercari" do end
+    %p © 2019 Mercari

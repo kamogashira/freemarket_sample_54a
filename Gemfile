@@ -73,6 +73,11 @@ gem 'pry-rails'
 gem 'omniauth-rails_csrf_protection'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
+gem 'rspec-rails'
+gem 'factory_bot_rails'
+gem 'ancestry'
+gem 'mini_magick'
+gem 'faker'
 
 group :production do
   gem 'unicorn', '5.4.1'

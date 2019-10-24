@@ -1,7 +1,6 @@
-require 'rails_helper'
-
+require "rails_helper"
 describe User do
-  describe '#create' do
+  describe "#create" do
     it "is invalid without a email" do
       user = build(:user, email: "")
       user.valid?
