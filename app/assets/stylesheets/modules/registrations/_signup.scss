@@ -72,7 +72,10 @@
                left:12px;
                top:14px;
                font-size:20px;
-            }
+             }
+              a.new_btn{
+                color: #fff;
+              }
            }
            button#facebook{
            @include button;
@@ -85,6 +88,9 @@
                left:10px;
                top:9px;
                }
+               a{
+                color: #fff;
+               }
             }
             button#Google{
             @include button;
@@ -93,11 +99,14 @@
             border-top: 1px solid #eee;
             border: #979797 solid 1px;
             margin: 16px 0 0;
-               img{
+              img{
                 position: absolute;
                 left:12px;
                 top:13px;
               }
+              a{
+                color:black;
+               }
             }
         }
     }
@@ -125,6 +134,9 @@
                 left:10px;
                 top:10px;
                 }
+                a{
+                  color: #fff;
+                 }
             }
             button#Google{
              @include button;
@@ -137,6 +149,9 @@
                 left:12px;
                 top:13px;
               }
+              a{
+                color: black;
+               }
             }
         }
     form{

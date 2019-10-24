@@ -1,98 +1,117 @@
 .register{
 background-color:#f5f5f5;
-&_container{
-width:700px;
-margin: 0 auto;
-background: #fff;
-&_view{
-font-size: 22px;
-padding: 32px;
-text-align: center;
-line-height: 1.5;
-border-bottom: 1px solid #ccc;
-background: #fff;
-h2{
-font-weight: bold;
-background: #fff;
-}
-}
-}
-.new-credit{
-width: 700px;
-padding: 40px 40px 64px;
-background: #fff;
-margin: 0 auto;
-.form{
-width: 350px;
-margin: 0 auto;
-text-align:left;
-padding-top:32px;
-background: #fff;
-label{
-   font-weight: bold;
-   font-size: 15px;
-   background: #fff;
-}
-span.form-require{
-    background: #ea352d;
-    margin: 0 0 0 8px;
-    padding: 2px 4px;
-    border-radius: 2px;
-    color: #fff;
-    font-size: 12px;
-    vertical-align: top;
-}
-.year-number{
-   background: #fff;
-   margin: 0 auto;
-   padding: 10px 16px 8px;
-   width: 340px;
-   height: 45px;
-   border-radius: 3px;
-   border: solid 1px #ccc;
-   margin-top: 3px;
-   font-size:18px;
-}
-select{
-   background: #fff;
-   margin: 0 auto;
-   padding: 10px 16px 8px;
-   width: 170px;
-   height: 45px;
-   border-radius: 3px;
-   border: solid 1px #ccc;
-   margin-top: 3px;
-   font-size:18px;
-}
-.cvc{
-    background: #fff;
-    margin: 0 auto;
-    padding: 10px 16px 8px;
-    width: 340px;
-    height: 45px;
-    border-radius: 3px;
-    border: solid 1px #ccc;
-    margin-top: 3px;
-    font-size:18px;
-}
-p{  
-    font-weight:bold;
-    text-align: right;
-    color:#0095EE;
-    float:right;
-    font-size:15px;
-    text-decoration:none;
-}
-button.next_btn{
-    background: #ea352d;
-    width: 340px;
-    height: 45px;
-    border: solid 1px #ea352d;
-    color:#fff;
-    font-size: 15px;
-    margin-top:20px;
-      }
-     }
-   }
+    &_container{
+       width:700px;
+       margin: 0 auto;
+       background: #fff;
+        &_view{
+              font-size: 22px;
+              padding: 32px;
+              text-align: center;
+              line-height: 1.5;
+              border-bottom: 1px solid #ccc;
+              background: #fff;
+              h2{
+                  font-weight: bold;
+                  background: #fff;
+                }
+            }   
+        }
+    .new-credit{
+        width: 700px;
+        padding: 40px 40px 64px;
+        background: #fff;
+        margin: 0 auto;
+           .form{
+                width: 350px;
+                margin: 0 auto;
+                text-align:left;
+                padding-top:32px;
+                background: #fff;
+                label{
+                   font-weight: bold;
+                   font-size: 15px;
+                   background: #fff;
+                }
+                input#card_number{
+                 width: 340px;
+                 height: 45px;
+                 background: #fff;
+                 margin: 0 auto;
+                 padding: 10px 16px 8px;
+                 width: 340px;
+                 height: 45px;
+                 border-radius: 3px;
+                 border: solid 1px #ccc;
+                 margin-top: 3px;
+                 font-size:18px;
+                }
+                span.form-require{
+                background: #ea352d;
+                margin: 0 0 0 8px;
+                padding: 2px 4px;
+                border-radius: 2px;
+                color: #fff;
+                font-size: 12px;
+                vertical-align: top;
+                }
+                select#exp_month{
+                background: #fff;
+                margin: 0 auto;
+                padding: 10px 16px 8px;
+                width: 130px;
+                height: 45px;
+                border-radius: 3px;
+                border: solid 1px #ccc;
+                margin-top: 3px;
+                font-size:18px;
+                margin-right:10px;
+                }
+                select#exp_year{
+                    background: #fff;
+                    margin: 0 auto;
+                    padding: 10px 16px 8px;
+                    width: 130px;
+                    height: 45px;
+                    border-radius: 3px;
+                    border: solid 1px #ccc;
+                    margin-top: 3px;
+                    font-size:18px;
+                    margin-left:10px;
+                    margin-right:10px;
+                    }
+                .cvc{
+                background: #fff;
+                margin: 0 auto;
+                padding: 10px 16px 8px;
+                width: 340px;
+                height: 45px;
+                 border-radius: 3px;
+                border: solid 1px #ccc;
+                margin-top: 3px;
+                font-size:18px;
+                 }
+                 p{  
+                font-weight:bold;
+                text-align: right;
+                color:#0095EE;
+                float:right;
+                font-size:15px;
+                 text-decoration:none;
+                }
+                #card_token{
+                  input{
+                   background: #ea352d;
+                   width: 340px;
+                   height: 45px;
+                   border: solid 1px #ea352d;
+                   color:#fff;
+                   font-size: 15px;
+                   margin-top:20px;
+                   line-height:45px;
+                   }
+                }
+        }
+    }
 }
  
