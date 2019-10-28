@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,128}+\z/i }
   has_many :products
   has_many :comments
-  has_many :evaluations
+  has_one :evaluation
   has_one :user_address
   has_one :delivery_address
   has_one :credit_card

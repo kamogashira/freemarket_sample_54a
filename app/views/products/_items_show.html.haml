@@ -1,0 +1,13 @@
+- products.each do |product|
+  = link_to product_path(product) do
+    .other-items__users__content__box
+      = image_tag product.product_images.first.image.url, alt: '画像', class: 'other-items__users__content__box--image'
+      .other-items__users__content__box--body
+        .other-items__users__content__box--body--top
+          =product.name
+        %span.other-items__users__content__box--body--bottom
+          .other-items__users__content__box--body--bottom--price
+            =number_to_currency(product.price.to_s(:delimited), :unit => "￥")
+          .other-items__users__content__box--body--bottom--like
+            = fa_icon "heart-o",class: "icon"
+            =product.like

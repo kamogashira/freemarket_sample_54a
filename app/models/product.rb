@@ -6,6 +6,8 @@ class Product < ApplicationRecord
   has_one :evaluation
   belongs_to :brand, optional: true
   belongs_to :size, optional: true
+  belongs_to :seller, class_name: "User"
+  belongs_to :buyer, class_name: "User"
 
   validates :name, length: { in: 1..40}, presence: true
   validates :description, length: { in: 1..1000}, presence: true

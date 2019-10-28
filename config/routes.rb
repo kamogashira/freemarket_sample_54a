@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'comments/create'
+
+  get 'comments/show'
+
   devise_for :users
   resources :cards, only:[:index, :new, :create]
   
@@ -10,7 +14,9 @@ Rails.application.routes.draw do
   end
 
   root 'products#index'
-  resources :products, action: :new
+  resources :products, only:[:index, :new, :show] do
+    resources :comments, only:[:create, :show]
+  end
 
   resources :users, action: :index
   resources :user_addresses, only:[:index, :create]
