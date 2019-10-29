@@ -15,11 +15,13 @@ FactoryBot.define do
     buyer_id          {""}
     seller_id         {""}
     payment_method    {"0"}
+    payment_status    {"0"}
     sending_status    {"0"}
     receiving_status  {"0"}
     like              {""}
 
     association :category
+    association :seller
   end
 
 end

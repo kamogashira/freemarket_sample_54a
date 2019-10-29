@@ -1,10 +1,13 @@
 FactoryBot.define do
   factory :evaluation do
-    user { nil }
-    product { nil }
-    good { 1 }
-    normal { 1 }
-    bad { 1 }
+    user_id { "1" }
+    product_id { "1"}
+    good { "3" }
+    normal { "2" }
+    bad { "1" }
     comment { "MyString" }
+
+    association :user
+    association :product
   end
 end
