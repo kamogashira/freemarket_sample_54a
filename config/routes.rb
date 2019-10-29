@@ -1,16 +1,21 @@
 Rails.application.routes.draw do
-  get 'comments/create'
-
-  get 'comments/show'
-
-  devise_for :users
-  resources :cards, only:[:index, :new, :create]
+  devise_for :users,
+  controllers: {
+   registrations: 'users/registrations' ,
+   omniauth_callbacks: 'users/omniauth_callbacks'}
+   
+  resources :cards, only:[:index, :new, :create] do
+    collection do
+      post 'pay', to: 'card#pay'
+    end
+  end
   
   devise_scope :user do 
-    get 'users/sign_up/address' => 'devise/registrations#address'
-    get 'users/sign_up/complete' => 'devise/registrations#complete'
-    get 'users/sign_up/index' => 'devise/registrations#index'
-    get 'users/sign_up/phone' => 'devise/registrations#phone'
+    get 'users/sign_up/SNS' => 'users/registrations#SNS'
+    get 'users/sign_up/address' => 'users/registrations#address'
+    get 'users/sign_up/complete' => 'users/registrations#complete'
+    get 'users/sign_up/index' => 'users/registrations#index'
+    get 'users/sign_up/phone' => 'users/registrations#phone'
   end
 
   root 'products#index'

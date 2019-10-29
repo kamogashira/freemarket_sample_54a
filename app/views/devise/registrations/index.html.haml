@@ -13,13 +13,13 @@
   .login_content_form
    %button#email
     %i.fa.fa-envelope
-    メールで登録する
+    = link_to "メールアドレスで登録", "/users/sign_up/", class: "new_btn"
    
    %button#facebook
     %i.fa.fa-facebook-square.fa-2x
-    Facebookでログインする
+    = link_to "Facebookで登録", user_facebook_omniauth_authorize_path, method: :post
 
    %button#Google
     = image_tag "registrations_page/g-icon.png", size: '20x20', alt:"g-icon"
-    Googleでログインする
+    = link_to "Googleで登録", user_google_oauth2_omniauth_authorize_path, method: :post
     

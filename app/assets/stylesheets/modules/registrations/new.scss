@@ -29,12 +29,14 @@
     line-height: 1.0;
     border-bottom: 1px solid #ccc;
     background: #fff;
+    margin: 0 auto;
     h2{
        font-weight: bold;
        background: #fff;
        }
     }
    form{
+    margin: 0 auto;
     width: 700px;
     padding: 40px 40px 64px;
     background: #fff;
@@ -47,6 +49,14 @@
            margin: 0 auto;
            background: #fff;
            position: relative;
+           input.next_btn{
+            @include input;
+            background: #ea352d;
+            border: solid 1px #ea352d;
+            margin: 0 auto;
+            color:#fff;
+            font-size: 15px;
+           }
            a{
             color:#0095EE;
             float:right;
@@ -91,13 +101,16 @@
                font-size: 15px;
                background: #fff;
             }
-            span{
+            span.form-require{
                @include span;
                background: #ea352d;
             }
             span.form-option{
                @include span;
                background: #ccc;
+            }
+            span.error{
+              color:#ea352d;
             }
             input.usernew{
                @include input;
@@ -128,7 +141,7 @@
                 font-size:15px;
             }
             
-            .next_btn{
+            a.next_btn{
                 background: #ea352d;
                 width: 340px;
                 height: 45px;
@@ -136,6 +149,9 @@
                 border: solid 1px #ea352d;
                 color:#fff;
                 font-size: 15px;
+                margin: 0 auto;
+                padding: 10px 30px;
+                text-align: center;
               }
             }
           }
@@ -215,6 +231,10 @@ button.next_btn{
          color:#fff;
          font-size: 15px;
          margin-top:20px;
+         line-height: 45px;
+         a.next_btn{
+          color:#fff;
+         }
         }
       }
     }

@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
   before_action :basic_auth, if: :production?
-  protect_from_forgery with: :exception
   before_action :configure_permitted_paramaters, if: :devise_controller?
   before_action :set_category_brand
+  protect_from_forgery with: :null_session
 
   # before_action :basic_auth
 
