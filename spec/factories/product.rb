@@ -9,7 +9,7 @@ FactoryBot.define do
     size_id           {""}
     condition         {"未使用に近い"}
     shipping_charge   {"送料込み(出品者負担)"}
-    ship_from     {"神奈川"}
+    ship_from         {"1"}
     shipping_days     {"1~2日で発送"}
     current_status    {"0"}
     buyer_id          {""}
@@ -22,6 +22,7 @@ FactoryBot.define do
 
     association :category
     association :seller
+
   end
 
 end

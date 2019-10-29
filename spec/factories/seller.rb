@@ -1,12 +1,10 @@
 FactoryBot.define do
   factory :seller, class: User do
     password = Faker::Internet.password
-    email = Faker::Internet.email
-    email                  {email}
-    encrypted_password     {password}
-    reset_password_token   {password}
-    reset_password_sent_at {"2019-01-01"}
-    remember_created_at    {"2019-01-01"}
+
+    password              { password }
+    password_confirmation { password }
+    sequence(:email)      { |n| "foo#{n}@bar.com" }
     nickname               { "seller" }
     first_name             { "seller" }
     last_name              { "seller" }
