@@ -3,7 +3,7 @@
   Product.create!(name: "TEST#{n}",
                   price: n*1000,
                   description: "新品・未使用です",
-                  category_id: n,
+                  category_id: n+100,
                   brand_id: n,
                   size_id: "",
                   condition: 1,
