@@ -13,4 +13,13 @@ class Product < ApplicationRecord
   validates :description, length: { in: 1..1000}, presence: true
   validates :price, numericality: { only_integer: true, greater_than: 300, less_than: 9999999}
 
+  # 商品の状態   0:新品、未使用 1: 未使用に近い 2:目立った傷や汚れなし 3:やや傷や汚れあり 4:やや傷や汚れあり 5:全体的に状態が悪い
+  enum condition: { unused: 0, almost_new: 1, normal: 2, a_little_dirty: 3, dirty: 4, bad: 5 }
+  # 配送料の負担   0:送料込み(出品者負担) 1: 着払い(購入者負担)
+  enum shipping_charge: { sender_expense: 0, receiver_expense: 1 }
+  # 配送の方法   0:未定 1: クロネコヤマト 2:ゆうパック 3:ゆうメール
+  enum shipping_method: { unknown: 0, kuroneko: 1, yupack: 2, yumail: 3 }
+  # 配送までの日数   0:1〜2日で発送 1: 2〜3日で発送 2:4〜7日で発送
+  enum shipping_days: { immediately: 0, a_few_days: 1, four_to_seven_days: 2 }
+
 end

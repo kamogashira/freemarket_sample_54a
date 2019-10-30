@@ -1,0 +1,25 @@
+ja:
+  enums:
+    product:
+      condition:
+        unused:                  新品、未使用
+        almost_new:              未使用に近い
+        normal:                  目立った傷や汚れなし
+        a_little_dirty:          やや傷や汚れあり
+        dirty:                   傷や汚れあり
+        bad:                     全体的に状態が悪い
+
+      shipping_charge:
+        sender_expense:          送料込み(出品者負担)
+        receiver_expense:        着払い(購入者負担)
+
+      shipping_method:
+        unknown:                  未定
+        kuroneko:                 クロネコヤマト
+        yupack:                   ゆうパック
+        yumail:                   ゆうメール
+
+      shipping_days:
+        immediately:               1〜2日で発送
+        a_few_days:                2〜3日で発送
+        four_to_seven_days:        4〜7日で発送

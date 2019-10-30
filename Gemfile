@@ -75,6 +75,7 @@ gem 'factory_bot_rails'
 gem 'ancestry'
 gem 'mini_magick'
 gem 'faker'
+gem 'enum_help'
 
 group :production do
   gem 'unicorn', '5.4.1'

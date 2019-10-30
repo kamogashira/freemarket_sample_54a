@@ -96,6 +96,8 @@ GEM
     dotenv-rails (2.7.5)
       dotenv (= 2.7.5)
       railties (>= 3.2, < 6.1)
+    enum_help (0.0.17)
+      activesupport (>= 3.0.0)
     erubis (2.7.0)
     excon (0.67.0)
     execjs (2.7.0)
@@ -354,6 +356,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   dotenv-rails
+  enum_help
   factory_bot_rails
   faker
   fog-aws
