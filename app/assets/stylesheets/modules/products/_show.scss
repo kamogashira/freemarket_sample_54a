@@ -1,0 +1,437 @@
+tr {
+  width: 300px;
+  height: 69px;
+  border: solid 1px $red;
+}
+.item {
+  width: 700px;
+  min-height: 700px;
+  margin: 0 auto;
+  margin-top: 40px;
+  padding: 24px 40px 40px;
+  background-color: $white;
+  &__name{
+    width: 620px;
+    height: 33px;
+    color: $black;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  &__content{
+    width: 620px;
+    height: 420px;
+    margin-top: 16px;
+    &__photo{
+      width: 300px;
+      height: 375px;
+      float: left;
+      background-color: $main-background;
+      .main {
+        width: 300px;
+        height: 300px;
+        display:none;
+        &.slick-initialized {
+          display: block;
+        }
+      }
+      .sub {
+        width: 300px;
+        height: 120px;
+        display:none;
+        &.slick-initialized {
+          display: block;
+        }
+      }
+    }
+    &__detail {
+      width: 300px;
+      height: 420px;
+      float: right;
+      th {
+        width: 39%;
+        height:20%;
+        text-align: left;
+        font-size: 14px;
+        background-color: $main-background;
+        padding: 8px;
+        border: solid 1px $litegray;
+      }
+      td {
+        width: 61%;
+        height: 20%;
+        background-color: $white;
+        border: solid 1px $main-background;
+        font-size: 14px;
+        padding: 8px;
+        cursor: pointer;
+        display: table-cell;
+        height: 26;
+        .category::before {
+          font-family: "Font Awesome 5 Free";
+          content: '\f054';
+          font-weight: 900;
+        }
+        .icon-list{
+          display: flex;
+          .icon {
+            margin: 8px 16px 0 0;
+            width:30%;
+          }
+          .good::before {
+            font-family: "Font Awesome 5 Free";
+            content: '\f599';
+            font-size: 16px;
+            font-weight: 900;
+            color: #ef5185;
+            float: left;
+          }
+          .normal::before {
+            font-family: "Font Awesome 5 Free";
+            content: '\f11a';
+            font-size: 16px;
+            font-weight: 900;
+            color: #fba933;
+            float: left;
+          }
+          .bad::before {
+            font-family: "Font Awesome 5 Free";
+            content: '\f119';
+            font-size: 16px;
+            font-weight: 900;
+            color: #6ab5d8;
+            float: left;
+          }
+        }
+      }
+    }
+  }
+  &__amount {
+    width: 620px;
+    height: 50px;
+    margin-top: 24px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    &--price{
+      font-weight: 550;
+      font-size: 50px;
+      margin-right: 16px;
+    }
+    &--tax{
+      font-size: 10px;
+    }
+    &--shipping-fee{
+      font-size: 16px;
+    }
+  }
+  &__buy-btn{
+    width: 620px;
+    height: 60px;
+    margin-top: 16px;
+    font-size: 24px;
+    line-height: 60px;
+    background-color: $red;
+    color: $white;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+  }
+  &__description {
+    width: 620px;
+    padding-top: 32px;
+    line-height: 1.5;
+    font-size: 18px;
+  }
+  &__buttons {
+    width: 620px;
+    height: 33px;
+    margin-top: 16px;
+    &--left {
+      float: left;
+      display: flex;
+      &--like {
+        width: 120px;
+        height: 30px;
+        background-color: $main-background;
+        border-radius: 40px;
+        padding: 8px 16px;
+        font: 400 14px system-ui;
+        text-align: center;
+      }
+      &--report {
+        width: 180px;
+        height: 30px;
+        background-color: $main-background;
+        border-radius: 40px;
+        padding: 8px 16px;
+        font: 400 13px system-ui;
+        text-align: center;
+        margin-left: 16px;
+      }
+    }
+  
+    &--right {
+      float: right;
+      font-size: 14px;
+      margin: 8px 0 0 8px;
+      color: #0099e8;
+    }
+  }
+}
+
+.comment {
+  width: 700px;
+  margin: 8px auto;
+  padding: 24px;
+  background-color: $white;
+  &__list{
+    margin-top: 1.5em;
+    &__box{
+      margin-top: 1.5em;
+      position: relative;
+      @include clearfix();
+      &--user{
+        background-image:url(common/user-icon.svg);
+        background-size: contain;
+        width: 40px;
+        height: 40px;
+        float: left;
+        position: relative;
+        top: -20px;
+        background-color: $litegray;
+        border-radius: 50%;
+        overflow: hidden;
+        .user-icon {
+          margin: 10px 0 0 3px;
+        }
+      }
+      &--content{
+        width: 600px;
+        padding: 16px;
+        border-radius: 15px;
+        background-color: #eef0f4;
+        float: right;
+        line-height: 1.5;
+        font: 14px;
+        margin-bottom: 1.5em;
+        &--icons{
+          margin-top: 8px;
+          &--time{
+            float: left;
+            color: $gray;
+            font-size: 14px;
+            &::before {
+              font-family: "Font Awesome 5 Free";
+              content: '\f017';
+            }
+          }
+          &--delete{
+            float: right;
+            color: $gray;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+  p {
+    padding: 8px;
+    font-size: 14px;
+    background-color: #fff6de;
+    line-height: 1;
+  }
+  .input {
+    width: 100%;
+    min-height: 104px;
+    padding: 10px;
+    border: 1px solid $border-color;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-top: 8px;
+    overflow: auto;
+  }
+  .button {
+    width: 100%;
+    min-height: 50px;
+    margin-top: 8px;
+    text-align: center;
+    color: $white;
+    background-color: #aaa;
+  }
+
+}
+.nav {
+  width: 700px;
+  height: 14px;
+  margin: 24px auto 0;
+
+  &--prev{
+    width: 45%;
+    float: left;
+    color: $liteblue;
+    &::before {
+      font-family: FontAwesome;
+      content: '\f053';
+    }
+  }
+  &--next{
+    width: 45%;
+    float: right;
+    color: $liteblue;
+    text-align: right;
+    &::after {
+      font-family: FontAwesome;
+      content: '\f054';
+    }
+  }
+}
+.social-media {
+  width: 700px;
+  height: 138px;
+  background-color: $white;
+  margin: 24px auto;
+  padding: 32px 0 24px;
+  &__box {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    &--facebook {
+      width: 44px;
+      height: 44px;
+      &::before {
+        font-family: FontAwesome;
+        content: '\f082';
+        font-size: 45px;
+        border-radius: 4px;
+        color: #305097;
+      }
+    }
+    &--twitter {
+      width: 44px;
+      height: 44px;
+      &::before {
+        font-family: FontAwesome;
+        content: '\f081';
+        font-size: 45px;
+        border-radius: 4px;
+        color: #00aced ;
+      }
+    }
+    &--pinterest {
+      width: 44px;
+      height: 44px;
+      &::before {
+        font-family: FontAwesome;
+        content: '\f0d3';
+        font-size: 45px;
+        border-radius: 4px;
+        color: #ce0f19;
+      }
+    }
+  }
+}
+.other-items{
+  width: 700px;
+  margin: 0 auto;
+  &__users{
+    &__header {
+      font-size: 22px;
+      margin: 24px 0 8px;
+      color: #0099e8;
+      cursor: pointer;
+      a {
+        font-weight: 600;
+      }
+    }
+    &__content {
+      width: 700px;
+      height: 700px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      &__box {
+        width: 220px;
+        height: 330px;
+        box-shadow: 0 2px 4px rgba(0,0,0,.18);
+        position: relative;
+        margin-bottom: 20px;
+        background-color: $white;
+        &--image{
+          width: 100%;
+          height: 220px;
+        }
+        &--body{
+          width: 100%;
+          height: 110px;
+          background-color: $white;
+          color: $black;
+          font-size: 14px;
+          padding: 12px;
+          &--top {
+            height: 48px;
+          }
+          &--bottom {
+            height: 17px;
+            font-size: 17px;
+            line-height: 28px;
+            display: flex;
+            justify-content: space-between;
+            &--price {
+              font-weight: 600;
+            }
+            &--like {
+              font-weight: 400;
+            }
+          }
+        }
+      }
+    }
+  }
+  &__related{
+    &__header {
+      font-size: 22px;
+      margin: 24px 0 8px;
+      color: #0099e8;
+      cursor: pointer;
+      a {
+        font-weight: 600;
+      }
+    }
+    &__content {
+      width: 700px;
+      height: 700px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+  }
+}
+.bread-crumbs__bottom {
+  border-top: 1px solid $litegray;
+  ul {
+    width: 1020px;
+    margin: 0 auto;
+    padding: 16px 0;
+    li {
+      display: inline-block;
+      font-size: 14px;
+      line-height: 1.2;
+      a {
+        color: $black;
+      }
+      &:last-child {
+        font-weight: 600;
+        &::before {
+          font-family: FontAwesome;
+          content: '\f054';
+          margin: 0 8px;
+          font-size: 9px;
+          color: #888;
+        }
+      }
+    }
+  }
+}

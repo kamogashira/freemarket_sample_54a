@@ -7,4 +7,19 @@ describe ProductsController, type: :controller do
       expect(response).to render_template :index
     end
   end
+
+  #今回はインスタンス変数@productのみ確認済みです。その他のテストコードは別途作成予定です。
+  describe 'GET #show' do
+    it "assigns the requested product to @product" do
+      product = create(:product)
+      get :show, params: { id: product }
+      expect(assigns(:product)).to eq product
+    end
+
+    it "renders the :show template" do
+      product = create(:product)
+      get :show, params: { id: product }
+      expect(response).to render_template :show
+    end
+  end
 end

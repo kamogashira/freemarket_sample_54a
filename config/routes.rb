@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
- devise_for :users,
+  devise_for :users,
   controllers: {
    registrations: 'users/registrations' ,
    omniauth_callbacks: 'users/omniauth_callbacks'}
@@ -19,7 +19,9 @@ Rails.application.routes.draw do
   end
 
   root 'products#index'
-  resources :products, action: :new
+  resources :products, only:[:index, :new, :show] do
+    resources :comments, only:[:create, :show]
+  end
 
   resources :users, action: :index
   resources :user_addresses, only:[:index, :create]

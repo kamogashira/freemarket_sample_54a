@@ -8,8 +8,9 @@ Bundler.require(*Rails.groups)
 
 module FreemarketSample54a
   class Application < Rails::Application
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration should go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded.
+    config.i18n.default_locale = :ja
+    # タイムゾーンを日本時間に設定
+    config.time_zone = 'Asia/Tokyo'
+
   end
 end

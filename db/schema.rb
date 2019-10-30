@@ -12,6 +12,30 @@
 
 ActiveRecord::Schema.define(version: 20191023095837) do
 
+  create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.string   "ancestry"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ancestry"], name: "index_categories_on_ancestry", using: :btree
+  end
+
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "product_id"
+    t.integer  "user_id"
+    t.text     "content",    limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["product_id"], name: "index_comments_on_product_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
+  end
+
   create_table "credit_cards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",     null: false
     t.string   "customer_id", null: false
@@ -21,30 +45,17 @@ ActiveRecord::Schema.define(version: 20191023095837) do
     t.index ["user_id"], name: "index_credit_cards_on_user_id", using: :btree
   end
 
-  create_table "sns_credentials", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "provider"
-    t.string   "uid"
+  create_table "evaluations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
+    t.integer  "product_id"
+    t.integer  "good"
+    t.integer  "normal"
+    t.integer  "bad"
+    t.string   "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-ActiveRecord::Schema.define(version: 20191015041654) do
-
-  create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.string   "ancestry"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["ancestry"], name: "index_brands_on_ancestry", using: :btree
-  end
-
-  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.string   "ancestry"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["ancestry"], name: "index_categories_on_ancestry", using: :btree
+    t.index ["product_id"], name: "index_evaluations_on_product_id", using: :btree
+    t.index ["user_id"], name: "index_evaluations_on_user_id", using: :btree
   end
 
   create_table "product_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -60,12 +71,13 @@ ActiveRecord::Schema.define(version: 20191015041654) do
     t.integer  "price",                          null: false
     t.text     "description",      limit: 65535, null: false
     t.integer  "category_id",                    null: false
-    t.string   "brand_id"
+    t.integer  "brand_id"
     t.integer  "size_id"
-    t.string   "condition",                      null: false
-    t.string   "shipping_charge",                null: false
-    t.string   "shipping_from",                  null: false
-    t.string   "shipping_days",                  null: false
+    t.integer  "condition",                      null: false
+    t.integer  "shipping_charge",                null: false
+    t.integer  "ship_from",                      null: false
+    t.integer  "shipping_days",                  null: false
+    t.integer  "shipping_method",                null: false
     t.integer  "current_status",                 null: false
     t.integer  "buyer_id"
     t.integer  "seller_id"
@@ -84,6 +96,14 @@ ActiveRecord::Schema.define(version: 20191015041654) do
 
   create_table "sizes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sns_credentials", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -119,7 +139,11 @@ ActiveRecord::Schema.define(version: 20191015041654) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "comments", "products"
+  add_foreign_key "comments", "users"
   add_foreign_key "credit_cards", "users"
+  add_foreign_key "evaluations", "products"
+  add_foreign_key "evaluations", "users"
   add_foreign_key "product_images", "products"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "sizes"
