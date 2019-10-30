@@ -10,27 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20191023095837) do
-
-  create_table "credit_cards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id",     null: false
-    t.string   "customer_id", null: false
-    t.string   "card_id",     null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["user_id"], name: "index_credit_cards_on_user_id", using: :btree
-  end
-
-  create_table "sns_credentials", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "provider"
-    t.string   "uid"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-ActiveRecord::Schema.define(version: 20191015041654) do
 
   create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -54,6 +34,15 @@ ActiveRecord::Schema.define(version: 20191015041654) do
     t.datetime "updated_at",               null: false
     t.index ["product_id"], name: "index_comments_on_product_id", using: :btree
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
+  end
+
+  create_table "credit_cards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id",     null: false
+    t.string   "customer_id", null: false
+    t.string   "card_id",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_credit_cards_on_user_id", using: :btree
   end
 
   create_table "evaluations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -82,12 +71,13 @@ ActiveRecord::Schema.define(version: 20191015041654) do
     t.integer  "price",                          null: false
     t.text     "description",      limit: 65535, null: false
     t.integer  "category_id",                    null: false
-    t.string   "brand_id"
+    t.integer  "brand_id"
     t.integer  "size_id"
     t.integer  "condition",                      null: false
     t.integer  "shipping_charge",                null: false
     t.integer  "ship_from",                      null: false
     t.integer  "shipping_days",                  null: false
+    t.integer  "shipping_method",                null: false
     t.integer  "current_status",                 null: false
     t.integer  "buyer_id"
     t.integer  "seller_id"
@@ -98,7 +88,6 @@ ActiveRecord::Schema.define(version: 20191015041654) do
     t.integer  "like"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
-    t.integer  "shipping_method"
     t.index ["buyer_id"], name: "index_products_on_buyer_id", using: :btree
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
     t.index ["seller_id"], name: "index_products_on_seller_id", using: :btree
@@ -107,6 +96,14 @@ ActiveRecord::Schema.define(version: 20191015041654) do
 
   create_table "sizes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sns_credentials", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -142,9 +139,9 @@ ActiveRecord::Schema.define(version: 20191015041654) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "credit_cards", "users"
   add_foreign_key "comments", "products"
   add_foreign_key "comments", "users"
+  add_foreign_key "credit_cards", "users"
   add_foreign_key "evaluations", "products"
   add_foreign_key "evaluations", "users"
   add_foreign_key "product_images", "products"
