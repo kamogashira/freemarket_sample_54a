@@ -33,7 +33,7 @@ $(function(){
     .done(function(data){
       var html = buildHTML(data);
       $('.comment__list').append(html)
-      $('.input').val('')
+      $('#new-comment')[0].reset();
     })
     .fail(function(){
       alert('error');
