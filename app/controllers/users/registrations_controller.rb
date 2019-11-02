@@ -1,4 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  layout 'registrations_application'
   
   def new
     @user = User.new

@@ -37,72 +37,72 @@
  
   = form_for @user , url: users_sign_up_phone_path, method: "get", class: "register-group" do |f|
    .form-group
-    .form
+    .form-group_section
      %label{for: "nickname"}ニックネーム
      %span.form-require 必須
      = f.text_field :nickname, class: "usernew", autocomplete: "nickname", placeholder: "例）メルカリ太郎"
 
-    .form
+    .form-group_section
      %label{for: "email"}メールアドレス
      %span.form-require 必須
      = f.email_field :email, class: "usernew", autocomplete: "email", placeholder: "PC・携帯どちらでも可", required:""
 
-    .form
+    .form-group_section
      %label{for: "password"}パスワード
      %span.form-require 必須
      = f.password_field :password, class: "usernew", autocomplete: "passward", placeholder: "6文字以上", required:""
 
-    .form
+    .form-group_section
      %label{for: "password"}パスワード（確認）
      %span.form-require 必須
      = f.password_field :password_confirmation, class: "usernew", autocomplete: "password", placeholder: "6文字以上", required:""
 
-    .form
+    .form-group_section
      %label{for: "confirmation"}本人確認
      %p 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
    
-    .form
+    .form-group_section
      %label{for: "name"}お名前（全角）
      %span.form-require 必須
-    .form_flex-name
-     = f.text_field :first_name, class: "first",placeholder: "例）山田"
-     = f.text_field :last_name, class: "last",placeholder: "例）綾"
+    .form-group_flex-name
+     = f.text_field :first_name, class: "first_name",placeholder: "例）山田"
+     = f.text_field :last_name, class: "last_name",placeholder: "例）綾"
    
-    .form
+    .form-group_section
      %label{for: "namekana"}お名前カナ（全角）
      %span.form-require 必須
-    .form_flex-name
-     = f.text_field :first_name_kana, class: "first", placeholder: "例）ヤマダ"
-     = f.text_field :last_name_kana, class: "last",  placeholder: "例）アヤ"
+    .form-group_flex-name
+     = f.text_field :first_name_kana, class: "first_name", placeholder: "例）ヤマダ"
+     = f.text_field :last_name_kana, class: "last_name",  placeholder: "例）アヤ"
    
-    .form
+    .form-group_section
      %label{for: "birthday"}生年月日
      %span.form-require 必須
      
-    .form-select
-     = raw sprintf(f.date_select( :birthday,
+    .form-group_select
+     = raw sprintf(f.date_select(:birthday,
+     class: "birthday",
      prompt:"--",
-     class:"select-birthday",
      use_month_numbers:true,
      start_year:Time.now.year,
      end_year:1900,
      date_separator:'%s'),'年','月')+'日'
    
-    .form_text
+    .form-group_text
      %p ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
   
-    .form
+    .form-group_section
      = recaptcha_tags
      -if flash[:recaptcha_error]
       %span.error
        選択してください
 
-    .form_next
+    .form-group_next
      %p「次へ進む」のボタンを押すことにより、
      = link_to "利用規約", "https://www.mercari.com/jp/tos_list/"
      に同意したものとみなします。
 
-    .form
+    .form-group_section
      = f.submit "次へ進む", class: 'next_btn'
     
      = link_to "本人登録について", "https://www.mercari.com/jp/help_center/article/423/"

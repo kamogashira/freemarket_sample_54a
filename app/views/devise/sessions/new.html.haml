@@ -21,17 +21,17 @@
     = link_to "Googleでログイン", user_google_oauth2_omniauth_authorize_path, method: :post
 
   = form_for user_session_path, class: "session-form" do |f|
-   .form
+   .form-group
     = f.email_field :email, class: "form_input", autocomplete: "email", placeholder: "メールアドレス"
 
-   .form
+   .form-group
     = f.password_field :password, class: "form_input", autocomplete: "current-password", placeholder: "パスワード"
 
-   .form
+   .form-group
     = recaptcha_tags
   
-   .form
+   .form-group
     = f.submit "ログイン", class: "login-btn"
    
-   .form_forget
+   .form-forget
     = link_to "パスワードをお忘れの方", "https://www.mercari.com/jp/password/reset/start/", class: "forget_link"

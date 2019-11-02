@@ -44,7 +44,7 @@
            width: 350px;
            margin: 0 auto;
            text-align:left;
-           .form{
+           &_section{
            padding-top:32px;
            margin: 0 auto;
            background: #fff;
@@ -64,9 +64,10 @@
             text-decoration:none;
             background: #fff;
            }
+          }
             &_flex-name{
                display: inline-flex;
-               .first,.last{
+              input.first_name,input.last_name{
                   background: #fff;
                   margin: 0 auto;
                   padding: 10px 16px 8px;
@@ -77,8 +78,8 @@
                   margin-top: 3px;
                   font-size:18px;
                   margin-right:8px;
-                }
-            }
+                 }
+             }
             &_text{
               margin-top:8px;
               p{
@@ -125,7 +126,7 @@
                 margin-top: 10px;
             
             }
-            &-select{
+            &_select{
               margin: 0 0 0 8px;
               select{
                 padding: 0 10px;
@@ -157,7 +158,6 @@
           }
         }
      
-    }
 }
 
 
@@ -213,7 +213,7 @@ button.next_btn{
     padding: 40px 40px 64px;
     background: #fff;
     margin: 0 auto;
-     .form{
+     &_form{
        width: 350px;
        margin: 0 auto;
        padding-top:32px;
