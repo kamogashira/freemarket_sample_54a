@@ -4,8 +4,6 @@ class ApplicationController < ActionController::Base
   before_action :set_category_brand
   protect_from_forgery with: :null_session
 
-  # before_action :basic_auth
-
   private
 
   def configure_permitted_paramaters

@@ -16,7 +16,6 @@ class CardsController < ApplicationController
       metadata: {user_id: current_user.id}
       )
       @card = CreditCard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
-      # binding.pry
       if @card.save!
         redirect_to users_sign_up_complete_path
       else
