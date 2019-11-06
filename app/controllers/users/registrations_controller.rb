@@ -22,10 +22,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session[:user_params] = user_params
     @user = User.new
     @user.build_user_address
-    # unless verify_recaptcha(params[:recaptcha_token])
-    #   flash.now[:recaptcha_error] = I18n.t('recaptcha.errors.verification_failed')
-    #   return render action: :new
-    # end
+    unless verify_recaptcha(params[:recaptcha_token])
+      flash.now[:recaptcha_error] = I18n.t('recaptcha.errors.verification_failed')
+      return render action: :new
+    end
   end
 
   def address

@@ -87,10 +87,10 @@
      %p ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
   
     .form-group_section
-    -#  = recaptcha_tags
-    -#  -if flash[:recaptcha_error]
-    -#   %span.error
-    -#    選択してください
+     = recaptcha_tags
+     -if flash[:recaptcha_error]
+      %span.error
+       選択してください
 
     .form-group_next
      %p「次へ進む」のボタンを押すことにより、
