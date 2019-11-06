@@ -12,18 +12,18 @@ class User < ApplicationRecord
   has_one :delivery_address
   has_one :credit_card
 
-  validates :nickname,                presence: true, length: {maximum: 20}
-  validates :email,                   presence: true, uniqueness: true
-  validates :password,                presence: true, length: {minimum: 6, maximum: 128}
-  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,128}+\z/i }
-  validates :last_name,               presence: true
-  validates :first_name,              presence: true
-  validates :last_name_kana,          presence: true
-  validates :first_name_kana,         presence: true
-  validates :birthday,                presence: true
+  # validates :nickname,                presence: true, length: {maximum: 20}
+  # validates :email,                   presence: true, uniqueness: true
+  # validates :password,                presence: true, length: {minimum: 6, maximum: 128}
+  # validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,128}+\z/i }
+  # validates :last_name,               presence: true
+  # validates :first_name,              presence: true
+  # validates :last_name_kana,          presence: true
+  # validates :first_name_kana,         presence: true
+  # validates :birthday,                presence: true
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
+         :recoverable, :rememberable,
          :omniauthable, omniauth_providers: %i[facebook google_oauth2]
   
          def self.find_oauth(auth)

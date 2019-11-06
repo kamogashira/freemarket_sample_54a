@@ -67,7 +67,7 @@
      
     .form-group_select
      != sprintf(f.date_select(:birthday,
-    -#  with_css_classes:'select-birthday',
+     with_css_classes:'select-birthday',
      class: "birthday",
      prompt:"--",
      use_month_numbers:true, 
@@ -79,10 +79,10 @@
      %p ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
   
     .form-group_section
-     = recaptcha_tags
-     -if flash[:recaptcha_error]
-      %span.error
-       選択してください
+    -#  = recaptcha_tags
+    -#  -if flash[:recaptcha_error]
+    -#   %span.error
+    -#    選択してください
        
     .form_next
      %p「次へ進む」のボタンを押すことにより、
