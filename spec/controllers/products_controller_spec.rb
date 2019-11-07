@@ -13,7 +13,7 @@ describe ProductsController, type: :controller do
     it "assigns the requested product to @product" do
       category = create(:category)
       prefecture = create(:prefecture)
-      product = create(:product)
+      product = create(:product, category_id: category.id)
       get :show, params: { id: product }
       expect(assigns(:product)).to eq product
     end
