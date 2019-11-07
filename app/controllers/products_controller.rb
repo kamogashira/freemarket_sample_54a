@@ -23,17 +23,9 @@ class ProductsController < ApplicationController
   def update
     product = Product.find(params[:id])
     # if product.seller == current_user.id  //ログイン機能実装後に追記
-    product.update(product_params)
 
-    # # 商品のカテゴリーを更新
-    # parent = Category.find(params.require(:product)[:category_id])
-    # selected_grandchildren = Category.where(name: params[:grandchild_id])
-    # selected_grandchildren.each do |grandchild|
-    #   if grandchild.parent = parent
-    #     @new_category_id = grandchild.id
-    #   end
-    # end
-    # product.update(category_id: @new_category_id)
+     # 商品のサイズとブランド以外を更新
+    product.update(product_params)
 
     # 商品のサイズを更新
     if params.require(:product)[:size_id] != nil
@@ -119,7 +111,6 @@ class ProductsController < ApplicationController
   def get_category_children
     # 選択された親カテゴリーに紐付く子カテゴリーの配列を取得
     @category_children = Category.find_by(id: "#{params[:parent_id]}", ancestry: nil).children
-    # binding.pry
   end
 
   # 子カテゴリーが選択された後に動くアクション/formatはjson

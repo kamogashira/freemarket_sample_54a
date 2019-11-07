@@ -101,8 +101,7 @@ $(document).on('turbolinks:load', function(){
   });
   // 子カテゴリー選択後のイベント
   $('.content-form__category').on('change', '#child_category', function(){
-    // var childId = $('#child_category option:selected').data('category'); //選択された子カテゴリーのidを取得
-    var childId = document.getElementById('child_category').value;
+    var childId = document.getElementById('child_category').value; //選択された子カテゴリーのidを取得
     if (childId != "---"){ //子カテゴリーが初期値でないことを確認
       $.ajax({
         url: '/products/get_category_grandchildren',
