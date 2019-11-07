@@ -11,6 +11,8 @@ describe ProductsController, type: :controller do
   #今回はインスタンス変数@productのみ確認済みです。その他のテストコードは別途作成予定です。
   describe 'GET #show' do
     it "assigns the requested product to @product" do
+      category = create(:category)
+      prefecture = create(:prefecture)
       product = create(:product)
       get :show, params: { id: product }
       expect(assigns(:product)).to eq product
@@ -20,6 +22,14 @@ describe ProductsController, type: :controller do
       product = create(:product)
       get :show, params: { id: product }
       expect(response).to render_template :show
+    end
+  end
+
+  describe 'GET #edit' do
+    it "renders the :edit template" do
+      product = create(:product)
+      get :edit, params: { id: product }
+      expect(response).to render_template :edit
     end
   end
 end
