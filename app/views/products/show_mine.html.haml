@@ -1,0 +1,142 @@
+.item
+  .item__name
+    メルカリサンプル
+  .item__content
+    .item__content__photo
+      %ul.main-window
+        - @product_images.each do |product_image|
+          %li
+            = image_tag product_image.image, alt: "画像", size: "300x300"
+        -#仮置き画像
+        %li
+          = image_tag "mypage/mypage-icon-mercari.png", alt: "画像", size: "300x300"
+        %li
+          = image_tag "mypage/mypage-icon-mercari.png", alt: "画像", size: "300x300"
+        %li
+          = image_tag "mypage/mypage-icon-mercari.png", alt: "画像", size: "300x300"
+        %li
+          = image_tag "mypage/mypage-icon-mercari.png", alt: "画像", size: "300x300"
+        %li
+          = image_tag "mypage/mypage-icon-mercari.png", alt: "画像", size: "300x300"
+
+      %ul.sub-window
+        - @product_images.each do |product_image|
+          %li
+            = image_tag product_image.image, alt: "画像", size: "60x60"
+        -#仮置き画像
+        %li
+          = image_tag "mypage/mypage-icon-mercari.png", alt: "画像", size: "60x60"
+        %li
+          = image_tag "mypage/mypage-icon-mercari.png", alt: "画像", size: "60x60"
+        %li
+          = image_tag "mypage/mypage-icon-mercari.png", alt: "画像", size: "60x60"
+        %li
+          = image_tag "mypage/mypage-icon-mercari.png", alt: "画像", size: "60x60"
+        %li
+          = image_tag "mypage/mypage-icon-mercari.png", alt: "画像", size: "60x60"
+
+    %table.item__content__detail
+      %tr
+        %th 出品者
+        %td
+          = @product.seller.nickname
+          .icon-list
+            .icon.good
+              = @product.seller.evaluation.good
+            .icon.normal
+              = @product.seller.evaluation.normal
+            .icon.bad
+              = @product.seller.evaluation.bad
+      %tr
+        %th カテゴリー
+        %td
+          = link_to " " do
+            .category
+              = @product.category.root.name
+          = link_to " " do
+            .category
+              = @product.category.parent.name
+          = link_to " " do
+            .category
+              = @product.category.name
+      %tr
+        %th ブランド
+        %td 
+          - if @product.brand_id.present?
+            = link_to " " do
+              = @product.brand.name
+
+      -if @product.size_id.present?
+        %tr
+          %th 商品のサイズ
+          %td 
+            = @product.size.name
+              
+      %tr
+        %th 商品の状態
+        %td 
+          = @condition
+      %tr
+        %th 配送料の負担
+        %td 
+          = @shipping_charge
+      %tr
+        %th 配送の方法
+        %td 
+          = @shipping_method
+      %tr
+        %th 配送元地域
+        %td
+          = link_to " " do
+            = @ship_from
+      %tr
+        %th 配送日の目安
+        %td 
+          = @shipping_days
+            
+
+            
+          
+  .item__amount
+    .item__amount--price
+      = number_to_currency(@price, :unit => "￥", :precision => 0)
+    .item__amount--tax
+      （税込）
+    .item__amount--shipping-fee
+      送料込み
+  -# .item__buy-btn
+  -#   購入画面に進む
+  .item__description
+    = @product.description
+
+  .item__buttons
+    .item__buttons--left
+      .item__buttons--left--like
+        = fa_icon "heart-o",class: "menu__icon"
+        いいね！
+      .item__buttons--left--report
+        = fa_icon "flag-o",class: "menu__icon"
+        不適切な商品の報告
+    .item__buttons--right
+      = fa_icon "lock",class: "menu__icon"
+      あんしん・あんぜんへの取り組み
+
+.buttons
+  =link_to edit_product_path(@product) do
+    .buttons--red
+      商品の編集
+  %p or
+  =link_to "" do
+    .buttons--gray
+      出品を一旦停止する
+  =link_to "" do
+    .buttons--gray
+      この商品を削除する
+
+.comment
+  .comment__list
+  .comment__box
+    = form_for [@product, @comment], html: { id: 'new-comment' } do |f|
+      %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      = f.text_area :content, class: "input"
+      = f.submit "コメントする", class: "button"
