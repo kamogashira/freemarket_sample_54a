@@ -36,13 +36,13 @@
   
  .new-credit
   = form_tag(cards_path, method: :post, id: 'charge-form',  name: "inputForm") do
-   .form
+   .new-credit_form
     %label カード番号
     %span.form-require 必須
     %br
      = text_field_tag "number", "", class: "number", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
    
-   .form
+   .new-credit_form
     %label 有効期限
     %span.form-require 必須
     %br
@@ -78,7 +78,7 @@
     %span 年
     %br
    
-   .form
+   .new-credit_form
     %label セキュリティコード
     %span.form-require 必須
     = text_field_tag "cvc", "", class: "cvc", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc"
@@ -86,6 +86,6 @@
      %i.fa.fa-question-circle 
       カード裏面の番号とは？
 
-   .form 
+   .new-credit_form 
     #card_token
      = submit_tag "次へ進む", id: "token_submit"

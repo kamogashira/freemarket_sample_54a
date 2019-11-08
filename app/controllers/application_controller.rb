@@ -4,8 +4,6 @@ class ApplicationController < ActionController::Base
   before_action :set_category_brand
   protect_from_forgery with: :null_session
 
-  # before_action :basic_auth
-
   private
 
   def configure_permitted_paramaters
@@ -24,7 +22,8 @@ class ApplicationController < ActionController::Base
 
   def set_category_brand
     @parents_category = Category.all.order("id ASC").limit(13)
-    @parents_brand = Brand.all.order("id ASC").limit(4)
+    #2440:シャネル  3802:ナイキ  6142:ルイ ヴィトン  6758:シュプリーム  218:アディダス
+    @parents_brand = Brand.where(id:[2440,3802,6142,6758,218])
   end
 
 end

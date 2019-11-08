@@ -24,14 +24,14 @@
    .form-group
     = f.email_field :email, class: "form_input", autocomplete: "email", placeholder: "メールアドレス"
 
-   .form-group_section
+   .form-group
     = f.password_field :password, class: "form_input", autocomplete: "current-password", placeholder: "パスワード"
 
-   .form-group_section
+   .form-group
     -# = recaptcha_tags
   
-   .form-group_section
+   .form-group
     = f.submit "ログイン", class: "login-btn"
    
-   .form_forget
+   .form-forget
     = link_to "パスワードをお忘れの方", "https://www.mercari.com/jp/password/reset/start/", class: "forget_link"
