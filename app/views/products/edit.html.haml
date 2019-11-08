@@ -161,11 +161,11 @@
     .product--footer__view
       %nav
       %li
-        %a{ :href => "https://www.mercari.com/jp/privacy/" }プライバシーポリシー
+        =link_to "プライバシーポリシー", "https://www.mercari.com/jp/privacy/" 
       %li
-        %a{ :href => "https://www.mercari.com/jp/privacy/" }メルカリ利用規約
+        =link_to "メルカリ利用規約", "https://www.mercari.com/jp/privacy/"
       %li
-        %a{ :href => "https://www.mercari.com/jp/tokutei/" }特定商取引に関する表記
+        =link_to "特定商取引に関する表記", "https://www.mercari.com/jp/tokutei/"
     .product--footer__view__logo
       =link_to ""
       = image_tag "registrations_page/logo-gray.svg", size: '80x65', alt:"mercari" do end
