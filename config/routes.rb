@@ -1,14 +1,24 @@
 Rails.application.routes.draw do
   devise_for :users,
   controllers: {
+   sessions: 'users/sessions',
    registrations: 'users/registrations' ,
    omniauth_callbacks: 'users/omniauth_callbacks'}
    
-  resources :cards, only:[:index, :new, :create] do
+   resources :cards, only:[:index, :new, :create, :show] do
     collection do
-      post 'pay', to: 'card#pay'
-    end
-  end
+      post 'create', to: 'cards#create'
+      post 'pay', to: 'cards#pay'
+     end
+   end
+ 
+   resources :purchases, only: [:index] do
+     collection do
+       get 'index', to: 'purchases#index'
+       post 'pay', to: 'purchases#pay'
+       get 'done', to: 'purchases#done'
+     end
+   end
   
   devise_scope :user do 
     get 'users/sign_up/SNS' => 'users/registrations#SNS'

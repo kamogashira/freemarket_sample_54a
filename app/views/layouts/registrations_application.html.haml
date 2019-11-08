@@ -1,0 +1,15 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title FreemarketSample54a
+    = csrf_meta_tags
+    
+    = stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload'
+    %link{rel: "stylesheet", href: "https://use.fontawesome.com/releases/v5.11.2/css/all.css"}
+    %script{ src: "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"}
+    %script{src: "https://js.pay.jp/", type: "text/javascript"}
+
+    %body
+    = yield
+    = render "devise/registrations/footer"
