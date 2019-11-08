@@ -4,7 +4,7 @@ FactoryBot.define do
     name              {"Spec-TEST"}
     price             {"10000"}
     description       {"少し傷があります"}
-    category_id       {""}
+    category_id       { category.id }
     brand_id          {""}
     size_id           {""}
     condition         { 0 }

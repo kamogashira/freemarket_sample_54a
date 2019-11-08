@@ -1,7 +1,15 @@
 FactoryBot.define do
   factory :category do
-    id                { 158 }
-    name              {"サングラス/メガネ"}
-    ancestry          { '1/143' }
+    name {"レディース"}
+
+    factory :category_child do |f|
+      f.name {"トップス"}
+      f.parent {FactoryBot.create(:category)}
+      
+      factory :category_grandchild do |f|
+        f.name {"半袖"}
+        f.parent {FactoryBot.create(:category_child)}
+      end
+    end
   end
 end
