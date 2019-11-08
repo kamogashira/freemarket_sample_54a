@@ -1,0 +1,56 @@
+.purchase{
+    background:#f5f5f5;
+    &_show{
+      width:700px;
+      margin: 0 auto;
+      background: #fff;
+       &_view{
+        font-size: 22px;
+        padding: 10px;
+        text-align: center;
+        border-bottom: 1px solid #ccc;
+        background: #fff;
+        margin: 0 auto;
+           h2.purchase_view_title{
+            font-weight: bold;
+            background: #fff;
+            }
+        }
+    }
+    &_option{
+        width: 700px;
+        margin: 0 auto;
+        border-bottom: 1px solid #ccc;
+        background: #fff;
+        padding:60px 0 30px 0;
+        &_creditcards{
+            width: 300px;
+            margin: 0 auto;
+            &_info{
+            font-size:18px;
+            margin-bottom: 10px;
+            text-align: left;
+            label{
+                font-size:18px;  
+                }
+            }
+        }
+    }
+    &_next{
+        width:700px;
+        margin: 0 auto;
+        background: #fff;
+    &_btn{
+        margin: 0 auto;
+        width: 300px;
+        button{
+                background: #ea352d;
+                border: 1px solid #ea352d;
+                color: #fff;
+                height:50px;
+                width: 300px;
+                margin:20px 0 60px 0;
+                }
+            }
+        }
+    }

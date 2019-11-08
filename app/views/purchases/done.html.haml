@@ -1,0 +1,30 @@
+.register-header
+ .register-header_content
+  %h1
+   %a
+    = image_tag "top_page/header-mercari.svg", size: '180x50', alt:"mercari"
+
+.purchase
+ .purchase_notification
+  .purchase_notification_sending
+   %i.far.fa-clock 発送をお待ち下さい。
+   %p.notice 出品者からの発送通知をお待ちください。
+   
+  .purchase_notification_view
+   %h2.purchase_view_title 購入が完了しました
+  
+  .purchase_notification_price
+   %li.yen ¥1,200 
+   %li 送料込み
+
+  .purchase_notification_form
+   .purchase_notification_form_base
+    - @useraddress.each do |useraddress|
+     %label 配送先
+     .purchase-postal
+      〒
+      = useraddress.postal_code
+      %br
+      = useraddress.prefecture.name + useraddress.address_city + useraddress.address_street + useraddress.address_building
+      %br
+      = current_user.nickname

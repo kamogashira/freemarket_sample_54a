@@ -20,7 +20,7 @@
     = image_tag "registrations_page/g-icon.png", size: '20x20', alt:"google"
     = link_to "Googleでログイン", user_google_oauth2_omniauth_authorize_path, method: :post
 
-  = form_for user_session_path, class: "session-form" do |f|
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
    .form-group
     = f.email_field :email, class: "form_input", autocomplete: "email", placeholder: "メールアドレス"
 

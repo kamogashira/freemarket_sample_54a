@@ -23,4 +23,42 @@ class CardsController < ApplicationController
       end
     end
   end
+
+  def show #Cardのデータpayjpに送り情報を取り出します
+    card = CreditCard.where(user_id: current_user.id).first
+    if card.blank?
+      redirect_to action: "new"
+    else
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @default_card_information = customer.cards.retrieve(card.card_id)
+      @card_brand = @default_card_information.brand    
+      case @card_brand
+      when "Visa"
+        @card_src = "visa.svg"
+      when "JCB"
+        @card_src = "jcb.svg"
+      when "MasterCard"
+        @card_src = "master-card.svg"
+      when "American Express"
+        @card_src = "american_express.svg"
+      when "Diners Club"
+        @card_src = "dinersclub.svg"
+      when "Discover"
+        @card_src = "discover.svg"
+      end
+    end
+  end
+
+  def delete #PayjpとCardデータベースを削除します
+    card = CreditCard.where(user_id: current_user.id).first
+    if card.blank?
+    else
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      customer.delete
+      card.delete
+    end
+      redirect_to action: "new"
+  end
 end

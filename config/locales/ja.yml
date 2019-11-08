@@ -23,6 +23,7 @@ ja:
         immediately:               1〜2日で発送
         a_few_days:                2〜3日で発送
         four_to_seven_days:        4〜7日で発送
+        
   date:
     formats:
       default: "%Y/%m/%d"
@@ -39,7 +40,6 @@ ja:
       - :year
       - :month
       - :day
-
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
