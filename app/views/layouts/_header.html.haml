@@ -44,24 +44,24 @@
                 %li
                   = link_to "ブランド一覧", ""
                     
-
-      .wrapper__content__bottom--right
-        .liked_items
-          -#ログイン時
-          = link_to "" do
-            = fa_icon "heart-o",class: "menu__icon"
+      -if user_signed_in? && current_user 
+        .wrapper__content__bottom--right
+          .liked_items
+            = link_to "" do
+              = fa_icon "heart-o",class: "menu__icon"
             いいね！一覧
-        .news
-          = fa_icon "bell-o",class: "menu__icon"
-          お知らせ
-        .todo
-          = fa_icon "check",class: "menu__icon"
-          やることリスト
-        .mypage
-          = link_to "マイページ", users_path, class: "menu__mypage"
-          =image_tag "top_page/icon-avater.png", size: '32x32', class: "avater", alt:"avater"
-        -# -#非ログイン時
-        -# .sign-up
-        -#   新規会員登録
-        -# .log-in
-        -#   ログイン
+          .news
+            = fa_icon "bell-o",class: "menu__icon"
+            お知らせ
+          .todo
+            = fa_icon "check",class: "menu__icon"
+            やることリスト
+          .mypage
+            = link_to "マイページ", users_path, class: "menu__mypage"
+            =image_tag "top_page/icon-avater.png", size: '32x32', class: "avater", alt:"avater"
+      -else
+        .wrapper__content__bottom--right
+          .log-in
+            = link_to "ログイン", "/users/sign_in"
+          .sign-up
+            = link_to "新規会員登録", "/users/sign_up/index"

@@ -53,8 +53,8 @@
       %label{for: "prefecture_code"}都道府県
       %span.form-require 必須
       %br
-      = fa_icon "chevron-down" , class: "form_icon"
       = u.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "--"}, {class: "usernew"}
+      = fa_icon "chevron-down" , class: "form_icon"
     
      .form-group_section
       %label{for: "address_city"}市町村

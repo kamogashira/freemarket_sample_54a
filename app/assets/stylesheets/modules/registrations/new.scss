@@ -64,6 +64,25 @@
             text-decoration:none;
             background: #fff;
            }
+           select.usernew{
+            padding: 0 10px;
+            width: 340px;
+            height: 45px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+            background: #fff;
+            z-index: 1;
+            -webkit-appearance: none;
+            }
+            .form_icon{
+              position: absolute;
+              left: 300px;
+              top: 66px;
+              z-index: 3;
+              color: #888;
+              font-size: 20px;
+              display:inline-block;
+            }
           }
             &_flex-name{
                display: inline-flex;
@@ -176,36 +195,6 @@ a.phone{
   background: #fff;
   }
 
-// address.html.hamlと関連
-select.usernew{
-  padding: 0 10px;
-  width: 340px;
-  height: 45px;
-  border-radius: 3px;
-  border: 1px solid #ccc;
-  background: #fff;
-  z-index: 1;
-  -webkit-appearance: none;
-}
-.form_icon{
-  position: absolute;
-  left: 300px;
-  top: 66px;
-  z-index: 3;
-  color: #888;
-  font-size: 20px;
-  display:inline-block;
-}
-
-button.next_btn{
-    background: #ea352d;
-    width: 340px;
-    height: 45px;
-    border-radius: 3px;
-    border: solid 1px #ea352d;
-    color:#fff;
-    font-size: 15px;
-}
 
 // complete.html.hamlと関連
 .register_create{

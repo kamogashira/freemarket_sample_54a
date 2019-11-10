@@ -45,12 +45,12 @@
     .form-group_section
      %label{for: "password"}パスワード
      %span.form-require 必須
-     = f.password_field :password, class: "usernew", autocomplete: "passward", placeholder: "6文字以上", required:""
+     = f.password_field :password, class: "usernew", autocomplete: "passward", placeholder: "7文字以上", required:""
 
     .form-group_section
      %label{for: "password"}パスワード（確認）
      %span.form-require 必須
-     = f.password_field :password_confirmation, class: "usernew", autocomplete: "password", placeholder: "6文字以上", required:""
+     = f.password_field :password_confirmation, class: "usernew", autocomplete: "password", placeholder: "7文字以上", required:""
 
     .form-group_section
      %label{for: "confirmation"}本人確認
