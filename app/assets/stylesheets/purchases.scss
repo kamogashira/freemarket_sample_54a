@@ -1,0 +1,199 @@
+
+// index.html.hamlと関連
+.purchase{
+    background:#f5f5f5;
+    &_container{
+      width:700px;
+      margin: 0 auto;
+      background: #fff;
+       &_view{
+        font-size: 22px;
+        padding: 32px;
+        text-align: center;
+        border-bottom: 1px solid #ccc;
+        background: #fff;
+        margin: 0 auto;
+        h2{
+          font-weight: bold;
+          background: #fff;
+          }
+        }
+      }
+      form{
+        width:700px;
+        margin: 0 auto;
+        background: #fff;
+          .purchase_container_form{
+          padding: 28px;
+          border-bottom: 1px solid #ccc;
+          background: #fff;
+          margin: 0 auto;
+          &_base{
+            width: 350px;
+            margin: 0 auto;
+            button.purchase_btn{
+              background: #ea352d;
+              margin: 20px 0;
+              color:#fff;
+              font-size: 15px;
+              width: 340px;
+              height: 45px;
+              line-height: 45px;
+            }
+            button.point_btn{
+              background:gray;
+              margin: 20px 0;
+              color:#fff;
+              font-size: 15px;
+              width: 340px;
+              height: 45px;
+              line-height: 45px;
+            }
+            &_product{
+              display:  inline-block; 
+              margin:1rm 2rm 0 10px;
+              left: 50px;
+              font-weight:bold;
+            }
+            &_price{
+              margin-top: 10px;
+              text-align: center;
+              list-style: none;
+                li{
+                  margin-left:10px;
+                  display:  inline-block;
+                }
+                li.yen{
+                  font-weight:bold;
+                  font-size:20px;
+              }
+            }
+            &_pay{
+              font-weight: bold;
+              font-size: 24px;
+              margin:5px 0;
+              display:flex;
+              justify-content: space-between;
+              list-style: none;
+                li{
+                  font-weight: bold;
+                  }
+              }
+            }
+        }
+      .purchase_container_address{
+      width:700px;
+      margin: 0 auto;
+      background: #fff;
+      border-bottom: 1px solid #ccc;
+          &_profile{
+        width: 400px;
+        padding: 30px;
+        text-align: left;
+        background: #fff;
+        margin: 0 auto;
+            label{
+              font-size:15px;
+              font-weight:bold;
+            }
+              .purchase-postal{
+                 font-size:15px;
+              }
+              .purchase-link{
+                text-align:right;
+                font-size:14px;
+                margin:5px 0;
+               a{
+                color: #0095EE;  
+              }
+             }
+            }
+          }
+    .purchase_container_creditcard{
+      width:700px;
+      margin: 0 auto;
+      background: #fff;
+              &_number{
+                width:400px;
+                font-size: 22px;
+                padding: 30px;
+                background: #fff;
+                margin: 0 auto;
+                label{
+                  text-align: left;
+                  font-size: 15px;
+                }
+                .purchase_info{
+                  text-align: left;
+                  font-size: 14px;
+                }
+               .purchase-link{
+                text-align:right;
+                font-size:14px;
+                a.change-creditcard{
+                margin:10px 0;
+                color: #0095EE;
+                }
+              }
+            }
+          }
+        }
+     }
+
+// done.html.hamlと関連
+.purchase{
+  background:#f5f5f5;
+  &_notification{
+        width:700px;
+        margin: 0 auto;
+        background: #fff;
+        &_sending{
+          background: #FFCC99;
+          padding: 20px;
+          border-bottom: 1px solid #ccc;
+          text-align: center;
+        i{
+           text-align: center;
+           color:#ea352d;
+           font-weight: bold;
+           font-size:23px;
+           margin:15px;
+        }
+        p.notice{
+          font-weight: bold;
+          text-align: center;
+          font-size:17px;
+          margin:15px;
+        }
+      }
+      &_view{
+        font-size: 22px;
+        padding: 32px;
+        text-align: center;
+        border-bottom: 1px solid #ccc;
+        background: #fff;
+        margin: 0 auto;
+      }
+      &_price{
+        text-align: center;
+        border-bottom: 1px solid #ccc;
+        padding:26px;
+        width: 700px;
+        li{
+          display: inline-block;
+        }
+        li.yen{
+          font-weight: bold;
+          font-size:24px;
+        }
+      }
+      &_form{
+          padding:25px;
+          width:340px;
+          margin: 0 auto;
+        //   &_base{
+
+        //   }
+          }
+        }
+      }

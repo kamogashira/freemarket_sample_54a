@@ -1,0 +1,60 @@
+.register-header
+ .register-header_content
+  %h1
+   %a
+    = image_tag "top_page/header-mercari.svg", size: '180x50', alt:"mercari"
+
+.purchase
+ .purchase_container
+  .purchase_container_view
+   %h2.purchase_view_title 購入内容の確認
+
+ = form_tag(action: :pay, method: :post) do
+  .purchase_container_form
+   .purchase_container_form_base
+    .purchase_container_form_base_product
+     = image_tag "", class: "product-image"
+    .purchase_container_form_base_product
+     商品のタイトル（仮置き）
+   .purchase_container_form_base
+    .purchase_container_form_base_price
+     %li.yen ¥1,200
+     %li 送料込み
+
+   .purchase_container_form_base
+    %button{type: "submit",class: "point_btn"}ポイントはありません
+    .purchase_container_form_base_pay
+     %li 支払い金額
+     %li ¥1,200
+
+   .purchase_container_form_base
+    %button{type: "submit",class: "purchase_btn"}購入する
+ 
+  .purchase_container_address
+   .purchase_container_address_profile
+    - @useraddress.each do |useraddress|
+     %label 配送先
+     .purchase-address
+      〒
+      = useraddress.postal_code
+      %br
+      = useraddress.prefecture.name + useraddress.address_city + useraddress.address_street + useraddress.address_building
+      %br
+      = current_user.nickname
+     .purchase-link
+      = link_to "変更する ＞",class: "change-profile"
+
+  .purchase_container_creditcard
+   .purchase_container_creditcard_number
+    %label 支払い方法
+    %br
+    .purchase_info
+     = "**** **** **** " + @default_card_information.last4
+     %br
+     - exp_month = @default_card_information.exp_month.to_s
+     - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+     = exp_month + " / " + exp_year
+     %br
+     = image_tag "card/#{@card_src}",size: '50x30', alt: @card_brand, id: "card_image"
+     .purchase-link
+      = link_to "変更する ＞",class: "change-creditcard"
