@@ -21,24 +21,27 @@ class ProductsController < ApplicationController
   end
 
   def update
-    product = Product.find(params[:id])
+    @product = Product.find(params[:id])
     # if product.seller == current_user.id  //ログイン機能実装後に追記
 
      # 商品のサイズとブランド以外を更新
-    product.update(product_params)
-
+    @product.update(product_params)
+    params[:product_images][:image].each do |image|
+      @product_images = @product.product_images.create(image: image, product_id: @product.id)
+    end
+    # binding.pry
     # 商品のサイズを更新
     if params.require(:product)[:size_id] != nil
       selected_size = Size.where(name: params[:size_id])
       new_size_id = selected_size.ids
-      product.update(size_id: new_size_id[0])
+      @product.update(size_id: new_size_id[0])
     end
 
     # 商品のブランドを更新
     if params.require(:product)[:brand_id] != nil
       selected_brand = Brand.where(name: params.require(:product)[:brand_id])
       new_brand_id = selected_brand.ids
-      product.update(brand_id: new_brand_id[0])
+      @product.update(brand_id: new_brand_id[0])
     end
 
     redirect_to show_mine_product_path
@@ -129,6 +132,6 @@ end
 
 private
 def product_params
-  params.require(:product).permit(:name, :description, :category_id, :condition, :shipping_charge, :ship_from, :shipping_days, :price)
+  params.require(:product).permit(:name, :description, :category_id, :condition, :shipping_charge, :ship_from, :shipping_days, :price, product_images_attributes:[ :image, :id ])
 end
 

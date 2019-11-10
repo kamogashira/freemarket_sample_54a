@@ -63,3 +63,19 @@ input {
   line-height: 1.5;
   cursor: pointer;
 }
+
+.upload--container--drop-box {
+  &--form {
+    display: none;
+  }
+  & > label {
+    color: #f5f5f5;
+  }
+  &--label {
+    // display:block;
+    // width: 586px;
+    // height: 162px;
+    // cursor: pointer;
+    // margin: 0 auto;
+  }
+}

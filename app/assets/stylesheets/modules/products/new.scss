@@ -196,6 +196,14 @@ h2{
             word-wrap: break-word;
       }
     }
+    label {
+      display:block;
+      top: 50%;
+      left: 16px;
+      right: 16px;
+      height: 35px;
+      cursor: pointer;
+    }
   }
 }
 
