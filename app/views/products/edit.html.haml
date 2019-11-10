@@ -1,0 +1,176 @@
+.product-container
+  .product--header
+    %h1
+      =link_to ""
+      = image_tag "top_page/header-mercari.svg", size: '193x49', alt:"mercari"  
+  .product--main
+    .product--main__body
+      .product--main__body-head
+        %h2
+          商品の情報を入力
+      .product--main__body__form
+        = form_for @product do |f|
+          .product--main__body__form--upload
+            %h3.upload--header
+              出品画像
+              %span.form-require
+                必須
+            %p 最大10枚までアップロードできます
+            .upload--container
+              .upload--container--upload-item
+              .upload--container--drop-box
+                %p.upload--container--drop-box--text
+                  ドラッグアンドドロップ
+                  またはクリックしてファイルをアップロード
+                = f.fields_for :product_images do |i|
+                  = i.label :image, class: "upload--container--drop-box--label"
+                  = i.file_field :image, multiple: true, name: 'product_images[image][]', class: 'upload--container--drop-box--form', type: "file"
+          .product--main__body-content
+            .content-form
+              %label
+                %h3.sell--header
+                  商品名
+                  %span.form-require
+                    必須
+              = f.text_field :name, required: true, class: "name-form", placeholder: "商品名（40字まで）"
+            .content-form
+              %h3.sell--header
+                商品の説明
+                %span.form-require
+                  必須
+              = f.text_area :description, class: "textarea-form", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+
+          .product--main__body-content
+            %h3.content-form-title-gray
+              商品の詳細
+            .content-form-box
+              .content-form__category
+                %label 
+                  カテゴリー
+                  %span.form-require
+                    必須
+                .select-wrap
+                  .select-default
+                    = f.collection_select :parent_id, @category_parent_array, :id, :name, { selected: @product.category.root.id }, { class: 'select-form', id: 'parent_category' }
+                    %i.fas.fa-chevron-down
+                #children_wrapper.select-wrap
+                  .select-default
+                    = f.collection_select :child_id, @category_children_default, :id, :name, { selected: @product.category.parent.id }, {class: 'select-form', id: 'child_category', data: { category: :id }}
+                    %i.fas.fa-chevron-down
+                #grandchildren_wrapper.select-wrap
+                  .select-default
+                    = f.collection_select :category_id, @category_grandchildren_default, :id, :name, { selected: @product.category.id }, {class: 'select-form', id: 'grandchild_category', data: { category: :id }}
+                    %i.fas.fa-chevron-down
+              #brand_wrapper.content-form__status
+                %label 
+                  ブランド
+                  %span.form-arbitrary
+                    任意
+                .select-wrap
+                  .select-default
+                    = f.text_field :brand_id, value: @brand, placeholder: "例）シャネル", id: "brand"
+              .content-form__status
+                %label 
+                  商品の状態
+                  %span.form-require
+                    必須
+                .select-wrap
+                  .select-default
+                    = f.select :condition, options_for_select(Product.conditions.keys.map {|k| [I18n.t("enums.product.condition.#{k}"), k]})
+                    %i.fas.fa-chevron-down
+
+          .product--main__body-content
+            %h3.content-form-title-gray
+              配送について
+            .content-form-box
+              .content-form__status
+                %label 
+                  配送料の負担
+                  %span.form-require
+                    必須
+                .select-wrap
+                  .select-default
+                    = f.select :shipping_charge, options_for_select(Product.shipping_charges.keys.map {|k| [I18n.t("enums.product.shipping_charge.#{k}"), k]})
+                    %i.fas.fa-chevron-down
+              .content-form__status
+                %label 
+                  発送元の地域
+                  %span.form-require
+                    必須
+                .select-wrap
+                  .select-default
+                    = f.collection_select :ship_from, Prefecture.all, :id, :name, {prompt: "--"}
+                    %i.fas.fa-chevron-down
+              .content-form__status
+                %label 
+                  発送までの日数
+                  %span.form-require
+                    必須
+                .select-wrap
+                  .select-default
+                    = f.select :shipping_days, options_for_select(Product.shipping_days.keys.map {|k| [I18n.t("enums.product.shipping_days.#{k}"), k]})
+                    %i.fas.fa-chevron-down
+          .product--main__body-content
+            %h3.content-form-title-gray
+              販売価格(300〜9,999,999)
+            .sell-form
+              %ul.sell-form__status
+                %li.content-form__status
+                  %label
+                    価格
+                    %span.form-require
+                      必須
+                  .content-form__status__price-right
+                    .select-wrap-right-price
+                      %p
+                        ¥
+                    .select-default
+                      = f.text_field :price, placeholder: "例）300", class: "price-form", id: "price_calc"
+                %li.content-form__status
+                  .content-form__status__fee-left
+                    販売手数料(10%)
+                  .content-form__status__fee-right
+                    = number_to_currency(@price_fee, :unit => "￥", :precision => 0)
+
+                %li.content-form__status
+                  .content-form__status__profit-left
+                    販売利益
+                  .content-form__status__profit-right
+                    = number_to_currency(@price_profit, :unit => "￥", :precision => 0)
+                  
+          .product--main__body-content--button
+            .product--main__body-content--button-text
+              %p 
+                =link_to "禁止されている出品", "https://www.mercari.com/jp/help_center/getting_started/prohibited_items/"
+                、
+                =link_to "行為", "https://www.mercari.com/jp/help_center/getting_started/prohibited_conduct/"
+                を必ずご確認ください。
+              %p 
+                またブランド品でシリアルナンバー等がある場合はご記載ください。
+                =link_to "偽ブランドの販売", "https://www.mercari.com/jp/help_center/getting_started/counterfeit_goods/"
+                は犯罪であり処罰される可能性があります。
+              %p 
+                また、出品をもちまして
+                =link_to "加盟店規約", "https://www.mercari.com/jp/seller_terms/"
+                に同意したことになります。
+            = f.submit "変更する", class: 'product--main__body-content--button--red'
+            %p or
+            =link_to "" do
+              .product--main__body-content--button--red
+                出品を一旦停止する
+            =link_to "" do
+              .product--main__body-content--button--gray
+                この商品を削除する
+  .product--footer
+    .product--footer__view
+      %nav
+      %li
+        =link_to "プライバシーポリシー", "https://www.mercari.com/jp/privacy/" 
+      %li
+        =link_to "メルカリ利用規約", "https://www.mercari.com/jp/privacy/"
+      %li
+        =link_to "特定商取引に関する表記", "https://www.mercari.com/jp/tokutei/"
+    .product--footer__view__logo
+      =link_to ""
+      = image_tag "registrations_page/logo-gray.svg", size: '80x65', alt:"mercari" do end
+    %p © 2019 Mercari
