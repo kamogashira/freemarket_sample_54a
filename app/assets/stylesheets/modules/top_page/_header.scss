@@ -163,21 +163,26 @@ header {
         height: 100%;
         min-width: 200px;
         @include responsive-width (60%);
-        display: flex;
+        // display: flex;
+        display: inline-block;
         position: relative;
         @media only screen and (max-width:768px){
           display: none;
         }
         .sign-up {
-          float: left;
-          @include toppage-parts(90%, 53%);
+          float:right;
+          @include toppage-parts(90%, 17%);
           color: $white;
           background-color: $red;
           border-radius: 4px;
+          a{
+            color: $white;
+          }
         }
         .log-in {
-          float: right;
-          @include toppage-parts(90%,45%);
+          float:right;
+          margin-left: 10px;
+          @include toppage-parts(90%,13%);
           color: $liteblue;
           border: 1px solid $liteblue;
           border-radius: 4px;

@@ -18,11 +18,8 @@
 
   %body
   = render partial: "layouts/header", locals: { parents_category: @parents_category, parents_brand: @parents_brand }
-  -# - unless current_page?(root_path)
   .bread-crumbs
     .bread-crumbs__content
       パンくずリスト
   = yield
 = render "layouts/footer"
--# = yield
--# = render "devise/registrations/footer"
