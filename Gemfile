@@ -77,6 +77,7 @@ gem 'mini_magick'
 gem 'faker'
 gem 'enum_help'
 gem 'rails-controller-testing'
+gem 'rails-i18n'
 
 group :production do
   gem 'unicorn', '5.4.1'
