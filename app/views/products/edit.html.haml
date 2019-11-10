@@ -17,10 +17,13 @@
                 必須
             %p 最大10枚までアップロードできます
             .upload--container
+              .upload--container--upload-item
               .upload--container--drop-box
                 %p.upload--container--drop-box--text
                   ドラッグアンドドロップ
                   またはクリックしてファイルをアップロード
+                = f.fields_for :product_images do |i|
+                  = i.label :image, class: "upload--container--drop-box--label"
                   = i.file_field :image, multiple: true, name: 'product_images[image][]', class: 'upload--container--drop-box--form', type: "file"
           .product--main__body-content
             .content-form
