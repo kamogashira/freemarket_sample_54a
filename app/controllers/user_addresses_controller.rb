@@ -1,14 +1,27 @@
 class UserAddressesController < ApplicationController
-  def index
-    @user_address = UserAddress.new
+  def new
+    if UserAddress.where(user_id: params[:user_id]).present?
+      @user_address = UserAddress.find_by(user_id: params[:user_id])
+    else
+      @user_address = UserAddress.new
+    end
   end
 
   def create
     @user_address = UserAddress.new(user_address_params)
     if @user_address.save
-      redirect_to action: :index
+      redirect_to action: :new
     else
-      render "index", notice: "変更できませんでした"
+      render "new"
+    end
+  end
+
+  def update
+    @user_address = UserAddress.find(params[:id])
+    if @user_address.update(user_address_params)
+      redirect_to new_user_user_address_path, notice: "変更されました"
+    else
+      render "new"
     end
   end
 

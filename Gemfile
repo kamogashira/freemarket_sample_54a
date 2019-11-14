@@ -78,6 +78,7 @@ gem 'faker'
 gem 'enum_help'
 gem 'rails-controller-testing'
 gem 'rails-i18n'
+gem 'gretel'
 
 group :production do
   gem 'unicorn', '5.4.1'

@@ -31,26 +31,38 @@ Rails.application.routes.draw do
   root 'products#index'
   resources :products, only:[:index, :new, :show, :edit, :update] do
     resources :comments, only:[:create, :show]
+    
+    #product_idに紐づく商品表示に関するルート作成
     member do
-      get 'show_mine'
+      get 'show_my_product'
     end
-    #Ajaxで動くアクションのルートを作成
+
+    #Ajaxで動くカテゴリー選択アクションのルートを作成
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
       get 'get_size', defaults: { format: 'json' }
     end
+
   end
 
-  resources :users, action: :index
-  resources :user_addresses, only:[:index, :create]
-
-
-  resources "users",only: :logout, path: '' do
+  resources :users, only:[:index, :update] do
     collection do
       get 'logout'
+      get 'selling'
+      get 'trading'
+      get 'completed'
     end
+
+    member do
+      get 'profile'
+    end
+    resources :user_addresses, only:[:new, :create, :update]
+    resources :delivery_addresses, only:[:new, :create, :update]
+
   end
+
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # get 'users' => 'users#index'

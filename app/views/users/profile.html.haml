@@ -1,19 +1,21 @@
 -# headerは切り取ってあります_header.html.hamlにあります
+- breadcrumb :profile
+= render "layouts/breadcrumbs"
 
 .wrapper-profile
-  .container.clearfix
+  .container
     .container__right
       .container__right--title
         %h2 プロフィール
-      = form_for @user, class: "container__right__form" do |f|
+      = form_for @current_user, html: { class: "container__right__form" } do |f|
         .container__right__form--name
           = image_tag "top_page/icon-avater.png", size: "60x60"
-          = f.text_field :nickname, class: "nickname", placeholder: "例）AYA☆セール中"
+          = f.text_field :nickname, value: @user.nickname, class: "nickname", placeholder: "例）AYA☆セール中"
         .container__right__form--content
           = f.text_area :self_introduction, class: "text", placeholder: "例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪"
           %button.container__right__form--btn{type: "submit"} 変更する
       
     .container__left
-      = render partial: "side_bar"
+      = render "side_bar", user: current_user
 
 -# footer(aside入り)は切り取ってあります_footer.html.hamlにあります
