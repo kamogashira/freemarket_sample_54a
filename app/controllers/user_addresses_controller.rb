@@ -1,5 +1,4 @@
 class UserAddressesController < ApplicationController
-  before_action :set_user
   def new
     if UserAddress.where(user_id: params[:user_id]).present?
       @user_address = UserAddress.find_by(user_id: params[:user_id])
@@ -24,10 +23,6 @@ class UserAddressesController < ApplicationController
     else
       render "new"
     end
-  end
-  
-  def set_user
-    @user = current_user
   end
 
   private

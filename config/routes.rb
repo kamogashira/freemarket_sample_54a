@@ -46,7 +46,7 @@ Rails.application.routes.draw do
 
   end
 
-  resources :users, only:[:index] do
+  resources :users, only:[:index, :update] do
     collection do
       get 'logout'
       get 'selling'

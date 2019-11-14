@@ -10,7 +10,7 @@ end
 
 # プロフィール
 crumb :profile do
-  link "プロフィール", edit_user_path
+  link "プロフィール", profile_user_path(current_user)
 end
 
 # 出品中商品一覧

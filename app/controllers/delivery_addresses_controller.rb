@@ -1,7 +1,6 @@
 class DeliveryAddressesController < ApplicationController
 
   def new
-    @user = User.find(params[:user_id])
     if DeliveryAddress.where(user_id: params[:user_id]).present?
       @delivery_address = DeliveryAddress.find_by(user_id: params[:user_id])
     else
@@ -10,7 +9,6 @@ class DeliveryAddressesController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
     @delivery_address = DeliveryAddress.new(delivery_address_params)
     if @delivery_address.save
       redirect_to action: :new

@@ -1,6 +1,5 @@
 class CardsController < ApplicationController
   require "payjp"
-  before_action :set_user, only: [:index, :create]
 
   def new
     card = CreditCard.where(user_id: current_user.id)
@@ -63,7 +62,4 @@ class CardsController < ApplicationController
       redirect_to action: "new"
   end
 
-  def set_user
-    @user = current_user
-  end
 end

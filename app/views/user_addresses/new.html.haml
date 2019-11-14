@@ -5,7 +5,7 @@
     .container__right
       .container__right--title
         %h2 本人情報の登録
-      = form_for [@user, @user_address], html: {class: "container__right__form"} do |f|
+      = form_for [current_user, @user_address], html: {class: "container__right__form"} do |f|
         .container__right__form--text
           %p お客さまの本人情報をご登録ください。
           %p 登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
@@ -62,6 +62,6 @@
 
       
     .container__left
-      = render "users/side_bar", user: @user
+      = render "users/side_bar", user: current_user
 
 -# footer(aside入り)は切り取ってあります_footer.html.hamlにあります
