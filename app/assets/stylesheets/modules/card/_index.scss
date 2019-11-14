@@ -12,6 +12,7 @@
     height: 100%;
     margin: 0 auto; 
     padding-bottom: 40px;
+    @include clearfix();
     &__right {
       width: 700px;
       height: 360px;

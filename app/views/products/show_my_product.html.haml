@@ -1,3 +1,11 @@
+-if @product.current_status_i18n == '出品中'
+  - breadcrumb :selling_item
+  = render "layouts/breadcrumbs"
+
+-elsif @product.current_status_i18n == '取引中'
+  - breadcrumb :trading_item
+  = render "layouts/breadcrumbs"
+
 .item
   .item__name
     メルカリサンプル
@@ -40,13 +48,14 @@
         %th 出品者
         %td
           = @product.seller.nickname
-          .icon-list
-            .icon.good
-              = @product.seller.evaluation.good
-            .icon.normal
-              = @product.seller.evaluation.normal
-            .icon.bad
-              = @product.seller.evaluation.bad
+          - if @product.seller.evaluation.present?
+            .icon-list
+              .icon.good
+                = @product.seller.evaluation.good
+              .icon.normal
+                = @product.seller.evaluation.normal
+              .icon.bad
+                = @product.seller.evaluation.bad
       %tr
         %th カテゴリー
         %td
@@ -99,13 +108,11 @@
           
   .item__amount
     .item__amount--price
-      = number_to_currency(@price, :unit => "￥", :precision => 0)
+      = number_to_currency(@price, :unit => "￥",:format => "%u%n", :precision => 0)
     .item__amount--tax
       （税込）
     .item__amount--shipping-fee
       送料込み
-  -# .item__buy-btn
-  -#   購入画面に進む
   .item__description
     = @product.description
 

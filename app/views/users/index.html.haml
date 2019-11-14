@@ -1,3 +1,5 @@
+- breadcrumb :mypage
+= render "layouts/breadcrumbs"
 .container-mypage
   .container-mypage__content
     .container-mypage__usericon
@@ -92,7 +94,7 @@
 
 
   .side
-    = render partial: "side_bar"
+    = render "side_bar", user: @user
 
 .camera-button
   .camera-button__text

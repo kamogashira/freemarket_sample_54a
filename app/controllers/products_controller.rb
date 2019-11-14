@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_category, only: [:index, :new, :edit, :update]
   before_action :set_brand, only: :index
-  before_action :set_product_info, only:[:show, :show_mine, :edit]
+  before_action :set_product_info, only:[:show, :show_my_product, :edit]
 
   def index
   end
@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
   def show
   end
 
-  def show_mine
+  def show_my_product
   end
 
   def edit
@@ -22,14 +22,17 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    # if product.seller == current_user.id  //ログイン機能実装後に追記
 
      # 商品のサイズとブランド以外を更新
     @product.update(product_params)
-    params[:product_images][:image].each do |image|
-      @product_images = @product.product_images.create(image: image, product_id: @product.id)
+
+    # 商品の画像を更新
+    if params.require(:product)[:product_images] != nil
+      params[:product_images][:image].each do |image|
+        @product_images = @product.product_images.create(image: image, product_id: @product.id)
+      end
     end
-    # binding.pry
+
     # 商品のサイズを更新
     if params.require(:product)[:size_id] != nil
       selected_size = Size.where(name: params[:size_id])
@@ -44,8 +47,7 @@ class ProductsController < ApplicationController
       @product.update(brand_id: new_brand_id[0])
     end
 
-    redirect_to show_mine_product_path
-    # end
+    redirect_to show_my_product_product_path
   end
 
   def set_product_info

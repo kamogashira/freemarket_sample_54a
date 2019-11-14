@@ -130,13 +130,13 @@
                   .content-form__status__fee-left
                     販売手数料(10%)
                   .content-form__status__fee-right
-                    = number_to_currency(@price_fee, :unit => "￥", :precision => 0)
+                    = number_to_currency(@price_fee, :unit => "￥", :format => "%u%n", :precision => 0)
 
                 %li.content-form__status
                   .content-form__status__profit-left
                     販売利益
                   .content-form__status__profit-right
-                    = number_to_currency(@price_profit, :unit => "￥", :precision => 0)
+                    = number_to_currency(@price_profit, :unit => "￥", :format => "%u%n", :precision => 0)
                   
           .product--main__body-content--button
             .product--main__body-content--button-text

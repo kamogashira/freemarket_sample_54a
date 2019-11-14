@@ -70,6 +70,6 @@
             %button.margin-top.red{type: "submit", id: "token_submit"} 追加する
 
     .container__left
-      = render partial: "users/side_bar"
+      = render  "users/side_bar", user: @user
 
 -# footer(aside入り)は切り取ってあります_footer.html.hamlにあります

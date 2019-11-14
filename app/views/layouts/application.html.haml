@@ -18,8 +18,5 @@
 
   %body
   = render partial: "layouts/header", locals: { parents_category: @parents_category, parents_brand: @parents_brand }
-  .bread-crumbs
-    .bread-crumbs__content
-      パンくずリスト
   = yield
 = render "layouts/footer"
