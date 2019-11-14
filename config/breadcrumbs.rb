@@ -21,7 +21,7 @@ end
 
 # 出品中商品
 crumb :selling_item do
-  link "出品商品画面", selling_users_path
+  link "出品商品画面", show_my_product_product_path
   parent :selling
 end
 
@@ -33,7 +33,7 @@ end
 
 # 取引中商品
 crumb :trading_item do
-  link "取引中商品", trading_users_path
+  link "取引中商品", show_my_product_product_path
   parent :trading
 end
 
@@ -45,7 +45,7 @@ end
 
 # 売却済み商品
 crumb :completed_item do
-  link "売却済み商品", completed_users_path
+  link "売却済み商品", show_my_product_product_path
   parent :completed
 end
 

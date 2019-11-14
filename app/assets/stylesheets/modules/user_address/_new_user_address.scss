@@ -76,6 +76,10 @@
           width: 100%;
           margin-top: 40px;
           position: relative;
+          input[type="text"]:focus {
+            border: 1px solid $liteblue;
+            outline: 0;
+          }
           label {
             font-size: 14px;
             font-weight: 600;
@@ -99,11 +103,10 @@
             padding: 10px 16px 8px;
             border-radius: 4px;
             border: 1px solid $litegray;
-            font-size: 16px;
+            font-size: 15px;
             color: $black;
             background-color: $white;
             cursor: pointer;
-
           }
           select {
             appearance: none;

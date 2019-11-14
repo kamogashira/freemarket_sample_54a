@@ -1,7 +1,7 @@
 class DeliveryAddressesController < ApplicationController
-  before_action :set_user
 
   def new
+    @user = User.find(params[:user_id])
     if DeliveryAddress.where(user_id: params[:user_id]).present?
       @delivery_address = DeliveryAddress.find_by(user_id: params[:user_id])
     else
@@ -10,6 +10,7 @@ class DeliveryAddressesController < ApplicationController
   end
 
   def create
+    @user = User.find(params[:user_id])
     @delivery_address = DeliveryAddress.new(delivery_address_params)
     if @delivery_address.save
       redirect_to action: :new
@@ -25,10 +26,6 @@ class DeliveryAddressesController < ApplicationController
     else
       render "new"
     end
-  end
-
-  def set_user
-    @user = current_user
   end
 
   private

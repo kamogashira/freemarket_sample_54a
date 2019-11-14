@@ -13,14 +13,17 @@ class UserAddressesController < ApplicationController
     if @user_address.save
       redirect_to action: :new
     else
-      render "new", notice: "変更できませんでした"
+      render "new"
     end
   end
 
   def update
     @user_address = UserAddress.find(params[:id])
-    @user_address.update(user_address_params)
-    redirect_to action: :new
+    if @user_address.update(user_address_params)
+      redirect_to new_user_user_address_path, notice: "変更されました"
+    else
+      render "new"
+    end
   end
   
   def set_user
