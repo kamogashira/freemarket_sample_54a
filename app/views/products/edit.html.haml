@@ -17,7 +17,17 @@
                 必須
             %p 最大10枚までアップロードできます
             .upload--container
-              .upload--container--upload-item
+              .upload--container--upload                
+                %ul
+                  - @product_images.each do |product_image|
+                    %li.upload--container--upload--item
+                      .upload--container--upload--item--figure
+                        = image_tag product_image.image, alt: "商品画像", size: "116x116"
+                      .upload--container--upload--item--button
+                        .upload--container--upload--item--button--edit
+                          編集
+                        .upload--container--upload--item--button--delete
+                          削除
               .upload--container--drop-box
                 %p.upload--container--drop-box--text
                   ドラッグアンドドロップ
@@ -91,6 +101,15 @@
                 .select-wrap
                   .select-default
                     = f.select :shipping_charge, options_for_select(Product.shipping_charges.keys.map {|k| [I18n.t("enums.product.shipping_charge.#{k}"), k]})
+                    %i.fas.fa-chevron-down
+              .content-form__status
+                %label 
+                  配送の方法
+                  %span.form-require
+                    必須
+                .select-wrap
+                  .select-default
+                    = f.select :shipping_method, options_for_select(Product.shipping_methods.keys.map {|k| [I18n.t("enums.product.shipping_method.#{k}"), k]})
                     %i.fas.fa-chevron-down
               .content-form__status
                 %label 

@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 
   root 'products#index'
   resources :products, only:[:index, :new, :show, :edit, :update] do
-    resources :comments, only:[:create, :show]
+    resources :comments, only:[:create, :show, :destroy]
     
     #product_idに紐づく商品表示に関するルート作成
     member do
