@@ -22,5 +22,7 @@ class Product < ApplicationRecord
   enum shipping_method: { unknown: 0, kuroneko: 1, yupack: 2, yumail: 3 }
   # 配送までの日数   0:1〜2日で発送 1: 2〜3日で発送 2:4〜7日で発送
   enum shipping_days: { immediately: 0, a_few_days: 1, four_to_seven_days: 2 }
+  # 商品のステータス   0:出品中 1: 取引中 2:売却済み
+  enum current_status: { selling: 0, trading: 1, completed: 2 }
 
 end

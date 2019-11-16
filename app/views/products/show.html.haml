@@ -41,12 +41,20 @@
         %td
           = @product.seller.nickname
           .icon-list
-            .icon.good
-              = @product.seller.evaluation.good
-            .icon.normal
-              = @product.seller.evaluation.normal
-            .icon.bad
-              = @product.seller.evaluation.bad
+            -if Evaluation.find_by(user_id: @product[:seller_id]).present?
+              .icon.good
+                = @product.seller.evaluation.good
+              .icon.normal
+                = @product.seller.evaluation.normal
+              .icon.bad
+                = @product.seller.evaluation.bad
+            - else
+              .icon.good
+                = "  0"
+              .icon.normal
+                = "  0"
+              .icon.bad
+                = "  0"
       %tr
         %th カテゴリー
         %td
@@ -150,7 +158,10 @@
   .other-items__related
     .other-items__related__header
       = link_to " " do
-        = "#{@product.brand.name}の#{@product.category.name}その他の出品"
+        -if @product.brand_id != nil
+          = "#{@product.brand.name}の#{@product.category.name}その他の出品"
+        -else
+          = "#{@product.category.name}その他の出品"
     .other-items__related__content
       = render 'items_show', products: @products_related_category
 .bread-crumbs__bottom

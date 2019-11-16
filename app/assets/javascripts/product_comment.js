@@ -1,5 +1,5 @@
-$(function(){
-  function buildHTML(comment){ console.log( comment.content)
+$(document).on('turbolinks:load', function(){
+  function buildHTML(comment){
     var html = `<div class = "comment__list__box" data-comment-id="${ comment.id }">
                   <div class = "comment__list__box--user"></div>
 

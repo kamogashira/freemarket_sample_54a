@@ -1,0 +1,25 @@
+.bread-crumbs {
+  position: relative;
+  border-top: 1px solid #eee;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  background: #fff;
+  height: 50px;
+  line-height: 50px;
+  &__content{
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1020px;
+    min-width: 500px;
+    font-size: 14px;
+    a {
+      color: $black;
+      font-size: 14px;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    .current {
+      font-weight: bold;
+    }
+  }
+}

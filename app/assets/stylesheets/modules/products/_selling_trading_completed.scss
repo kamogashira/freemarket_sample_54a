@@ -1,0 +1,176 @@
+// 全体
+body{
+  background: #f5f5f5;
+}
+
+.hide{
+  display: none;
+}
+
+a{
+  text-decoration: none;
+}
+
+// レスポンシブ
+.container-mypage{
+  margin: 24px auto 0;
+  padding: 0 0 40px;
+  @include clearfix();
+  @media only screen and (min-width: 768px){
+      width: 700px;
+  }
+  @media only screen and (min-width: 1068px){
+      margin: 40px auto 0;
+      width: 1020px;
+  }
+}
+
+.container-mypage__content{
+  width: 100%;
+  @media only screen and (min-width: 768px){
+      float: none;
+      width: 700px;
+  }
+  @media only screen and (min-width: 1068px){
+      float: right;
+  }
+  &--head {
+    background: #fafafa;
+    font-size: 16px;
+    line-height: 72px;
+    font-weight: bold;
+    padding: 0 16px;
+  }
+}
+
+// タブ
+.border-red {
+  background: #fff;
+  border-top: 2px solid red;
+}
+.container-mypage__content--body {
+  margin: 0;
+  background: #fff;
+  .mypage-tabs {
+    border: 0;
+    background: #eee;
+    font-size: 0;
+    cursor: pointer;
+    li {
+      width: calc(100% / 3);
+      display: inline-block;
+      text-align: center;
+      vertical-align: top;
+    }
+    &__left, &__middle, &__right {
+      position: relative;
+      display: block;
+      color: #333;
+      font-size: 16px;
+      line-height: 72px;
+      h3 {
+        font-weight: bold;
+      }
+    }
+    &__text {
+      padding: 160px 0 60px;
+      background-repeat: no-repeat;
+      background-position: center 40px;
+      background-size: 78px 85px;
+      text-align: center;
+      font-size: 16px;
+      color: #ccc;
+      list-style: none;
+    }
+  }
+  .tab-content {
+    min-height: 236px;
+  }
+}
+
+//アイテム一覧
+.mypage-item {
+  &__list {
+    &__link{
+      display: block;
+      min-height: 80px;
+      padding: 16px;
+      color: #333;
+      cursor: pointer;
+      figure {
+        position: relative;
+        overflow: hidden;
+        float: left;
+        width: 48px;
+        height: 48px;
+        margin: 0;
+      }
+    }
+    li:first-child{
+      border-bottom: 1px solid #eee;
+    }
+    li:hover{
+      background-color:#FAFAFA;
+    }
+  }
+
+  &__body{
+    margin: 0 40px 0 68px;
+    .mypage-item__text {
+      overflow: hidden;
+      display: block;
+      max-height: 4.4em;
+      text-overflow: ellipsis;
+      line-height: 1.5;
+      font-size: 14px;
+      font-weight: 300;
+    }
+    .mypage-item__bottom {
+      font-size: 14px;
+      line-height: 30px;
+      .listing-item-count {
+        margin: 0 6px 0 0;
+        font-size: 14px;
+        font-size: 16px;
+        color: #888;
+        float: left;
+        .icon {
+          vertical-align: middle;
+          color: #ccc;
+          font-size: 13px;
+          font-weight: 300;
+          margin-right: 2px;
+        }
+      }
+      &--status {
+        background-color: #0099e8;
+        display: inline-block;
+        margin: 8px 0 0 0;
+        padding: 0 6px;
+        border-radius: 2px;
+        font-size: 12px;
+        color: #fff;
+        height: 22px;
+        line-height: 22px;
+      }
+    }
+  }
+  &__icon-mercari{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+  }
+}
+.not-active {
+  background-image: url('common/mercari-logo-gray-icon.svg');
+  background-repeat: no-repeat;
+  background-size: 100px 100px;
+  background-position: right 50% bottom 70%;
+}
+.red {
+  background-color: $red;
+}

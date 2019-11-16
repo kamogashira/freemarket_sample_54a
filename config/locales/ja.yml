@@ -23,7 +23,11 @@ ja:
         immediately:               1〜2日で発送
         a_few_days:                2〜3日で発送
         four_to_seven_days:        4〜7日で発送
-        
+
+      current_status:
+        selling:                  出品中
+        trading:                  取引中
+        completed:                売却済み
   date:
     formats:
       default: "%Y/%m/%d"
@@ -47,3 +51,16 @@ ja:
       long: "%Y年%m月%d日(%a) %H時%M分%S秒 %Z"
     am: "午前"
     pm: "午後"
+
+  activerecord:
+    models:
+      delivery_address: 発送元・お届け先住所
+    attributes:
+      delivery_address:
+        first_name: お名前(姓)
+        last_name: お名前(名)
+        first_name_kana: お名前(姓)カナ
+        last_name_kana: お名前(名)カナ
+        postal_code: 郵便番号
+        address_city: 市町村
+        address_street: 番地

@@ -11,6 +11,12 @@ module FreemarketSample54a
     config.i18n.default_locale = :ja
     # タイムゾーンを日本時間に設定
     config.time_zone = 'Asia/Tokyo'
-
+    
+    # コントローラ作成時に不要ファイルを作成しないよう制御
+    config.generators do |g|
+      g.javascripts false
+      g.helper false
+      g.test_framework false
+    end
   end
 end

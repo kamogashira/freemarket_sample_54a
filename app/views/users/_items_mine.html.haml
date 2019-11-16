@@ -1,0 +1,20 @@
+%ul.mypage-item__list
+  - products.each do |product|
+    = link_to show_my_product_product_path(product) do
+      %li.mypage-item__list__link
+        %figure
+          =image_tag product.product_images.first.image.url, alt: '画像', class: "mypage-item__icon-mercari", alt:"mypage-item__icon-mercari"
+        .mypage-item__body
+          .mypage-item__text
+            = product.name
+          .mypage-item__bottom
+            %span.listing-item-count
+              = fa_icon "heart-o", class: "icon"
+              = product.like
+            %span.listing-item-count
+              = fa_icon "comment-o", class: "icon"
+              = product.comments.count
+            .mypage-item__bottom--status
+              = status               
+
+        %i.fa.fa-chevron-right
