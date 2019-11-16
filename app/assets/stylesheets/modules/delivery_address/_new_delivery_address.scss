@@ -1,0 +1,134 @@
+@mixin input {
+  height: 48px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  line-height: 1.5;
+  font-size: 15px;
+}
+@mixin span {
+  margin: 0 0 0 8px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  vertical-align: top;
+}
+.notification-success {
+  background: #dff0d8;
+  color: #468847;
+  padding: 24px 56px;
+  text-align: center;
+  line-height: 1.5;
+  opacity: 1;
+}
+.form__errors {
+  width: 400px;
+  font-size: 14px;
+  margin: 10px auto 0;
+  text-align: center;
+  border: 1px solid #ccc;
+  color: $red;
+}
+.address {
+  background-color:#f5f5f5;
+  margin: 40px auto 0;
+  width: 1020px;
+  padding-bottom: 40px;
+  &__container {
+    margin: 0 auto;
+    @include clearfix();
+    &__view {
+      width:700px;
+      float: right;
+      background: #fff;
+      &--title {
+        font-size: 24px;
+        padding: 8px 24px;
+        border-bottom: 1px solid #f5f5f5;
+        text-align: center;
+        line-height: 1.4;
+        margin: 0 auto;
+        font-weight: bold;
+      }
+      .address-group {
+        margin: 0 auto;
+        width: 700px;
+        padding: 40px 40px 64px;
+        border-top: 1px solid #f5f5f5;
+        .form-group {
+          max-width: 343px;
+          margin: 0 auto;
+          text-align:left;
+          &__section:not(:first-of-type) {
+            margin-top:24px;
+            position: relative;
+          }
+          &__section{
+            .next_btn{
+              @include input;
+              background: #ea352d;
+              border: solid 1px #ea352d;
+              margin: 0 auto;
+              color:#fff;
+              font-size: 15px;
+            }
+            label {
+              font-weight: 600;
+              font-size: 15px;
+              background: #fff;
+            }
+            .form-require {
+              @include span;
+              background: #ea352d;
+            }
+            .input-default {
+              @include input;
+              background: #fff;
+              border: solid 1px #ccc;
+              margin-top: 8px;
+              cursor: text;
+            }
+            input[type="text"]:focus {
+              border: 1px solid $liteblue;
+              outline: 0;
+            }
+            .select-wrap {
+              margin-top: 8px;
+              position: relative;
+            }
+            .fa-chevron-down{
+              position: absolute;
+              right: 16px;
+              top: 38%;
+              color: #888;
+              font-size: 20px;
+              z-index: 2;
+            }
+            .form-option {
+              @include span;
+              background: #ccc;
+            }
+            .next_btn {
+              background: #ea352d;
+              width: 340px;
+              height: 45px;
+              border-radius: 3px;
+              border: solid 1px #ea352d;
+              color:#fff;
+              font-size: 15px;
+              margin: 0 auto;
+              padding: 10px 30px;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+    .container__left {
+      width: 280px;
+      margin: 0 40px 0 0;
+    }
+  }
+}

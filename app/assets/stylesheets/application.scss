@@ -5,6 +5,7 @@
 @import "modules/slick/slick";
 @import "modules/slick/slick-theme"; 
 @import "modules/top_page/header";
+@import "breadcrumb";
 @import "modules/top_page/index";
 @import "modules/top_page/footer";
 @import "modules/mypage/index";
@@ -13,8 +14,9 @@
 @import "modules/registrations/new";
 @import "cards";
 @import "side_bar";
-@import "modules/user/edit";
-@import "modules/user_address/index";
+@import "modules/user/profile";
+@import "modules/user_address/new_user_address";
+@import "modules/delivery_address/new_delivery_address";
 @import "modules/user/logout";
 @import "modules/card/index";
 @import "modules/card/create";
@@ -23,3 +25,4 @@
 @import "modules/products/show";
 @import "purchases";
 @import "modules/products/edit";
+@import "modules/products/selling_trading_completed";

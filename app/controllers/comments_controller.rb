@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
 
   def comment_params
     #ユーザーログイン機能が出来たらuser_id:current_user.idにする
-    params.require(:comment).permit(:content).merge(user_id:1, product_id:params[:product_id])
+    params.require(:comment).permit(:content).merge(user_id:current_user.id, product_id:params[:product_id])
   end
 
 end

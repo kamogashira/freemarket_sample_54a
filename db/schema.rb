@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191110135413) do
+
+ActiveRecord::Schema.define(version: 20191113005659) do
 
   create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -50,6 +51,22 @@ ActiveRecord::Schema.define(version: 20191110135413) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["user_id"], name: "index_credit_cards_on_user_id", using: :btree
+  end
+
+  create_table "delivery_addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "first_name",                  null: false
+    t.string   "last_name",                   null: false
+    t.string   "first_name_kana",             null: false
+    t.string   "last_name_kana",              null: false
+    t.integer  "postal_code",                 null: false
+    t.integer  "prefecture_id",               null: false
+    t.string   "address_city",                null: false
+    t.string   "address_street",              null: false
+    t.string   "address_building"
+    t.string   "phone_number",     limit: 11
+    t.integer  "user_id",                     null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "evaluations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

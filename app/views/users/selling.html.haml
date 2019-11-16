@@ -1,0 +1,34 @@
+- breadcrumb :selling
+= render "layouts/breadcrumbs"
+
+.container-mypage
+  .container-mypage__content
+    .container-mypage__content--head
+      出品した商品
+    .container-mypage__content--body
+      %ul.mypage-tabs
+        %li.mypage-tabs__left.border-red
+          .mypage-tabs__left__text
+            %h3 出品中
+
+        = link_to trading_users_path do
+          %li.mypage-tabs__middle
+            .mypage-tabs__middle__text
+              %h3 取引中
+
+        = link_to completed_users_path do
+          %li.mypage-tabs__right
+            .mypage-tabs__right__text
+              %h3 売却済み
+
+      
+      - if @products == []
+        .tab-content
+          %li.mypage-tabs__text 出品中の商品はありません
+      - else
+        = render 'items_mine', products: @products, status: @status
+
+  .side
+    = render  "users/side_bar", user: current_user
+
+
