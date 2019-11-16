@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   end
 
   root 'products#index'
-  resources :products, only:[:index, :new, :show, :edit, :update] do
+  resources :products, only:[:index, :new, :create, :show, :edit, :update] do
     resources :comments, only:[:create, :show]
     member do
       get 'show_mine'
