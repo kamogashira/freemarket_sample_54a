@@ -151,6 +151,16 @@ h2{
   font-weight: bold;
 }
 
+.form-require-brand{
+  background: #eee;
+  margin: 0 0 0 8px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  font-size: 12px;
+  vertical-align: top;
+  font-weight: bold;
+}
+
 .upload--container {
   display: inline;
   margin: 16px auto 0;
@@ -242,6 +252,13 @@ h2{
       float: right;
       width: 400px;
       margin: 0;
+    }
+    &-category{
+      @media screen and (min-width: 768px){
+        float: right;
+        width: 400px;
+        margin: 0;
+      }
     }
   }
 }
