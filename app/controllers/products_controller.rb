@@ -8,6 +8,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @product.product_images.new
     render layout: 'products_application'
   end
 
@@ -18,6 +19,8 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @product = Product.find(params[:id])
+    @product_images = @product.product_images.limit(10)
   end
 
   def update
@@ -27,10 +30,12 @@ class ProductsController < ApplicationController
     @product.update(product_params)
 
     # 商品の画像を更新
-    if params.require(:product)[:product_images] != nil
+    if params[:product_images][:image] != nil
       params[:product_images][:image].each do |image|
         @product_images = @product.product_images.create(image: image, product_id: @product.id)
       end
+    else
+      redirect_to show_my_product_product_path
     end
 
     # 商品のサイズを更新
@@ -134,6 +139,6 @@ end
 
 private
 def product_params
-  params.require(:product).permit(:name, :description, :category_id, :condition, :shipping_charge, :ship_from, :shipping_days, :price, product_images_attributes:[ :image, :id ])
+  params.require(:product).permit(:name, :description, :category_id, :condition, :shipping_charge, :shipping_method, :ship_from, :shipping_days, :price, product_images_attributes:[ :image, :id, :_desgroy ],)
 end
 
