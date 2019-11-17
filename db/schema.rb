@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20191113005659) do
 
   create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -24,6 +25,13 @@ ActiveRecord::Schema.define(version: 20191113005659) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ancestry"], name: "index_categories_on_ancestry", using: :btree
+  end
+
+  create_table "category_sizes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint   "category_id"
+    t.bigint   "size_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -83,27 +91,27 @@ ActiveRecord::Schema.define(version: 20191113005659) do
   end
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",                           null: false
-    t.integer  "price",                          null: false
-    t.text     "description",      limit: 65535, null: false
-    t.integer  "category_id",                    null: false
+    t.string   "name",                                       null: false
+    t.integer  "price",                                      null: false
+    t.text     "description",      limit: 65535,             null: false
+    t.integer  "category_id",                                null: false
     t.integer  "brand_id"
     t.integer  "size_id"
-    t.integer  "condition",                      null: false
-    t.integer  "shipping_charge",                null: false
-    t.integer  "ship_from",                      null: false
-    t.integer  "shipping_days",                  null: false
-    t.integer  "shipping_method",                null: false
-    t.integer  "current_status",                 null: false
+    t.integer  "condition",                                  null: false
+    t.integer  "shipping_charge",                            null: false
+    t.integer  "ship_from",                                  null: false
+    t.integer  "shipping_days",                              null: false
+    t.integer  "shipping_method",                            null: false
+    t.integer  "current_status",                 default: 0, null: false
     t.integer  "buyer_id"
     t.integer  "seller_id"
-    t.integer  "payment_method",                 null: false
-    t.integer  "payment_status",                 null: false
-    t.integer  "sending_status",                 null: false
-    t.integer  "receiving_status",               null: false
+    t.integer  "payment_method",                 default: 0, null: false
+    t.integer  "payment_status",                 default: 0, null: false
+    t.integer  "sending_status",                 default: 0, null: false
+    t.integer  "receiving_status",               default: 0, null: false
     t.integer  "like"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.index ["buyer_id"], name: "index_products_on_buyer_id", using: :btree
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
     t.index ["seller_id"], name: "index_products_on_seller_id", using: :btree
@@ -114,6 +122,7 @@ ActiveRecord::Schema.define(version: 20191113005659) do
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "ancestry"
   end
 
   create_table "sns_credentials", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

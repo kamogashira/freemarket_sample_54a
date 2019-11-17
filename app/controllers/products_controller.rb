@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_category, only: [:index, :new, :edit, :update]
+  before_action :set_category, only: [:index, :edit, :update]
   before_action :set_brand, only: :index
   before_action :set_product_info, only:[:show, :show_my_product, :edit]
 
@@ -8,7 +8,21 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @product.product_images.new
+    #セレクトボックスの初期値設定
+    @category_parent_array = ["---"]
+    #データベースから、親カテゴリーのみ抽出し、配列化
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
     render layout: 'products_application'
+  end
+
+  def create
+    @product = Product.new(product_params)
+    @product.save
+    # binding.pry
+    redirect_to root_path
   end
 
   def show
@@ -112,28 +126,34 @@ class ProductsController < ApplicationController
     end
   end
 
-  # 親カテゴリーが選択された後に動くアクション/formatはjson
+  # 親カテゴリーが選択された後に動くアクション
   def get_category_children
-    # 選択された親カテゴリーに紐付く子カテゴリーの配列を取得
     @category_children = Category.find_by(id: "#{params[:parent_id]}", ancestry: nil).children
   end
 
-  # 子カテゴリーが選択された後に動くアクション/formatはjson
+  # 子カテゴリーが選択された後に動くアクション
   def get_category_grandchildren
-  # 選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
 
-  # 孫カテゴリーが選択された後に動くアクション/formatはjson
+  # 孫カテゴリーが選択された後に動くアクション
   def get_size
-    # サイズ一覧の配列を取得
     @sizelist = Size.all
+    selected_grandchild = Category.find("#{params[:grandchild_id]}") #孫カテゴリーを取得
+    if related_size_parent = selected_grandchild.sizes[0] #孫カテゴリーと紐付くサイズ（親）があれば取得
+      @sizes = related_size_parent.children #紐づいたサイズ（親）の子供の配列を取得
+    else
+      selected_child = Category.find("#{params[:grandchild_id]}").parent #孫カテゴリーの親を取得
+      if related_size_parent = selected_child.sizes[0] #孫カテゴリーの親と紐付くサイズ（親）があれば取得
+        @sizes = related_size_parent.children #紐づいたサイズ（親）の子供の配列を取得
+      end
+    end
   end
 
 end
 
 private
 def product_params
-  params.require(:product).permit(:name, :description, :category_id, :condition, :shipping_charge, :ship_from, :shipping_days, :price, product_images_attributes:[ :image, :id ])
+  params.require(:product).permit(:name, :description, :category_id, :size_id, :condition, :shipping_charge, :shipping_method, :ship_from, :shipping_days, :current_status, :payment_method, :price, product_images_attributes:[ :image, :id ])
 end
 
