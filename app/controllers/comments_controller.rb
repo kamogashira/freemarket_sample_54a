@@ -10,8 +10,15 @@ class CommentsController < ApplicationController
   def show
   end
 
+  def destroy
+    binding.pry
+    @comment = Comment.find(params[:id])
+    if @comment.destroy
+      redirect_to product_path(params[:product_id])
+    end
+  end
+
   def comment_params
-    #ユーザーログイン機能が出来たらuser_id:current_user.idにする
     params.require(:comment).permit(:content).merge(user_id:current_user.id, product_id:params[:product_id])
   end
 
