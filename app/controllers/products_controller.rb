@@ -21,6 +21,12 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.save
+    # 商品の画像を保存
+    if params[:product_images][:image] != nil
+      params[:product_images][:image].each do |image|
+        @product_images = @product.product_images.create(image: image, product_id: @product.id)
+      end
+    end
     # binding.pry
     redirect_to root_path
   end
@@ -158,6 +164,6 @@ end
 
 private
 def product_params
-  params.require(:product).permit(:name, :description, :category_id, :size_id, :condition, :shipping_charge, :shipping_method, :ship_from, :shipping_days, :current_status, :payment_method, :price, product_images_attributes:[ :image, :id ])
+  params.require(:product).permit(:name, :description, :category_id, :size_id, :condition, :shipping_charge, :shipping_method, :ship_from, :shipping_days, :current_status, :payment_method, :price, product_images_attributes:[ :image, :id ]).merge(seller_id: current_user.id)
 end
 
