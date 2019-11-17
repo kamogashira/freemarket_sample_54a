@@ -29,10 +29,12 @@ Rails.application.routes.draw do
   end
 
   root 'products#index'
-  resources :products, only:[:index, :new, :show, :edit, :update] do
-    resources :comments, only:[:create, :show, :destroy]
-    
+
+  resources :products, only:[:index, :new, :create, :show, :edit, :update] do
+    resources :comments, only:[:create, :show]
+
     #product_idに紐づく商品表示に関するルート作成
+
     member do
       get 'show_my_product'
     end

@@ -12,13 +12,13 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.integer     :ship_from, null: false
       t.integer     :shipping_days, null: false
       t.integer     :shipping_method, null: false
-      t.integer     :current_status, null: false
+      t.integer     :current_status, null: false, default: 0 
       t.references  :buyer, foreign_key: { to_table: :users }
       t.references  :seller, foreign_key: { to_table: :users }
-      t.integer     :payment_method, null: false
-      t.integer     :payment_status, null: false
-      t.integer     :sending_status, null: false
-      t.integer     :receiving_status, null: false
+      t.integer     :payment_method, null: false, default: 0 
+      t.integer     :payment_status, null: false, default: 0 
+      t.integer     :sending_status, null: false, default: 0 
+      t.integer     :receiving_status, null: false, default: 0 
       t.integer     :like
       t.timestamps
     end
