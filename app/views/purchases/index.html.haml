@@ -13,19 +13,22 @@
   .purchase_container_form
    .purchase_container_form_base
     .purchase_container_form_base_product
-     = image_tag "", class: "product-image"
+     = image_tag "", class: "product-image", size: '60x60'
     .purchase_container_form_base_product
      商品のタイトル（仮置き）
+    -#  = @product.name
    .purchase_container_form_base
     .purchase_container_form_base_price
      %li.yen ¥1,200
+    -#  = "¥ #{@product.price}"
      %li 送料込み
 
    .purchase_container_form_base
-    %button{type: "submit",class: "point_btn"}ポイントはありません
+    %button{class: "point_btn"}ポイントはありません
     .purchase_container_form_base_pay
      %li 支払い金額
      %li ¥1,200
+    -#  = "¥ #{@product.price}"
 
    .purchase_container_form_base
     %button{type: "submit",class: "purchase_btn"}購入する
@@ -57,4 +60,4 @@
      %br
      = image_tag "card/#{@card_src}",size: '50x30', alt: @card_brand, id: "card_image"
      .purchase-link
-      = link_to "変更する ＞",class: "change-creditcard"
+      = link_to "変更する ＞", "/cards/show/",class: "change-creditcard"

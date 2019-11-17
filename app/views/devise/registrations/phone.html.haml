@@ -5,11 +5,11 @@
     = image_tag "top_page/header-mercari.svg", size: '180x50', alt:"mercari"
   .header-bar
    %ol
-    %li.info
+    %li
      会員情報
      .border-radius_red
      .header-border_red
-    %li.info 
+    %li.info
      電話番号認証
      .border-radius_red
      .header-border
@@ -36,6 +36,7 @@
      = f.fields_for :user_address do |u|
       = u.label :phone_number, "携帯電話の番号"
       = u.text_field :phone_number, class: "usernew", placeholder: "携帯電話の番号を入力"
+      = render partial: 'layouts/error-messages', locals: {user: @user, column: "phone_number"}
       %p.phone 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
 
     .form-group_section
