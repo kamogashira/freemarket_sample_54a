@@ -1,5 +1,8 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   layout 'registrations_application'
+
+  before_action :save_new_to_session, only: :phone
+  before_action :save_phone_to_session, only: :address
   
   def new
     @user = User.new
@@ -15,6 +18,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user.build_user_address
   end
 
+  def save_new_to_session
+    session[:user_params] = user_params
+    session[:user_address_attributes_after_new] = user_params[:user_address_attributes]
+    @user = User.new(session[:user_params])
+    @user.build_user_address(session[:user_address_attributes_after_new])
+    render 'devise/registrations/new' unless @user.valid?
+  end 
+
   def index
   end
 
@@ -23,11 +34,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session[:user_params] = user_params
     @user = User.new
     @user.build_user_address
-    if verify_recaptcha
-    else
-      flash.now[:recaptcha_error] = I18n.t('recaptcha.errors.verification_failed')
-      return render action: :new
-    end
+    # if verify_recaptcha
+    # else
+    #   flash.now[:recaptcha_error] = I18n.t('recaptcha.errors.verification_failed')
+    #   return render action: :new
+    # end
+  end
+
+  def save_phone_to_session
+    session[:user_address_attributes_after_step2] = user_params[:user_address_attributes]
+    session[:user_address_attributes_after_step2].merge!(session[:user_address_attributes_after_step1])
+    @user = User.new
+    @user.build_user_address(session[:user_address_attributes_after_step2])
+    render 'devise/registrations/phone' unless session[:user_address_attributes_after_step2][:phone_number].present?
   end
 
   def address
@@ -39,15 +58,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def complete
   end
 
-  def create 
+  def register
       session[:user_address_attributes] = user_params[:user_address_attributes]
       @user = User.new(session[:user_params])
       @user.build_user_address(session[:user_address_attributes])
-    if @user.save!
+    if @user.save(context: :register)
        session[:id] = @user.id
        sns = SnsCredential.update(user_id:  @user.id)
        sign_in User.find(session[:id]) unless user_signed_in?
        redirect_to new_card_path
+    else
+       render 'devise/registrations/address'
     end
    end
 

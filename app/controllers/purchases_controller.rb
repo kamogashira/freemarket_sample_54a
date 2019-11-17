@@ -1,8 +1,10 @@
 class PurchasesController < ApplicationController
     require 'payjp'
+    layout 'others_application'
 
     def index
      @useraddress = UserAddress.where(user_id: current_user.id)
+    #  @product = Product.where(user_id: current_user.id)
      card = CreditCard.where(user_id: current_user.id).first
        if card.blank?
        redirect_to action: "new"

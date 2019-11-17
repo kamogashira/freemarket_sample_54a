@@ -25,7 +25,7 @@
 
  .purchase_next
   .purchase_next_btn
-   %button{ type: "submit", class: "next-btn" }次へ進む
+   = link_to "次へ進む", "/purchases/index", class: "purchase_next_btn"
    
   = form_tag(cards_path, method: :post, id: 'charge-form',  name: "inputForm") do  
    %input{ type: "hidden", name: "card_id", value: "" }

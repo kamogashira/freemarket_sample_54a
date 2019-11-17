@@ -145,11 +145,26 @@
                 margin-top: 10px;
             
             }
+            // エラー表示
+            .field_with_errors{
+              display: contents;
+              input,select{
+              border: 1px solid #ea352d;
+              border-radius: 3px;
+              
+              }
+            }
+              p.error_message{
+                color:#ea352d;
+                line-height: 1.5;
+                font-size: 14px;
+                margin-top: 6px;
+              }
             &_select{
               margin: 0 0 0 8px;
               select{
                 padding: 0 10px;
-                width: 80px;
+                width: 90px;
                 height: 45px;
                 border-radius: 4px;
                 border: 1px solid #ccc;
@@ -274,3 +289,6 @@ a.phone{
       margin-right:10px;
     }
   }
+
+  // エラーメッセージ
+ 
