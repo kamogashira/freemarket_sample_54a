@@ -59,7 +59,7 @@ $(document).on('turbolinks:load', function(){
     var brandSelectHtml = '';
     brandSelectHtml = `<div class='content-form__status' id= 'brand_wrapper'>
                         <label>
-                          サイズ
+                          ブランド
                           <span class='form-arbitrary'>必須</span>
                         </label>
                         <div class="select-wrap">
@@ -134,12 +134,13 @@ $(document).on('turbolinks:load', function(){
   $('.content-form__category').on('change', '#grandchild_category', function(){
     var childName = $('#child_category option:selected').text();
     var grandChildId = document.getElementById('grandchild_category').value; //選択された孫カテゴリーのidを取得
-
+    console.log(childName)
     if (grandChildId != "---"){ //孫カテゴリーが初期値でないことを確認
       $.ajax({
         url: '/products/get_size',
         type: 'GET',
-        data: { child_name: childName },
+        data: { grandchild_id: grandChildId },
+        // data: { child_name: childName },
         dataType: 'json'
       })
       .done(function(sizelist){
