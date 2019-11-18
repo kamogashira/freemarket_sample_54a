@@ -48,6 +48,5 @@ $(function(){
   $(document).on("click", ".comment__list__box--content--icons--delete",function(){
     $(this).parent().parent().siblings().remove(); // ①クリックした削除ボタンが含まれる".comment__list__box--user"を削除
     $(this).parentsUntil('.comment__list__box').remove(); //⓶クリックした削除ボタンが含まれる".comment__list__box"を削除
-
   });
 })

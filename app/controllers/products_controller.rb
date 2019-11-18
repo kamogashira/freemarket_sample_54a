@@ -49,12 +49,10 @@ class ProductsController < ApplicationController
     @product.update(product_params)
 
     # 商品の画像を更新
-    if params[:product_images][:image] != nil
+    if params.has_key?(:product_images)
       params[:product_images][:image].each do |image|
         @product_images = @product.product_images.create(image: image, product_id: @product.id)
       end
-    else
-      redirect_to show_my_product_product_path
     end
 
     # 商品のサイズを更新
@@ -164,6 +162,6 @@ end
 
 private
 def product_params
-  params.require(:product).permit(:name, :description, :category_id, :size_id, :condition, :shipping_charge, :shipping_method, :ship_from, :shipping_days, :current_status, :payment_method, :price, product_images_attributes:[ :image, :id ]).merge(seller_id: current_user.id)
+  params.require(:product).permit(:name, :description, :category_id, :size_id, :condition, :shipping_charge, :shipping_method, :ship_from, :shipping_days, :current_status, :payment_method, :price, :id, product_images_attributes:[ :image, :id, :_destroy ]).merge(seller_id: current_user.id)
 end
 

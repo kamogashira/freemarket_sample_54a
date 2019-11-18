@@ -95,9 +95,13 @@ input {
           color: #0099e8;
           text-decoration: none;
           border: 1px solid $litegray;
-        }
-        .hidden-destroy {
-          display: none;
+          cursor: pointer;
+          & > input {
+            display: none;
+          }
+          &:hover {
+            text-decoration: underline;
+          }
         }
       }
     }

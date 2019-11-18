@@ -17,28 +17,26 @@
                 必須
             %p 最大10枚までアップロードできます
             .upload--container
-              .upload--container--upload#preview_result                
+              .upload--container--upload#preview_result
                 %ul
-                  - @product_images.each_with_index do |product_image, i|
+                  = f.fields_for :product_images do |j|                
                     %li.upload--container--upload--item
                       .upload--container--upload--item--figure
-                        = image_tag product_image.image, data: { index: i }, alt: "商品画像", size: "116x116", class: 'image'
+                        = image_tag (j.object.image), data: { index: j.object.id }, alt: "商品画像", size: "116x116", class: 'image'
                       .upload--container--upload--item--button
                         .upload--container--upload--item--button--edit
                           編集
                         .upload--container--upload--item--button--delete
-                          削除
-                        - if @product.persisted?
-                          = f.fields_for :product_images do |j|
-                            %label
-                              = j.check_box :remove_image, data:{ index: i }, class: 'hidden-destroy'
+                          = j.check_box :_destroy
+                          = j.label :_destroy, "削除"
               .upload--container--drop-box
                 %p.upload--container--drop-box--text
                   ドラッグアンドドロップ
                   またはクリックしてファイルをアップロード
-                = f.fields_for :product_images do |j|
+                = f.fields_for :product_images do |j|    
                   = j.label :image, class: "upload--container--drop-box--label"
                   = j.file_field :image, multiple: true, name: 'product_images[image][]', class: 'upload--container--drop-box--form', type: "file", onchange: "preview_file(this.id)"
+                  = j.hidden_field :id, value: j.object.id
           .product--main__body-content
             .content-form
               %label

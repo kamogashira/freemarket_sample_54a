@@ -1,4 +1,4 @@
-// プレビュー関数(引数 ⇒ inputタグのid)
+// プレビュー(引数 = inputタグのid)
 function preview_file(id){
   function buildImg(index, url){
     var html =
@@ -38,4 +38,9 @@ function preview_file(id){
   $('#preview_result ul').append(result_code);
 }
 
-// .upload--container--upload--item--button--delete
+//削除
+$(function(){
+  $(document).on("click", ".upload--container--upload--item--button--delete",function(){
+    $(this).parent().parent().hide();
+  });
+})
