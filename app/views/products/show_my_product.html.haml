@@ -12,7 +12,7 @@
 
 .item
   .item__name
-    メルカリサンプル
+    = @product.name
   .item__content
     .item__content__photo
       %ul.main-window
@@ -63,15 +63,16 @@
       %tr
         %th カテゴリー
         %td
-          = link_to " " do
-            .category
-              = @product.category.root.name
-          = link_to " " do
-            .category
-              = @product.category.parent.name
-          = link_to " " do
-            .category
-              = @product.category.name
+          - if @product.category.parent.present?
+            = link_to " " do
+              .category
+                = @product.category.root.name
+            = link_to " " do
+              .category
+                = @product.category.parent.name
+            = link_to " " do
+              .category
+                = @product.category.name
       %tr
         %th ブランド
         %td 
