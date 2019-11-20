@@ -40,23 +40,20 @@
               height: 45px;
               line-height: 45px;
             }
-            button.point_btn{
-              background:gray;
-              margin: 20px 0;
-              color:#fff;
-              font-size: 15px;
-              width: 340px;
-              height: 45px;
-              line-height: 45px;
-            }
             &_product{
-              display:  inline-block; 
               margin:1rm 2rm 0 10px;
               left: 50px;
+              img{
+                float:left;
+              }
+            }
+            &_title{
               font-weight:bold;
+              font-size:20px;
+              margin-left:80px;
             }
             &_price{
-              margin-top: 10px;
+              margin-top: 50px;
               text-align: center;
               list-style: none;
                 li{
@@ -65,8 +62,18 @@
                 }
                 li.yen{
                   font-weight:bold;
-                  font-size:20px;
+                  font-size:23px;
               }
+            }
+            &_point{
+              background:gray;
+              margin: 20px 0;
+              color:#fff;
+              font-size: 15px;
+              width: 340px;
+              height: 45px;
+              line-height: 45px;
+              text-align:center;
             }
             &_pay{
               font-weight: bold;
@@ -174,6 +181,16 @@
         background: #fff;
         margin: 0 auto;
       }
+      &_product{
+        text-align: center;
+        margin-top:30px;
+        border-bottom: 1px solid #ccc;
+        &_title{
+          font-weight: bold;
+          font-size:22px;
+          margin-bottom: 30px;
+        }
+      }
       &_price{
         text-align: center;
         border-bottom: 1px solid #ccc;
@@ -188,12 +205,16 @@
         }
       }
       &_form{
+        &_base{
+          padding:30px;
+          width:340px;
+          margin: 0 auto;
+          }
+        }
+        &_back{
           padding:25px;
           width:340px;
           margin: 0 auto;
-        //   &_base{
-
-        //   }
-          }
         }
-      }
+    }
+  }

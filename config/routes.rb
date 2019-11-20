@@ -15,6 +15,7 @@ Rails.application.routes.draw do
    resources :purchases, only: [:index] do
      collection do
        get 'index', to: 'purchases#index'
+       get 'cards', to: 'purchases#cards'
        post 'pay', to: 'purchases#pay'
        get 'done', to: 'purchases#done'
      end

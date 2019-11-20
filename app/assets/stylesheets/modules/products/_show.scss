@@ -138,6 +138,9 @@ tr {
     font-weight: 600;
     text-align: center;
     cursor: pointer;
+    a{
+      color: $white;
+    }
   }
   &__description {
     width: 620px;
