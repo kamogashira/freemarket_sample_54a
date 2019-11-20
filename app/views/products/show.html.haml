@@ -91,7 +91,7 @@
     .item__amount--shipping-fee
       送料込み
   .item__buy-btn
-    購入画面に進む
+    = link_to "購入画面に進む", purchases_path(product: @product)
   .item__description
     = @product.description
 

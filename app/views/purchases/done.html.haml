@@ -1,9 +1,3 @@
-.register-header
- .register-header_content
-  %h1
-   %a
-    = image_tag "top_page/header-mercari.svg", size: '180x50', alt:"mercari"
-
 .purchase
  .purchase_notification
   .purchase_notification_sending
@@ -13,9 +7,16 @@
   .purchase_notification_view
    %h2.purchase_view_title 購入が完了しました
   
+  .purchase_notification_product
+   = image_tag "", class: "product-image", size: '200x200'
+   .purchase_notification_product_title
+    = @product.name
+
   .purchase_notification_price
-   %li.yen ¥1,200 
+   %li.yen
+    = "¥ #{@product.price}"
    %li 送料込み
+   -#    = @product.shiiping_charge
 
   .purchase_notification_form
    .purchase_notification_form_base
@@ -28,3 +29,6 @@
       = useraddress.prefecture.name + useraddress.address_city + useraddress.address_street + useraddress.address_building
       %br
       = current_user.nickname
+
+  .purchase_notification_back
+   = link_to "商品へ戻る", product_path(@product)
