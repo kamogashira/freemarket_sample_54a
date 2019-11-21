@@ -185,6 +185,7 @@ h2{
     cursor: pointer;
     float: right;
     display: block;
+    align-items: center;
     @media screen and (min-width: 768px){
       float: right;
       width: 620px;
@@ -193,7 +194,7 @@ h2{
     p {
       @media screen and (min-width: 768px){
             position: absolute;
-            top: 50%;
+            top: 40%;
             left: 16px;
             right: 16px;
             text-align: center;

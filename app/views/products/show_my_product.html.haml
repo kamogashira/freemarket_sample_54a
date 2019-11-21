@@ -41,10 +41,14 @@
       %tr
         %th カテゴリー
         %td
-          - if @product.category.parent.present?
+          = link_to " " do
+            .category
+              = @product.category.root.name
+          - if @product.category.name == 'オートバイ車体'
             = link_to " " do
               .category
-                = @product.category.root.name
+                = @product.category.name
+          - else
             = link_to " " do
               .category
                 = @product.category.parent.name

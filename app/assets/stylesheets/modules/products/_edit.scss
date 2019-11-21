@@ -85,6 +85,7 @@ input {
         overflow: hidden;
       }
       &--button {
+        height: 44px;
         font-size: 14px;
         background-color: $main-background;
         display: flex;
@@ -111,6 +112,7 @@ input {
     margin-left: 2%;
     min-width: 116px;
     flex: 1;
+    height: 162px;
     &--form {
       display: none;
     }
@@ -119,6 +121,7 @@ input {
     }
     p {
       text-align: center;
+      font-weight:bold;
     }
   }
 }

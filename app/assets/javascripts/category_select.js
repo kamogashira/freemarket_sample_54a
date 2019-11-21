@@ -9,7 +9,7 @@ $(document).on('turbolinks:load', function(){
     var childSelectHtml = '';
     childSelectHtml = `<div class='select-wrap' id= 'children_wrapper'>
                         <div class='select-default'>
-                          <select class="select-form" id="child_category" name="product[child_id]">
+                          <select class="select-form" id="child_category" name="product[category_id]">
                             <option value="---" data-category="---">---</option>
                             ${insertHTML}
                           <select>
@@ -71,6 +71,7 @@ $(document).on('turbolinks:load', function(){
   // 親カテゴリー選択後のイベント
   $('#parent_category').on('change', function(){
     var parentCategory = document.getElementById('parent_category').value; //選択された親カテゴリーの名前を取得
+    console.log(parentCategory)
     if (parentCategory != "---"){ //親カテゴリーが初期値でないことを確認
       $.ajax({
         url: '/products/get_category_children',
@@ -111,20 +112,30 @@ $(document).on('turbolinks:load', function(){
       })
       .done(function(grandchildren){
         if (grandchildren.length != 0) {
-          $('#grandchildren_wrapper').remove(); //子が変更された時、孫以下を削除するする
+          $('#grandchildren_wrapper').remove(); //子が変更された時、孫以下を削除する
           $('#size_wrapper').remove();
           $('#brand_wrapper').remove();
           var insertHTML = '';
           grandchildren.forEach(function(grandchild){
             insertHTML += appendOption(grandchild);
           });
-          appendGrandchidrenBox(insertHTML);
+
+          //子カテゴリーの選択がオートバイだった場合、孫カテゴリーは表示しない
+          var childName = $('#child_category option:selected').text();
+          if (childName == 'オートバイ車体'){
+            appendSizeBox(insertHTML);
+            appendBrandBox();
+          }
+          else {
+            appendGrandchidrenBox(insertHTML);
+          }
         }
       })
       .fail(function(){
         alert('孫カテゴリー取得に失敗しました');
       })
-    }else{
+    }
+    else{
       $('#grandchildren_wrapper').remove(); //子カテゴリーが初期値になった時、孫以下を削除する
       $('#size_wrapper').remove();
       $('#brand_wrapper').remove();
@@ -134,25 +145,18 @@ $(document).on('turbolinks:load', function(){
   $('.content-form__category').on('change', '#grandchild_category', function(){
     var childName = $('#child_category option:selected').text();
     var grandChildId = document.getElementById('grandchild_category').value; //選択された孫カテゴリーのidを取得
-    console.log(childName)
     if (grandChildId != "---"){ //孫カテゴリーが初期値でないことを確認
       $.ajax({
         url: '/products/get_size',
         type: 'GET',
         data: { grandchild_id: grandChildId },
-        // data: { child_name: childName },
         dataType: 'json'
       })
+  
       .done(function(sizelist){
-
-        //サイズを持つ子カテゴリー配列
-        const itemWidhSize = ['トップス','ジャケット/アウター','パンツ','スカート','ワンピース','ルームウェア/パジャマ','ベビー服(女の子用) ~95cm','ベビー服(男の子用) ~95cm','ベビー服(男女兼用) ~95cm','キッズ服(女の子用) 100cm~','キッズ服(男の子用) 100cm~','キッズ服(男女兼用) 100cm~']
-        //選択された子カテゴリーがサイズを持つか判定
-        const result = $.inArray(childName, itemWidhSize);
-
-        if (result !== -1){
-          $('#size_wrapper').remove();  //孫が変更された時、サイズ以下を削除する
-          $('#brand_wrapper').remove();
+        $('#size_wrapper').remove();  //孫が変更された時、サイズ以下を削除する
+        $('#brand_wrapper').remove();
+        if (sizelist.length != 0){ 
           var insertHTML = '';
           sizelist.forEach(function(size){
             insertHTML += appendOption(size);
@@ -165,7 +169,7 @@ $(document).on('turbolinks:load', function(){
         alert('サイズカテゴリー取得に失敗しました');
       })
     }
-    else{
+    else {
       $('#size_wrapper').remove();  //孫カテゴリーが初期値になった時、サイズ以下を削除する
       $('#brand_wrapper').remove();
     }
