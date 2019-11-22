@@ -75,6 +75,7 @@ $(document).on('turbolinks:load', function() {
     $('#parent_category-new').on('change', function(){
       var parentCategory = document.getElementById('parent_category-new').value; //選択された親カテゴリーの名前を取得
       if (parentCategory != "---"){ //親カテゴリーが初期値でないことを確認
+        console.log(parentCategory)
         $.ajax({
           url: '/products/get_category_children_new',
           type: 'GET',

@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
     @product.product_images.new
     @category_parent_array = ["---"]
     Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent  #親カテゴリー
+      @category_parent_array << parent.name  #親カテゴリー
     end
 
   end
