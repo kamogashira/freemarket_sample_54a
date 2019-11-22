@@ -51,7 +51,7 @@
                 %span.form-require 必須
                 .select-wrap
                   .select-default
-                    = f.collection_select :category_id, @category_parent_array, :id, :name,{}, { class: 'select-form', id: 'parent_category' }
+                    = f.collection_select :category_id, @category_parent_array, :id, :name, {prompt: "--"}, { class: 'select-form', id: 'parent_category' }
                     %i.fas.fa-chevron-down
 
               #brand_wrapper.content-form__status

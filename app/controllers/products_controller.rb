@@ -8,14 +8,8 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    @product_images = @product.product_images.build
+    @product.product_images.build
     #セレクトボックスの初期値設定
-    # @category_parent_array = ["---"]
-    # #データベースから、親カテゴリーのみ抽出し、配列化
-    # Category.where(ancestry: nil).each do |parent|
-    #   @category_parent_array << parent.name
-    # end
-    # render layout: 'products_application'
     @category_parent_array = []
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent  #親カテゴリー
@@ -25,16 +19,16 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-
-    @product.save
-    # 商品の画像を保存
-    if params[:product_images][:image] != nil
-      params[:product_images][:image].each do |image|
-        @product_images = @product.product_images.create!(image: image, product_id: @product.id)
+    if @product.save
+      if params.has_key?(:product_images)
+        params[:product_images][:image].each do |image|
+          @product_images = @product.product_images.update(image: image, product_id: @product.id)
+        end
       end
+      redirect_to root_path
+    else
+      render "new"
     end
-    # binding.pry
-    redirect_to root_path
   end
 
   def show
@@ -45,8 +39,6 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
-    3.times { @product.product_images.build }
-    # @product_images = @product.product_images.limit(10)
   end
 
   def update
@@ -60,8 +52,8 @@ class ProductsController < ApplicationController
       params[:product_images][:image].each do |image|
         @product_images = @product.product_images.create(image: image, product_id: @product.id)
       end
+
     end
-    binding.pry
     # 商品のサイズを更新
     if params.require(:product)[:size_id] != nil
       selected_size = Size.where(name: params[:size_id])
