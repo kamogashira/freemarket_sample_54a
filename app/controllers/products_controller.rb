@@ -9,9 +9,7 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.product_images.new
-    #セレクトボックスの初期値設定
     @category_parent_array = ["---"]
-    #データベースから、親カテゴリーのみ抽出し、配列化
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
     end
@@ -28,6 +26,11 @@ class ProductsController < ApplicationController
       end
     end
     # binding.pry
+    redirect_to root_path
+  end
+
+  def destroy
+    @product.destroy
     redirect_to root_path
   end
 
@@ -134,6 +137,14 @@ class ProductsController < ApplicationController
     end
   end
 
+ def get_category_children_new
+    @category_children_new = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+ end
+
+ def get_category_grandchildren_new
+    @category_grandchildren_new = Category.find("#{params[:child_id]}").children
+ end
+
   # 親カテゴリーが選択された後に動くアクション
   def get_category_children
     @category_children = Category.find_by(id: "#{params[:parent_id]}", ancestry: nil).children
@@ -142,6 +153,18 @@ class ProductsController < ApplicationController
   # 子カテゴリーが選択された後に動くアクション
   def get_category_grandchildren
     @category_grandchildren = Category.find("#{params[:child_id]}").children
+  end
+
+  def get_size_new
+    selected_grandchild = Category.find("#{params[:grandchild_id]}")
+    if related_size_parent = selected_grandchild.sizes[0] 
+      @sizes = related_size_parent.children 
+    else
+      selected_child = Category.find("#{params[:grandchild_id]}").parent 
+      if related_size_parent = selected_child.sizes[0] 
+        @sizes = related_size_parent.children 
+      end
+    end
   end
 
   # 孫カテゴリーが選択された後に動くアクション

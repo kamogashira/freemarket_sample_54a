@@ -151,11 +151,12 @@ h2{
   font-weight: bold;
 }
 
-.form-require-brand{
-  background: #eee;
+.form-any{
+  background: #ccc;
   margin: 0 0 0 8px;
   padding: 2px 4px;
   border-radius: 2px;
+  color: #fff;
   font-size: 12px;
   vertical-align: top;
   font-weight: bold;
@@ -407,7 +408,7 @@ select{
   @include clearfix();
   &__profit-right{
     float: right;
-    width: 50%;
+    width: 70%;
     text-align: right;
     height: 48px;
     padding: 10px 16px 8px;

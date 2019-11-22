@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 
   root 'products#index'
 
-  resources :products, only:[:index, :new, :create, :show, :edit, :update] do
+  resources :products, only:[:index, :new, :create, :show, :edit, :update, :destroy] do
     resources :comments, only:[:create, :show]
 
     #product_idに紐づく商品表示に関するルート作成
@@ -43,6 +43,9 @@ Rails.application.routes.draw do
 
     #Ajaxで動くカテゴリー選択アクションのルートを作成
     collection do
+      get 'get_category_children_new', defaults: { format: 'json' }
+      get 'get_category_grandchildren_new', defaults: { format: 'json' }
+      get 'get_size_new', defaults: { format: 'json' }
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
       get 'get_size', defaults: { format: 'json' }
