@@ -43,23 +43,15 @@
           .product--main__body-content
             %h3.content-form-title-gray
               商品の詳細
-            .content-form-box-category
+            .content-form-box
               .content-form__status-category
                 = f.label 'カテゴリー', class: 'listing-default__label'
                 %span.form-require 必須
                 .select-wrap
                   .select-default
-                    = f.collection_select :category_id, Category.all, :id, :name, {prompt: "---"}
+                    = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category-new'}
                     %i.fas.fa-chevron-down
-              .content-form__status
-                %label 
-                  サイズ
-                  %span.form-require
-                    必須
-                .select-wrap
-                  .select-default
-                    = f.collection_select :size_id, Size.all, :id, :name, {prompt: "---"}
-                    %i.fas.fa-chevron-down
+
               .content-form__status
                 %label 
                   商品の状態
@@ -140,7 +132,6 @@
                     %p#output
                       ¥
                   
-
           .product--main__body-content--button
             .product--main__body-content--button-text
               %p 
