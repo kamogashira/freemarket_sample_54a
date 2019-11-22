@@ -19,6 +19,12 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.save
+    # 商品の画像を保存
+    if params[:product_images][:image] != nil
+      params[:product_images][:image].each do |image|
+        @product_images = @product.product_images.create(image: image, product_id: @product.id)
+      end
+    end
     # binding.pry
     redirect_to root_path
   end
@@ -35,6 +41,8 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @product = Product.find(params[:id])
+    @product_images = @product.product_images.limit(10)
   end
 
   def update
@@ -44,7 +52,7 @@ class ProductsController < ApplicationController
     @product.update(product_params)
 
     # 商品の画像を更新
-    if params.require(:product)[:product_images] != nil
+    if params.has_key?(:product_images)
       params[:product_images][:image].each do |image|
         @product_images = @product.product_images.create(image: image, product_id: @product.id)
       end
@@ -177,6 +185,6 @@ end
 
 private
 def product_params
-  params.require(:product).permit(:name, :description, :category_id, :size_id, :condition, :shipping_charge, :shipping_method, :ship_from, :shipping_days, :current_status, :payment_method, :price, product_images_attributes:[ :image, :id ])
+  params.require(:product).permit(:name, :description, :category_id, :size_id, :condition, :shipping_charge, :shipping_method, :ship_from, :shipping_days, :current_status, :payment_method, :price, :id, product_images_attributes:[ :image, :id, :_destroy ]).merge(seller_id: current_user.id)
 end
 

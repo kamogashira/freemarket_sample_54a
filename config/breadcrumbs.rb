@@ -51,7 +51,13 @@ end
 
 # 発送元・お届け先住所変更
 crumb :address do
-  link "発送元・お届け先住所変更", new_user_delivery_address_path
+  link "発送元・お届け先住所変更", new_user_delivery_address_path(current_user)
+  parent :mypage
+end
+
+# 支払い方法
+crumb :payment do
+  link "支払い方法", pay_cards_path
   parent :mypage
 end
 

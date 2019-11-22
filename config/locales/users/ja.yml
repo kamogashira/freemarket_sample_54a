@@ -1,0 +1,18 @@
+ja:  
+  activerecord:
+    models:
+      user:
+    attributes:
+      user:
+        nickname: ニックネーム
+        email: メールアドレス
+        password: パスワード
+        last_name: 名
+        first_name: 姓
+        last_name_kana: 名カナ
+        first_name_kana: 姓カナ
+        birthday: 生年月日
+    errors:
+      messages:
+        too_short: "は7文字以上128文字以下で入力してください"
+        invalid: "は英字と数字両方を含むものを設定してください"

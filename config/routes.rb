@@ -15,6 +15,7 @@ Rails.application.routes.draw do
    resources :purchases, only: [:index] do
      collection do
        get 'index', to: 'purchases#index'
+       get 'cards', to: 'purchases#cards'
        post 'pay', to: 'purchases#pay'
        get 'done', to: 'purchases#done'
      end
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
     get 'users/sign_up/complete' => 'users/registrations#complete'
     get 'users/sign_up/index' => 'users/registrations#index'
     get 'users/sign_up/phone' => 'users/registrations#phone'
+    post 'users/sign_up/register' => 'users/registrations#register'
   end
 
   root 'products#index'
@@ -54,6 +56,7 @@ Rails.application.routes.draw do
   resources :users, only:[:index, :update] do
     collection do
       get 'logout'
+      post 'logout'
       get 'selling'
       get 'trading'
       get 'completed'

@@ -7,10 +7,10 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.nickname = user_params[:nickname]
-    @user.self_introduction = user_params[:self_introduction]
-    @user.save(:validate => false)
-    redirect_to profile_user_path(@user)
+    current_user.nickname = user_params[:nickname]
+    current_user.self_introduction = user_params[:self_introduction]
+    current_user.save(:validate => false)
+    redirect_to profile_user_path(current_user)
   end
 
   def selling

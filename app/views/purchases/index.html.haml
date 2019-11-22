@@ -1,31 +1,29 @@
-.register-header
- .register-header_content
-  %h1
-   %a
-    = image_tag "top_page/header-mercari.svg", size: '180x50', alt:"mercari"
-
 .purchase
  .purchase_container
   .purchase_container_view
    %h2.purchase_view_title 購入内容の確認
 
- = form_tag(action: :pay, method: :post) do
+ = form_tag(product: @product, action: :pay, method: :post) do
   .purchase_container_form
    .purchase_container_form_base
     .purchase_container_form_base_product
-     = image_tag "", class: "product-image"
-    .purchase_container_form_base_product
-     商品のタイトル（仮置き）
-   .purchase_container_form_base
-    .purchase_container_form_base_price
-     %li.yen ¥1,200
-     %li 送料込み
+     = image_tag "", class: "product-image", size: '60x60'
+    .purchase_container_form_base_title
+     = @product.name
 
    .purchase_container_form_base
-    %button{type: "submit",class: "point_btn"}ポイントはありません
+    .purchase_container_form_base_price
+     %li.yen
+      = "¥ #{@product.price}"
+     %li 送料込み
+    -#  = @product.shiiping_charge
+
+    .purchase_container_form_base_point
+     ポイントはありません
     .purchase_container_form_base_pay
      %li 支払い金額
-     %li ¥1,200
+     %li
+     = "¥ #{@product.price}"
 
    .purchase_container_form_base
     %button{type: "submit",class: "purchase_btn"}購入する
@@ -57,4 +55,4 @@
      %br
      = image_tag "card/#{@card_src}",size: '50x30', alt: @card_brand, id: "card_image"
      .purchase-link
-      = link_to "変更する ＞",class: "change-creditcard"
+      = link_to "変更する ＞", cards_purchases_path(product: @product),class: "change-creditcard"

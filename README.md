@@ -17,6 +17,9 @@ Copy of an exsiting flea market application, Mercari
 |nickname|string|null: false, unique: true|
 |e-mail|string|null: false, unique: true|
 |encrypted_password|string|null: false|
+|reset_password_token|string|
+|reset_password_sent_at|datetime|
+|remember_created_at|datetime|
 |first_name|string|null: false|
 |last_name|string|null: false|
 |first_name_kana|string|null: false|
@@ -28,12 +31,14 @@ Copy of an exsiting flea market application, Mercari
 
 
 #### Association
-- has_many :products
-- has_many :comments
-- has_many :evaluations
+- has_many :sns_credentials
 - has_one :user_address
 - has_one :delivery_address
-- has_one :credit_card
+- accepts_nested_attributes_for :user_address
+- has_many :credit_cards
+- has_many :products
+- has_many :comments
+- has_one :evaluation
 
 
 ### Product
@@ -44,12 +49,12 @@ Copy of an exsiting flea market application, Mercari
 |price|integer|null: false|
 |description|text|null: false|
 |category|references|null: false, foreign_key: true|
-|brand|string||
+|brand_id|integer||
 |size|references|foreign_key: true|
-|condition|string|null: false|
-|shipping_charge|string|null: false|
-|ship_from|string|null: false|
-|shipping_days|string|null: false|
+|condition|integer|null: false|
+|shipping_charge|integer|null: false|
+|ship_from|integer|null: false|
+|shipping_days|integer|null: false|
 |current_status|integer|null: false|
 |buyer|references|foreign_key: { to_table: :users }|
 |seller|references|foreign_key: { to_table: :users }|
@@ -61,10 +66,14 @@ Copy of an exsiting flea market application, Mercari
 
 #### Association
 - has_many :product_images
+accepts_nested_attributes_for :product_images, allow_destroy: true
 - has_many :comments
-- has_one  :evaluation
+- has_one :evaluation
 - belongs_to :category
-- belongs_to :size
+- belongs_to :brand, optional: true
+- belongs_to :size, optional: true
+- belongs_to :seller, class_name: "User" ,optional: true
+- belongs_to :buyer, class_name: "User",optional: true
 
 
 ### UserAddress
@@ -80,22 +89,29 @@ Copy of an exsiting flea market application, Mercari
 |phone_number|string|limit: 11|
 
 #### Association
-- belongs_to :user
+- belongs_to :user, optional: true
+- belongs_to_active_hash :prefecture
+
 
 ### DeliveryAddress
 
 |Column|Type|Options|
 |------|----|-------|
-|user|references|null: false, foreign_key: true|
+|first_name|string|null: false|
+|last_name|string|null: false|
+|first_name_kana|string|null: false|
+|last_name_kana|string|null: false|
 |postal_code|integer|null: false|
 |prefecture|string|null: false|
 |address_city|string|null: false|
 |address_street|string||
 |address_building|string||
 |phone_number|integer|null: false, limit: 11|
+|user_id|integer|null: false|
 
 #### Association
-- belongs_to :user
+- belongs_to :user, optional: true
+- belongs_to_active_hash :prefecture
 
 
 ### Evaluation
@@ -122,7 +138,6 @@ Copy of an exsiting flea market application, Mercari
 |product|references|null: false, foreign_key: true|
 |user|references|null: false, foreign_key: true|
 |content|text||
-|date|date||
 
 #### Association
 - belongs_to :user
@@ -149,7 +164,18 @@ Copy of an exsiting flea market application, Mercari
 |card_id|string|null: false|
 
 #### Association
-- belongs_to :user
+- belongs_to :user, optional: true
+
+### SnsCredential
+
+|Column|Type|Options|
+|------|----|-------|
+|provider|string||
+|uid|string||
+|user_id|integer||
+
+#### Association
+- belongs_to :user, optional: true
 
 
 ### Category
@@ -161,6 +187,8 @@ Copy of an exsiting flea market application, Mercari
 
 #### Association
 - has_many :products
+- has_many :category_sizes
+- has_many :sizes, through: :category_sizes
 - has_ancestry
 
 
@@ -172,7 +200,22 @@ Copy of an exsiting flea market application, Mercari
 
 #### Association
 - has_many :products
+- has_many :category_sizes
+- has_many :categories, through: :category_sizes
+has_ancestry
+
+
+### CategorySize
+
+|Column|Type|Options|
+|------|----|-------|
+|category_id|integer|limit: 8|
+|size_id|integer|limit: 8|
+
+#### Association
+- belongs_to :category
+- belongs_to :size
 
 
 ## ERD
-![image](https://i.gyazo.com/2d5e3ad7bf041c4efbcb1dfa40ff620a.png)
+![image](https://i.gyazo.com/62c1e292beb36f68de64a22f727fb03e.png)

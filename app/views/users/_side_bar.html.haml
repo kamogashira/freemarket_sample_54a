@@ -21,7 +21,7 @@
         = fa_icon "angle-right" , class: "side--list--icon"
 
     .side--list--item
-      = link_to "" do
+      = link_to new_product_path do
         出品する
         = fa_icon "angle-right" , class: "side--list--icon"
 
@@ -87,17 +87,17 @@
       設定
 
     .side--list--item
-      = link_to profile_user_path(user) do
+      = link_to profile_user_path(current_user) do
         プロフィール
         = fa_icon "angle-right" , class: "side--list--icon"
 
     .side--list--item
-      = link_to new_user_delivery_address_path(user) do
+      = link_to new_user_delivery_address_path(current_user) do
         発送元・お届け先住所変更
         = fa_icon "angle-right" , class: "side--list--icon"
 
     .side--list--item
-      = link_to "" do
+      = link_to pay_cards_path do
         支払い方法
         = fa_icon "angle-right" , class: "side--list--icon"
 
@@ -107,7 +107,7 @@
         = fa_icon "angle-right" , class: "side--list--icon"
 
     .side--list--item
-      = link_to new_user_user_address_path(user) do
+      = link_to new_user_user_address_path(current_user) do
         本人情報
         = fa_icon "angle-right" , class: "side--list--icon"
 
