@@ -45,23 +45,14 @@
           .product--main__body-content
             %h3.content-form-title-gray
               商品の詳細
-            .content-form-box-category
-              .content-form__category
+            .content-form-box
+              .content-form__status-category
                 = f.label 'カテゴリー', class: 'listing-default__label'
                 %span.form-require 必須
                 .select-wrap
                   .select-default
-                    = f.collection_select :category_id, @category_parent_array, :id, :name, {prompt: "--"}, { class: 'select-form', id: 'parent_category' }
+                    = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category-new'}
                     %i.fas.fa-chevron-down
-
-              #brand_wrapper.content-form__status
-                %label 
-                  ブランド
-                  %span.form-arbitrary
-                    任意
-                .select-wrap
-                  .select-default
-                    = f.text_field :brand_id, value: @brand, placeholder: "例）シャネル", id: "brand"
               .content-form__status
                 %label 
                   商品の状態
@@ -142,7 +133,6 @@
                     %p#output
                       ¥
                   
-
           .product--main__body-content--button
             .product--main__body-content--button-text
               %p 
