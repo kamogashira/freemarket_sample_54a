@@ -39,12 +39,18 @@
           = link_to " " do
             .category
               = @product.category.root.name
-          = link_to " " do
-            .category
-              = @product.category.parent.name
-          = link_to " " do
-            .category
-              = @product.category.name
+          - if @product.category.name == 'オートバイ車体'
+            = link_to " " do
+              .category
+                = @product.category.name
+          - else
+            = link_to " " do
+              .category
+                = @product.category.parent.name
+            = link_to " " do
+              .category
+                = @product.category.name
+
       %tr
         %th ブランド
         %td 

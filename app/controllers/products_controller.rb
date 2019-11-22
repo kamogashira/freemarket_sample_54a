@@ -11,22 +11,23 @@ class ProductsController < ApplicationController
     @product.product_images.new
     @category_parent_array = ["---"]
     Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
+      @category_parent_array << parent  #親カテゴリー
     end
-    render layout: 'products_application'
+
   end
 
   def create
     @product = Product.new(product_params)
-    @product.save
-    # 商品の画像を保存
-    if params[:product_images][:image] != nil
-      params[:product_images][:image].each do |image|
-        @product_images = @product.product_images.create(image: image, product_id: @product.id)
+    if @product.save
+      if params.has_key?(:product_images)
+        params[:product_images][:image].each do |image|
+          @product_images = @product.product_images.update(image: image, product_id: @product.id)
+        end
       end
+      redirect_to root_path
+    else
+      render "new"
     end
-    # binding.pry
-    redirect_to root_path
   end
 
   def destroy
@@ -42,7 +43,6 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
-    @product_images = @product.product_images.limit(10)
   end
 
   def update
@@ -56,8 +56,8 @@ class ProductsController < ApplicationController
       params[:product_images][:image].each do |image|
         @product_images = @product.product_images.create(image: image, product_id: @product.id)
       end
-    end
 
+    end
     # 商品のサイズを更新
     if params.require(:product)[:size_id] != nil
       selected_size = Size.where(name: params[:size_id])
@@ -110,7 +110,6 @@ class ProductsController < ApplicationController
     else
       @brand = ''
     end
-
   end
 
   def set_category
@@ -152,7 +151,17 @@ class ProductsController < ApplicationController
 
   # 子カテゴリーが選択された後に動くアクション
   def get_category_grandchildren
-    @category_grandchildren = Category.find("#{params[:child_id]}").children
+
+    # オートバイは孫カテゴリーを持たないため、子カテゴリーで選択されたらサイズリストを返す
+    if Category.find("#{params[:child_id]}").name == 'オートバイ車体'
+      @sizelist = Size.where(ancestry: 110)
+      return @sizelist
+
+    # オートバイ以外は紐付く孫カテゴリーの配列を返す
+    else
+      @category_grandchildren = Category.find("#{params[:child_id]}").children
+      return @category_grandchildren
+    end
   end
 
   def get_size_new
@@ -169,15 +178,66 @@ class ProductsController < ApplicationController
 
   # 孫カテゴリーが選択された後に動くアクション
   def get_size
-    @sizelist = Size.all
     selected_grandchild = Category.find("#{params[:grandchild_id]}") #孫カテゴリーを取得
-    if related_size_parent = selected_grandchild.sizes[0] #孫カテゴリーと紐付くサイズ（親）があれば取得
-      @sizes = related_size_parent.children #紐づいたサイズ（親）の子供の配列を取得
+    
+    # サイズの種類を振り分けるためのキーワードを配列に格納
+    clothes_kids = ['ベビー服','キッズ服','ウエア(子ども用)','ウエア/装備(子ども用)']
+    clothes_adult = ['トップス','ジャケット/アウター','パンツ','スカート','ワンピース','ルームウェア/パジャマ','ウエア']
+    shoes = ['靴','ブーツ']
+    tv = ['テレビ']
+    camera_lenz = ['レンズ']
+    helmet = ['ヘルメット']
+    tire = ['自動車タイヤ']
+    ski = ['板']
+    snow_board = ['ボード']
+    
+    #キッズ服のサイズを持つ要素だった場合
+    if selected_grandchild.parent.name.start_with?(*clothes_kids) || selected_grandchild.name.start_with?(*clothes_kids)
+      @sizelist = Size.where(ancestry: 63)
+    
+    #洋服(キッズ以外)のサイズを持つ要素だった場合
+    elsif selected_grandchild.parent.name.start_with?(*clothes_adult) || selected_grandchild.name.start_with?(*clothes_adult)
+      @sizelist = Size.where(ancestry: 12)
+    
+    #メンズ靴のサイズを持つ要素だった場合
+    elsif (selected_grandchild.parent.name.start_with?(*shoes) && selected_grandchild.root.name == 'メンズ') || (selected_grandchild.name.include?('ブーツ(男性用)'))
+      @sizelist = Size.where(ancestry: 23)
+    
+    #レディース靴のサイズを持つ要素だった場合
+    elsif (selected_grandchild.parent.name.start_with?(*shoes) && selected_grandchild.root.name == 'レディース') || (selected_grandchild.name.include?('ブーツ(女性用)'))
+      @sizelist = Size.where(ancestry: 40)
+    
+    #ベビー・キッズ靴のサイズを持つ配列取得
+    elsif (selected_grandchild.parent.name.start_with?(*shoes) && selected_grandchild.root.name == 'ベビー・キッズ') || (selected_grandchild.name.include?('ブーツ(子ども用)'))
+      @sizelist = Size.where(ancestry: 71)
+    
+    #テレビのサイズを持つ要素だった場合
+    elsif tv.include?(selected_grandchild.name)
+      @sizelist = Size.where(ancestry: 86)
+    
+    #カメラレンズのサイズを持つ要素だった場合
+    elsif selected_grandchild.name.start_with?(*camera_lenz)
+      @sizelist = Size.where(ancestry: 97)
+
+    #ヘルメットのサイズを持つ要素だった場合
+    elsif selected_grandchild.name.start_with?(*helmet)
+      @sizelist = Size.where(ancestry: 117)
+
+    #タイヤのサイズを持つ要素だった場合
+    elsif selected_grandchild.parent.name.start_with?(*tire)
+      @sizelist = Size.where(ancestry: 126)
+
+    #スキーのサイズを持つ要素だった場合
+    elsif selected_grandchild.name.start_with?(*ski)
+      @sizelist = Size.where(ancestry: 140)
+
+    #スノーボードのサイズを持つ要素だった場合
+    elsif selected_grandchild.name.start_with?(*snow_board)
+      @sizelist = Size.where(ancestry: 148)
+
     else
-      selected_child = Category.find("#{params[:grandchild_id]}").parent #孫カテゴリーの親を取得
-      if related_size_parent = selected_child.sizes[0] #孫カテゴリーの親と紐付くサイズ（親）があれば取得
-        @sizes = related_size_parent.children #紐づいたサイズ（親）の子供の配列を取得
-      end
+      @sizelist = []
+      
     end
   end
 
@@ -187,4 +247,3 @@ private
 def product_params
   params.require(:product).permit(:name, :description, :category_id, :size_id, :condition, :shipping_charge, :shipping_method, :ship_from, :shipping_days, :current_status, :payment_method, :price, :id, product_images_attributes:[ :image, :id, :_destroy ]).merge(seller_id: current_user.id)
 end
-
