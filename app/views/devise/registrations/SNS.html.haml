@@ -55,9 +55,9 @@
     .form-group_flex-name
      = f.text_field :first_name, class: "first_name",placeholder: "例）山田"
      = f.text_field :last_name, class: "last_name",placeholder: "例）綾"
-     %br
-     = render partial: 'layouts/error-messages', locals: {user: @user, column: "first_name"}
-     = render partial: 'layouts/error-messages', locals: {user: @user, column: "last_name"}
+    %br
+    = render partial: 'layouts/error-messages', locals: {user: @user, column: "first_name"}
+    = render partial: 'layouts/error-messages', locals: {user: @user, column: "last_name"}
 
     .form-group_section
      %label{for: "namekana"}お名前カナ（全角）
@@ -65,9 +65,9 @@
     .form-group_flex-name
      = f.text_field :first_name_kana, class: "first_name", placeholder: "例）ヤマダ"
      = f.text_field :last_name_kana, class: "last_name",  placeholder: "例）アヤ"
-     %br
-     = render partial: 'layouts/error-messages', locals: {user: @user, column: "first_name_kana"}
-     = render partial: 'layouts/error-messages', locals: {user: @user, column: "last_name_kana"}
+    %br
+    = render partial: 'layouts/error-messages', locals: {user: @user, column: "first_name_kana"}
+    = render partial: 'layouts/error-messages', locals: {user: @user, column: "last_name_kana"}
 
     .form-group_section
      %label{for: "birthday"}生年月日
@@ -88,10 +88,10 @@
      %p ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
   
     .form-group_section
-    -# -#  = recaptcha_tags
-    -# -#  -if flash[:recaptcha_error]
-    -# -#   %span.error
-    -# -#    選択してください
+    -#  = recaptcha_tags
+    -#  -if flash[:recaptcha_error]
+    -#   %span.error
+    -#    選択してください
        
     .form_next
      %p「次へ進む」のボタンを押すことにより、
