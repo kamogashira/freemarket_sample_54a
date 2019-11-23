@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
   require "payjp"
-  layout 'others_application', only: [:new]
+  layout 'registrations_application', only: [:new]
 
   def new
     card = CreditCard.where(user_id: current_user.id)

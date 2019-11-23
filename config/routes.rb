@@ -12,7 +12,7 @@ Rails.application.routes.draw do
      end
    end
  
-   resources :purchases, only: [:index] do
+   resources :purchases do
      collection do
        get 'index', to: 'purchases#index'
        get 'cards', to: 'purchases#cards'
@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     get 'users/sign_up/complete' => 'users/registrations#complete'
     get 'users/sign_up/index' => 'users/registrations#index'
     get 'users/sign_up/phone' => 'users/registrations#phone'
+    get 'users/sign_up/step' => 'users/registrations#step'
     post 'users/sign_up/register' => 'users/registrations#register'
   end
 

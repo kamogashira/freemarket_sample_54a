@@ -14,7 +14,7 @@ class User < ApplicationRecord
   validates :nickname,                presence: true, length: {maximum: 20}
   validates :email,                   presence: true, uniqueness: true
   validates :password,                presence: true, length: {minimum: 7, maximum: 128}
-  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,128}+\z/i }
+  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{7,128}+\z/i }, on: :new_registration
   validates :last_name,               presence: true
   validates :first_name,              presence: true
   validates :last_name_kana,          presence: true
@@ -31,15 +31,25 @@ class User < ApplicationRecord
           snscredential = SnsCredential.where(uid: uid, provider: provider).first
           if snscredential.present?
             user = User.where(id: snscredential.user_id).first
+            unless user
+              # provider情報があったがユーザー情報がない場合
+              user = User.create(
+                nickname: auth.info.name,
+                email:    auth.info.email,
+                password: Devise.friendly_token[0, 20],
+                )
+            end
           else
             user = User.where(email: auth.info.email).first
             if user.present?
+              # 同じemailでのユーザー情報があった場合
               SnsCredential.create(
                 uid: uid,
                 provider: provider,
                 user_id: user.id
                 )
             else
+              # ユーザー情報がない場合
               user = User.create(
                 nickname: auth.info.name,
                 email:    auth.info.email,

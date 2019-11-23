@@ -23,8 +23,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session[:user_address_attributes_after_new] = user_params[:user_address_attributes]
     @user = User.new(session[:user_params])
     @user.build_user_address(session[:user_address_attributes_after_new])
-    render 'devise/registrations/new' unless @user.valid?
-  end 
+    render 'devise/registrations/new' unless @user.valid?(:new_registration)
+  end
+
+  def step
+    params[:user][:birthday] = birthday_join
+    session[:user_params] = user_params
+    session[:user_address_attributes_after_new] = user_params[:user_address_attributes]
+    @user = User.new(session[:user_params])
+    @user.build_user_address(session[:user_address_attributes_after_new])
+    render 'devise/registrations/SNS' unless @user.valid?
+  end
 
   def index
   end
