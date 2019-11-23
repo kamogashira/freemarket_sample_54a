@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
       end
       redirect_to root_path
     else
-      render "new"
+      redirect_to new_product_path
     end
   end
 
@@ -47,7 +47,6 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-
      # 商品のサイズとブランド以外を更新
     @product.update(product_params)
 
@@ -71,7 +70,6 @@ class ProductsController < ApplicationController
       new_brand_id = selected_brand.ids
       @product.update(brand_id: new_brand_id[0])
     end
-
     redirect_to show_my_product_product_path
   end
 
@@ -101,10 +99,19 @@ class ProductsController < ApplicationController
     # 商品情報編集ページ(edit)のセレクトボックス初期値設定
     @category_parent_array = []
     Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent  #親カテゴリー
+      @category_parent_array << parent.name  #親カテゴリー
     end
-    @category_children_default = @product.category.root.children #表示している商品に紐付く子カテゴリー
-    @category_grandchildren_default = @product.category.siblings #表示している商品に紐付く孫カテゴリー
+
+    @category_children_default = []
+    @product.category.root.children.each do |child|
+      @category_children_default << child.name  #表示している商品に紐付く子カテゴリー
+    end
+    
+    @category_grandchildren_default = []
+    @product.category.siblings.each do |grandchild| 
+      @category_grandchildren_default << grandchild.name  #表示している商品に紐付く孫カテゴリー
+    end
+
     if @product.brand_id != nil
       @brand = @product.brand.name
     else
@@ -141,28 +148,16 @@ class ProductsController < ApplicationController
  end
 
  def get_category_grandchildren_new
-    @category_grandchildren_new = Category.find("#{params[:child_id]}").children
- end
-
-  # 親カテゴリーが選択された後に動くアクション
-  def get_category_children
-    @category_children = Category.find_by(id: "#{params[:parent_id]}", ancestry: nil).children
-  end
-
-  # 子カテゴリーが選択された後に動くアクション
-  def get_category_grandchildren
-
-    # オートバイは孫カテゴリーを持たないため、子カテゴリーで選択されたらサイズリストを返す
+    # オートバイとその他は孫カテゴリーを持たないため、子カテゴリーで選択されたらサイズリストを返す
     if Category.find("#{params[:child_id]}").name == 'オートバイ車体'
-      @sizelist = Size.where(ancestry: 110)
+      @sizelist = Size.where(ancestry: 99)
       return @sizelist
-
-    # オートバイ以外は紐付く孫カテゴリーの配列を返す
     else
-      @category_grandchildren = Category.find("#{params[:child_id]}").children
-      return @category_grandchildren
+      @category_grandchildren_new = Category.find("#{params[:child_id]}").children
+      return @category_grandchildren_new
     end
-  end
+
+ end
 
   def get_size_new
     selected_grandchild = Category.find("#{params[:grandchild_id]}")
@@ -176,74 +171,9 @@ class ProductsController < ApplicationController
     end
   end
 
-  # 孫カテゴリーが選択された後に動くアクション
-  def get_size
-    selected_grandchild = Category.find("#{params[:grandchild_id]}") #孫カテゴリーを取得
-    
-    # サイズの種類を振り分けるためのキーワードを配列に格納
-    clothes_kids = ['ベビー服','キッズ服','ウエア(子ども用)','ウエア/装備(子ども用)']
-    clothes_adult = ['トップス','ジャケット/アウター','パンツ','スカート','ワンピース','ルームウェア/パジャマ','ウエア']
-    shoes = ['靴','ブーツ']
-    tv = ['テレビ']
-    camera_lenz = ['レンズ']
-    helmet = ['ヘルメット']
-    tire = ['自動車タイヤ']
-    ski = ['板']
-    snow_board = ['ボード']
-    
-    #キッズ服のサイズを持つ要素だった場合
-    if selected_grandchild.parent.name.start_with?(*clothes_kids) || selected_grandchild.name.start_with?(*clothes_kids)
-      @sizelist = Size.where(ancestry: 63)
-    
-    #洋服(キッズ以外)のサイズを持つ要素だった場合
-    elsif selected_grandchild.parent.name.start_with?(*clothes_adult) || selected_grandchild.name.start_with?(*clothes_adult)
-      @sizelist = Size.where(ancestry: 12)
-    
-    #メンズ靴のサイズを持つ要素だった場合
-    elsif (selected_grandchild.parent.name.start_with?(*shoes) && selected_grandchild.root.name == 'メンズ') || (selected_grandchild.name.include?('ブーツ(男性用)'))
-      @sizelist = Size.where(ancestry: 23)
-    
-    #レディース靴のサイズを持つ要素だった場合
-    elsif (selected_grandchild.parent.name.start_with?(*shoes) && selected_grandchild.root.name == 'レディース') || (selected_grandchild.name.include?('ブーツ(女性用)'))
-      @sizelist = Size.where(ancestry: 40)
-    
-    #ベビー・キッズ靴のサイズを持つ配列取得
-    elsif (selected_grandchild.parent.name.start_with?(*shoes) && selected_grandchild.root.name == 'ベビー・キッズ') || (selected_grandchild.name.include?('ブーツ(子ども用)'))
-      @sizelist = Size.where(ancestry: 71)
-    
-    #テレビのサイズを持つ要素だった場合
-    elsif tv.include?(selected_grandchild.name)
-      @sizelist = Size.where(ancestry: 86)
-    
-    #カメラレンズのサイズを持つ要素だった場合
-    elsif selected_grandchild.name.start_with?(*camera_lenz)
-      @sizelist = Size.where(ancestry: 97)
-
-    #ヘルメットのサイズを持つ要素だった場合
-    elsif selected_grandchild.name.start_with?(*helmet)
-      @sizelist = Size.where(ancestry: 117)
-
-    #タイヤのサイズを持つ要素だった場合
-    elsif selected_grandchild.parent.name.start_with?(*tire)
-      @sizelist = Size.where(ancestry: 126)
-
-    #スキーのサイズを持つ要素だった場合
-    elsif selected_grandchild.name.start_with?(*ski)
-      @sizelist = Size.where(ancestry: 140)
-
-    #スノーボードのサイズを持つ要素だった場合
-    elsif selected_grandchild.name.start_with?(*snow_board)
-      @sizelist = Size.where(ancestry: 148)
-
-    else
-      @sizelist = []
-      
-    end
-  end
-
 end
 
 private
 def product_params
-  params.require(:product).permit(:name, :description, :category_id, :size_id, :condition, :shipping_charge, :shipping_method, :ship_from, :shipping_days, :current_status, :payment_method, :price, :id, product_images_attributes:[ :image, :id, :_destroy ]).merge(seller_id: current_user.id)
+  params.require(:product).permit(:name, :description, :category_id, :condition, :shipping_charge, :shipping_method, :ship_from, :shipping_days, :current_status, :payment_method, :price, :id, product_images_attributes:[ :image, :id, :_destroy ]).merge(seller_id: current_user.id)
 end

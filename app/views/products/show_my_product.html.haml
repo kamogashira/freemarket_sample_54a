@@ -44,7 +44,7 @@
           = link_to " " do
             .category
               = @product.category.root.name
-          - if @product.category.name == 'オートバイ車体'
+          - if (@product.category.name == 'オートバイ車体') || (@product.category.name == 'その他')
             = link_to " " do
               .category
                 = @product.category.name

@@ -15,7 +15,7 @@ $(document).on('turbolinks:load', function() {
       var childSelectHtml = '';
       childSelectHtml = `<div class='select-wrap' id= 'children_wrapper'>
                           <div class='select-wrap'>
-                            <select class="select-wrap" id="child_category" name="category">
+                            <select class="select-wrap" id="child_category" name="product[category_id]">
                               <option value="---" data-category="---">---</option>
                               ${insertHTML}
                             <select>
@@ -29,7 +29,7 @@ $(document).on('turbolinks:load', function() {
       var grandchildSelectHtml = '';
       grandchildSelectHtml = `<div class='select-wrap' id= 'grandchildren_wrapper'>
                                 <div class='select-default'>
-                                  <select class="select-wrap" id="grandchild_category" name="category_id">
+                                  <select class="select-wrap" id="grandchild_category" name="product[category_id]">
                                     <option value="---" data-category="---">---</option>
                                     ${insertHTML}
                                   <select>
@@ -46,7 +46,7 @@ $(document).on('turbolinks:load', function() {
                           <span class='form-require'>必須</span>
                           <div class='select-wrap'>
                             <div class='select-default'>
-                              <select class="select-wrap" id="size" name="size_id">
+                              <select class="select-wrap" id="size" name="product[size_id]">
                                 <option value="---">---</option>
                                 ${insertHTML}
                               <select>
@@ -57,7 +57,7 @@ $(document).on('turbolinks:load', function() {
                         <div class="content-form__status" id="brand_wrapper">
                           <label class="content-form__label" for="ブランド">ブランド</label>
                           <span class='form-any'>任意</span>
-                          <input class="select-wrap" placeholder="例) シャネル" type="text" name="brand">
+                          <input class="select-wrap" placeholder="例) シャネル" type="text" name="product[brand_id]">
                         </div>`;
       $('.content-form__status-category').append(sizeSelectHtml);
     }
@@ -67,7 +67,7 @@ $(document).on('turbolinks:load', function() {
       brandInputHtml = `<div class="content-form__status" id="brand_wrapper">
                           <label class="content-form__label" for="ブランド">ブランド</label>
                           <span class='form-any'>任意</span>
-                          <input class="select-wrap" placeholder="例) シャネル" type="text" name="brand">
+                          <input class="select-wrap" placeholder="例) シャネル" type="text" name="product[brand_id]">
                         </div>`;
       $('.content-form__status-category').append(brandInputHtml);
     }
@@ -106,6 +106,7 @@ $(document).on('turbolinks:load', function() {
     // 子カテゴリー選択後のイベント
     $('.content-form__status-category').on('change', '#child_category', function(){
       var childId = $('#child_category option:selected').data('category'); //選択された子カテゴリーのidを取得
+      console.log(childId)
       if (childId != "---"){ //子カテゴリーが初期値でないことを確認
         $.ajax({
           url: '/products/get_category_grandchildren_new',
@@ -122,7 +123,14 @@ $(document).on('turbolinks:load', function() {
             grandchildren.forEach(function(grandchild){
               insertHTML += appendOption(grandchild);
             });
-            appendGrandchidrenBox(insertHTML);
+            //子カテゴリーの選択がオートバイだった場合、孫カテゴリーは表示しない
+            var childName = $('#child_category option:selected').text();
+            if (childName == 'オートバイ車体' || 'その他'){
+              appendSizeBox(insertHTML);
+            }
+            else {
+              appendGrandchidrenBox(insertHTML);
+            }
           }
         })
         .fail(function(){
