@@ -125,7 +125,7 @@ $(document).on('turbolinks:load', function() {
             });
             //子カテゴリーの選択がオートバイだった場合、孫カテゴリーは表示しない
             var childName = $('#child_category option:selected').text();
-            if (childName == 'オートバイ車体' || 'その他'){
+            if (childName == 'オートバイ車体'|| childName == 'その他'){
               appendSizeBox(insertHTML);
             }
             else {
