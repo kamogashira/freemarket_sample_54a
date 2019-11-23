@@ -1,4 +1,20 @@
-= render "cards/show"
+.purchase
+ .purchase_show
+  .purchase_show_view
+   %h2.purchase_view_title 支払い方法
+ .purchase_option
+  .purchase_option_creditcards
+   .purchase_option_creditcards_info
+    %label クレジットカード一覧
+    %br
+    = image_tag "card/#{@card_src}",size: '50x30', alt: @card_brand, id: "card_image"
+    %br
+    = "**** **** **** " + @default_card_information.last4
+    %br
+    - @default_card_information.brand
+    - exp_month = @default_card_information.exp_month.to_s
+    - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+    = exp_month + " / " + exp_year
 
 .purchase_next
  .purchase_next_btn
