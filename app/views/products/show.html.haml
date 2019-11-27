@@ -91,13 +91,18 @@
           
   .item__amount
     .item__amount--price
-      ¥1,700
+      = "¥ #{@product.price}"
     .item__amount--tax
       （税込）
     .item__amount--shipping-fee
       送料込み
-  .item__buy-btn
-    = link_to "購入画面に進む", purchases_path(product: @product)
+  -if @product.buyer_id.present?
+    .item__sell-btn
+      売り切れました
+  -else
+    .item__buy-btn
+      = link_to "購入画面に進む", purchases_path(product: @product)
+   
   .item__description
     = @product.description
 

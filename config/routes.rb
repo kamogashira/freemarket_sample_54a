@@ -12,7 +12,7 @@ Rails.application.routes.draw do
      end
    end
  
-   resources :purchases do
+   resources :purchases, only:[:index] do
      collection do
        get 'index', to: 'purchases#index'
        get 'cards', to: 'purchases#cards'

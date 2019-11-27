@@ -7,7 +7,7 @@ class PurchasesController < ApplicationController
      @product = Product.find(params[:product])
      card = CreditCard.where(user_id: current_user.id).first
       if card.blank?
-       redirect_to action: "new"
+       redirect_to new_card_path
         else
         Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
         customer = Payjp::Customer.retrieve(card.customer_id)
@@ -60,6 +60,7 @@ class PurchasesController < ApplicationController
   def pay
     card = CreditCard.where(user_id: current_user.id).first
     @product = Product.find(params[:product])
+    product = Product.update(buyer_id: current_user.id)
     Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
     Payjp::Charge.create(
     :amount => @product.price,

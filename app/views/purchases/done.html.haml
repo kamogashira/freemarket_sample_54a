@@ -8,7 +8,7 @@
    %h2.purchase_view_title 購入が完了しました
   
   .purchase_notification_product
-   = image_tag "", class: "product-image", size: '200x200'
+   = image_tag( @product.product_images[0].image, class: "product-image", size: '200x200' )
    .purchase_notification_product_title
     = @product.name
 
@@ -16,7 +16,7 @@
    %li.yen
     = "¥ #{@product.price}"
    %li 送料込み
-   -#    = @product.shiiping_charge
+  -#  = @product.shipping_charge
 
   .purchase_notification_form
    .purchase_notification_form_base
