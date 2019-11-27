@@ -142,6 +142,18 @@ tr {
       color: $white;
     }
   }
+  &__sell-btn{
+    width: 620px;
+    height: 60px;
+    margin-top: 16px;
+    font-size: 24px;
+    line-height: 60px;
+    background-color: gray;
+    color: $white;
+    font-weight: 600;
+    text-align: center;
+    cursor: not-allowed;
+  }
   &__description {
     width: 620px;
     padding-top: 32px;

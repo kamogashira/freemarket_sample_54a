@@ -7,7 +7,7 @@
   .purchase_container_form
    .purchase_container_form_base
     .purchase_container_form_base_product
-     = image_tag "", class: "product-image", size: '60x60'
+     = image_tag( @product.product_images[0].image, class: "product-image", size: '60x60')
     .purchase_container_form_base_title
      = @product.name
 
