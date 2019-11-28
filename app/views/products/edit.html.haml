@@ -68,7 +68,7 @@
                     = f.select :parent_id, @category_parent_array, {selected: @product.category.root.name }, {class: 'listing-select-wrapper__box--select', id: 'parent_category-new'}
                     %i.fas.fa-chevron-down
                 //オートバイ車体のみ孫カテゴリーを持たないので、孫カテゴリーメニューは非表示にする
-                - if (@product.category.name == 'オートバイ車体')|| (@product.category.name =='その他')
+                - if (@product.category.name == 'オートバイ車体')|| ( (@product.category.name == 'その他') && (@product.category.children?) )
                   #children_wrapper.select-wrap
                     .select-default
                       = f.select :category_id, options_for_select(@category_children_default.map{|c|[c, {'data-category'=>Category.where(name: c).ids}]}, @product.category.parent.name), {}, {class: 'select-wrap', id: 'child_category'}

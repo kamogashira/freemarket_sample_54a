@@ -143,21 +143,9 @@ class ProductsController < ApplicationController
     end
   end
 
- def get_category_children_new
-    @category_children_new = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
- end
-
- def get_category_grandchildren_new
-    # オートバイとその他は孫カテゴリーを持たないため、子カテゴリーで選択されたらサイズリストを返す
-    if Category.find("#{params[:child_id]}").name == 'オートバイ車体'
-      @sizelist = Size.where(ancestry: 99)
-      return @sizelist
-    else
-      @category_grandchildren_new = Category.find("#{params[:child_id]}").children
-      return @category_grandchildren_new
-    end
-
- end
+  def get_category_children_new
+      @category_children_new = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+  end
 
   def get_size_new
     selected_grandchild = Category.find("#{params[:grandchild_id]}")
@@ -169,6 +157,11 @@ class ProductsController < ApplicationController
         @sizes = related_size_parent.children 
       end
     end
+  end
+
+  def get_category_grandchildren_new
+    @category_grandchildren_new = Category.find("#{params[:child_id]}").children
+    return @category_grandchildren_new
   end
 
 end
