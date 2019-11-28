@@ -61,3 +61,6 @@ crumb :payment do
   parent :mypage
 end
 
+crumb :email do
+  link "メール/パスワード", email_users_path(current_user)
+end
