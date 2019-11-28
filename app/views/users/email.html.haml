@@ -1,0 +1,28 @@
+- breadcrumb :email
+= render "layouts/breadcrumbs"
+
+%main.l-container.clearfix
+  .l-content
+    %section.l-chapter-container
+      %h2.l-chapter-head メール/パスワード
+      %form.l-single-inner{:action => "", :method => "POST", :novalidate => "novalidate"}
+        %input{:name => "__csrf_value", :type => "hidden", :value => ""}
+        .l-single-content
+          = form_for current_user, html: { class: "" } do |f|
+            .form-group
+              %label{:for => "email"} メールアドレス
+              %input.input-default{:name => "email", :placeholder => "PC・携帯どちらでも可", :type => "email", :value => current_user.email }
+              %p.form-info-text メールアドレスを変更すると確認メールが送信されます。メール内のURLをクリックすると変更完了です。
+            .form-group
+              %label{:for => "current_password"} 現在のパスワード
+              %input.input-default{:name => "current_password", :type => "password"}
+              %label{:for => "password"} 新しいパスワード
+              %input.input-default{:name => "password", :placeholder => "7文字以上の半角英数字", :type => "password"}
+              %p.form-info-text ※ 英字と数字の両方を含めて設定してください
+              %label.password-form{:for => "password_confirmation"} 新しいパスワード確認
+              %input.input-default{:name => "password_confirmation", :placeholder => "新しいパスワードを再入力", :type => "password"}
+              %p.form-info-text 
+            %button.btn-default.btn-red{:type => "submit"} 変更する
+
+  .side
+    = render "side_bar", user: current_user

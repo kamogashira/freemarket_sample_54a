@@ -13,6 +13,9 @@ class UsersController < ApplicationController
     redirect_to profile_user_path(current_user)
   end
 
+  def email
+  end
+
   def selling
     @products = Product.where('seller_id = ? and current_status = ?', current_user.id, 0)
     @status = "出品中"

@@ -56,6 +56,7 @@ Rails.application.routes.draw do
 
   resources :users, only:[:index, :update] do
     collection do
+      get 'email'
       get 'logout'
       post 'logout'
       get 'selling'
