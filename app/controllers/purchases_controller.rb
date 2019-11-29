@@ -60,14 +60,17 @@ class PurchasesController < ApplicationController
   def pay
     card = CreditCard.where(user_id: current_user.id).first
     @product = Product.find(params[:product])
-    product = Product.update(buyer_id: current_user.id)
     Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
     Payjp::Charge.create(
     :amount => @product.price,
     :customer => card.customer_id, #顧客ID
     :currency => 'jpy', #日本円
     )
-    redirect_to done_purchases_path(product: @product)
+    if @product.update(buyer_id: current_user.id)
+      redirect_to done_purchases_path(product: @product)
+    else
+      redirect_to done_purchases_path(product: @product)
+    end
   end
   
   def done
