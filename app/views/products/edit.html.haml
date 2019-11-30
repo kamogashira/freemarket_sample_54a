@@ -67,20 +67,21 @@
                   .select-default
                     = f.select :parent_id, @category_parent_array, {selected: @product.category.root.name }, {class: 'listing-select-wrapper__box--select', id: 'parent_category-new'}
                     %i.fas.fa-chevron-down
-                //オートバイ車体のみ孫カテゴリーを持たないので、孫カテゴリーメニューは非表示にする
+                //孫カテゴリーを持たない場合のメニュー表示
                 - if (@product.category.name == 'オートバイ車体')|| ( (@product.category.name == 'その他') && (@product.category.children?) )
                   #children_wrapper.select-wrap
                     .select-default
-                      = f.select :category_id, options_for_select(@category_children_default.map{|c|[c, {'data-category'=>Category.where(name: c).ids}]}, @product.category.parent.name), {}, {class: 'select-wrap', id: 'child_category'}
+                      = f.select :category_id, options_for_select(@category_children_default.map{|c|[c.name, c.id, {'data-category'=>c.id, selected: @product.category.parent.name }]}, @product.category.parent.name), {}, {class: 'select-wrap', id: 'child_category'}
                       %i.fas.fa-chevron-down
+                //孫カテゴリーを持つ場合のメニュー表示
                 - else
                   #children_wrapper.select-wrap
                     .select-default
-                      = f.select :category_id, options_for_select(@category_children_default.map{|c|[c, {'data-category'=>Category.where(name: c).ids}]}, @product.category.parent.name), {}, {class: 'select-wrap', id: 'child_category'}
+                      = f.select :category_id, options_for_select(@category_children_default.map{|c|[c.name, c.id, {'data-category'=>c.id, selected: @product.category.parent.name }]}, @product.category.parent.name), {}, {class: 'select-wrap', id: 'child_category'}
                       %i.fas.fa-chevron-down
                   #grandchildren_wrapper.select-wrap
                     .select-default
-                      = f.select :category_id, options_for_select(@category_grandchildren_default.map{|c|[c, {'data-category'=>Category.where(name: c).ids}]}, @product.category.name), {}, {class: 'select-wrap', id: 'grandchild_category'}
+                      = f.select :category_id, options_for_select(@category_grandchildren_default.map{|c|[c.name,c.id, {'data-category'=>c.id, selected: @product.category.name }]}, @product.category.parent.name), {}, {class: 'select-wrap', id: 'child_category'}
                       %i.fas.fa-chevron-down
 
               #brand_wrapper.content-form__status

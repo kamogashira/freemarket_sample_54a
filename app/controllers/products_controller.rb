@@ -19,10 +19,17 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
+      # 商品の画像を保存
       if params.has_key?(:product_images)
         params[:product_images][:image].each do |image|
           @product_images = @product.product_images.update(image: image, product_id: @product.id)
         end
+      end
+      # 商品のブランドを保存
+      if params.require(:product)[:brand_id] != nil
+        selected_brand = Brand.where(name: params.require(:product)[:brand_id])
+        new_brand_id = selected_brand.ids
+        @product.update(brand_id: new_brand_id[0])
       end
       redirect_to root_path
     else
@@ -104,12 +111,12 @@ class ProductsController < ApplicationController
 
     @category_children_default = []
     @product.category.root.children.each do |child|
-      @category_children_default << child.name  #表示している商品に紐付く子カテゴリー
+      @category_children_default << child  #表示している商品に紐付く子カテゴリー
     end
     
     @category_grandchildren_default = []
     @product.category.siblings.each do |grandchild| 
-      @category_grandchildren_default << grandchild.name  #表示している商品に紐付く孫カテゴリー
+      @category_grandchildren_default << grandchild  #表示している商品に紐付く孫カテゴリー
     end
 
     if @product.brand_id != nil
